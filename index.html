@@ -54,6 +54,81 @@
   body:has(a:hover) .cursor { width: 6px; height: 6px; background: var(--gold); }
   body:has(a:hover) .cursor-ring { width: 52px; height: 52px; opacity: 0.8; border-color: var(--gold); }
 
+  /* NOTION PILL */
+  .notion-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    text-decoration: none;
+    margin-bottom: 1.8rem;
+    padding: 0.6rem 1rem 0.6rem 0.7rem;
+    border: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+    animation: none;
+  }
+  .notion-pill::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--ink);
+    transform: translateX(-101%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+  }
+  .notion-pill:hover::before { transform: translateX(0); }
+  .notion-pill:hover { border-color: var(--ink); transform: translateY(-2px); }
+  .notion-pill:hover * { color: var(--paper) !important; }
+  .notion-pill:hover .notion-pill-dot { background: var(--gold) !important; box-shadow: 0 0 8px var(--gold) !important; }
+  .notion-pill-dot {
+    position: relative;
+    z-index: 1;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px rgba(184,52,27,0.15);
+    flex-shrink: 0;
+    animation: dotPulse 2s ease-in-out infinite;
+  }
+  .notion-pill-text {
+    position: relative;
+    z-index: 1;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--ink);
+    transition: color 0.3s;
+  }
+  .notion-pill-sub {
+    position: relative;
+    z-index: 1;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: color 0.3s;
+  }
+  .notion-pill-arrow {
+    position: relative;
+    z-index: 1;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+    transition: color 0.3s, transform 0.3s;
+    margin-left: 0.2rem;
+  }
+  .notion-pill:hover .notion-pill-arrow { transform: translateX(4px); }
+  @keyframes dotPulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(184,52,27,0.15); }
+    50% { box-shadow: 0 0 0 6px rgba(184,52,27,0.05); }
+  }
+  @keyframes pillFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0;
@@ -650,6 +725,12 @@
     <div class="hero-cta">
       <a href="#matieres" class="btn-primary">Voir les projets →</a>
       <a href="mailto:agaiblepro@gmail.com" class="btn-secondary">✉ Contact</a>
+      <a href="https://www.notion.so/35dfe51e040d80249913c543beffe0f2" target="_blank" class="notion-pill">
+        <span class="notion-pill-dot"></span>
+        <span class="notion-pill-text">Profil complet</span>
+        <span class="notion-pill-sub">CV · Certifications · Parcours</span>
+        <span class="notion-pill-arrow">→</span>
+      </a>
     </div>
   </div>
   <div class="hero-right">
@@ -776,6 +857,15 @@
         <span class="project-arrow">↗</span>
       </div>
     </div>
+    <div class="project-card fade-in" style="transition-delay:0.2s" onclick="openModal('memoire')">
+      <span class="project-tag">Mémoire · Achats · Data</span>
+      <h3 class="project-title">Strategic Centralization of Procurement in Multi-Site Industrial Groups</h3>
+      <p class="project-desc">Comment la centralisation data-driven des achats renforce le pouvoir de décision corporate sur les marchés fournisseurs — sans détruire l'autonomie locale. Théorie des organisations, ontologies data, Palantir Foundry, terrain GE Vernova.</p>
+      <div class="project-meta">
+        <span>Mémoire de recherche · EN · GE Vernova</span>
+        <span class="project-arrow">↗</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -788,20 +878,20 @@
   </div>
   <div class="projects-grid">
     <div class="project-card fade-in" onclick="openModal('aura')">
-      <span class="project-tag">SQL · Power BI</span>
+      <span class="project-tag">SQL · SQLite · Power BI</span>
       <h3 class="project-title">AURA Energy Consumption</h3>
-      <p class="project-desc">Analyse de la consommation énergétique d'un parc industriel. Traitement SQL, construction d'un dashboard Power BI pour le suivi des KPIs énergétiques.</p>
+      <p class="project-desc">Analyse du mix électrique de la région Auvergne-Rhône-Alpes sur 11 ans (2013–2024). Données RTE éco2mix traitées via SQLite, dashboard Power BI. Nucléaire structurellement dominant à +70%, saisonnalité hydraulique forte, thermique en corrélation inverse avec la disponibilité nucléaire.</p>
       <div class="project-meta">
-        <span>SQL · Power BI</span>
+        <span>SQL · SQLite · Power BI · 11 ans de données</span>
         <span class="project-arrow">↗</span>
       </div>
     </div>
     <div class="project-card fade-in" style="transition-delay:0.1s" onclick="openModal('palantir')">
-      <span class="project-tag">Palantir · Foundry</span>
-      <h3 class="project-title">Introduction / Palantir Vertex</h3>
-      <p class="project-desc">Exploration de la plateforme Palantir Vertex appliquée à l'analyse de données industrielles et opérationnelles à grande échelle.</p>
+      <span class="project-tag">Palantir · Foundry · Ontologie</span>
+      <h3 class="project-title">Palantir Vertex — Graphes de relations</h3>
+      <p class="project-desc">Cas d'usage sur la détection de réseaux suspects via graphes ontologiques dans Palantir Foundry. Construction du pipeline de nettoyage, modélisation des objets et liens ontologiques, utilisation de Vertex pour croiser transactions financières et communications entre entités à risque.</p>
       <div class="project-meta">
-        <span>Palantir Foundry / Vertex</span>
+        <span>Palantir Foundry · Ontologie · Graph analysis</span>
         <span class="project-arrow">↗</span>
       </div>
     </div>
