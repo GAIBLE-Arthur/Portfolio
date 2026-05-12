@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arthur Gaible — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0d0b;
+    --paper: #f5f0e8;
+    --paper-dark: #ede7d5;
+    --accent: #b8341b;
+    --accent-light: #d94f2b;
+    --gold: #c9a84c;
+    --muted: #7a7060;
+    --rule: #d0c8b4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Libre Baskerville', Georgia, serif;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    position: fixed;
+    width: 12px; height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 36px; height: 36px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.18s ease, width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+    opacity: 0.5;
+  }
+  body:has(a:hover) .cursor { width: 6px; height: 6px; background: var(--gold); }
+  body:has(a:hover) .cursor-ring { width: 52px; height: 52px; opacity: 0.8; border-color: var(--gold); }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.4rem 3rem;
+    background: rgba(245, 240, 232, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 6rem 3rem 6rem 4rem;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.6rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .hero-tag::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--accent); }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.2rem, 6vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.0;
+    margin-bottom: 0.4rem;
+    color: var(--ink);
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.35rem);
+    color: var(--muted);
+    margin-bottom: 2.8rem;
+    line-height: 1.5;
+  }
+  .hero-desc {
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: var(--ink);
+    max-width: 38ch;
+    margin-bottom: 3rem;
+    opacity: 0.85;
+  }
+  .hero-cta {
+    display: flex; gap: 1.2rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: var(--accent);
+    color: var(--paper);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.85rem 1.8rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    border: 1px solid var(--rule);
+    color: var(--muted);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.85rem 1.8rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--ink); color: var(--ink); }
+
+  .hero-right {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--ink);
+    overflow: hidden;
+  }
+  .hero-chart {
+    position: absolute;
+    inset: 0;
+    opacity: 0.18;
+  }
+  .hero-tagline {
+    position: relative;
+    z-index: 2;
+    padding: 3rem;
+    text-align: center;
+  }
+  .hero-tagline p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    color: rgba(245,240,232,0.6);
+    line-height: 1.7;
+    max-width: 30ch;
+    margin: 0 auto;
+  }
+  .hero-tagline strong { color: var(--gold); font-style: normal; }
+  .niobium-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-bottom: 3rem;
+  }
+  .stat-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 1.6rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .stat-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--accent);
+  }
+  .stat-card:nth-child(2)::before { background: var(--gold); }
+  .stat-card:nth-child(3)::before { background: #4a7c6f; }
+  .stat-card:nth-child(4)::before { background: #3d5a8a; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* DIVIDER */
+  .section-rule {
+    display: flex; align-items: center; gap: 1.5rem;
+    padding: 0 4rem;
+    margin: 0 0 3rem;
+  }
+  .section-rule::before, .section-rule::after {
+    content: ''; flex: 1; height: 1px; background: var(--rule);
+  }
+  .section-rule-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* SECTION */
+  section { padding: 6rem 4rem; }
+  .section-header {
+    margin-bottom: 4rem;
+    display: flex; align-items: baseline; gap: 2rem;
+  }
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 900;
+    line-height: 1.1;
+  }
+
+  /* PROJECT CARDS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .project-card {
+    background: var(--paper);
+    padding: 2.4rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.25s ease;
+  }
+  .project-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .project-card:hover { background: var(--ink); }
+  .project-card:hover * { color: var(--paper) !important; }
+  .project-card:hover .project-tag { background: rgba(255,255,255,0.1); color: var(--paper) !important; }
+  .project-card:hover::after { transform: scaleX(1); background: var(--gold); }
+  .project-card:hover .project-arrow { opacity: 1; transform: translate(0, 0); }
+
+  .project-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(184, 52, 27, 0.08);
+    padding: 0.3rem 0.7rem;
+    margin-bottom: 1.4rem;
+  }
+  .project-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 0.8rem;
+    color: var(--ink);
+  }
+  .project-desc {
+    font-size: 0.85rem;
+    line-height: 1.75;
+    color: var(--muted);
+    margin-bottom: 1.6rem;
+  }
+  .project-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+    padding-top: 1rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .project-arrow {
+    opacity: 0;
+    transform: translate(-4px, 4px);
+    transition: opacity 0.25s, transform 0.25s;
+    font-size: 1.1rem;
+  }
+
+  /* FEATURED PROJECT */
+  .featured {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 6rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .featured::before {
+    content: '"';
+    position: absolute;
+    top: -2rem; left: 3rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 20rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .featured .section-num { color: var(--gold); }
+  .featured .section-title { color: var(--paper); }
+  .featured-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+    margin-top: 4rem;
+  }
+  .featured-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.7rem;
+    color: var(--paper);
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+  }
+  .featured-text p {
+    font-size: 0.92rem;
+    line-height: 1.85;
+    color: rgba(245,240,232,0.7);
+    margin-bottom: 1.4rem;
+  }
+  .featured-text a {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: gap 0.2s;
+  }
+  .featured-text a:hover { gap: 0.9rem; }
+
+  .featured-data {
+    display: flex; flex-direction: column; gap: 1px;
+    background: rgba(255,255,255,0.06);
+  }
+  .data-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 1.6rem;
+    background: rgba(255,255,255,0.03);
+    border-left: 3px solid transparent;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .data-row:hover { border-color: var(--gold); background: rgba(255,255,255,0.06); }
+  .data-key {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+  }
+  .data-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--paper);
+  }
+  .data-val.accent { color: var(--gold); }
+
+  /* ABOUT / CONTACT */
+  .about {
+    background: var(--paper-dark);
+    padding: 6rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 6rem;
+    align-items: start;
+  }
+  .about-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+  .about-left h2 em { font-style: italic; color: var(--accent); }
+  .about-left p {
+    font-size: 0.92rem;
+    line-height: 1.85;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+  }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 3rem;
+  }
+  .skill-item {
+    background: var(--paper);
+    padding: 1.4rem;
+  }
+  .skill-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+  .skill-list {
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  .contact-block {
+    padding: 3rem;
+    background: var(--ink);
+    color: var(--paper);
+    position: relative;
+  }
+  .contact-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+  }
+  .contact-block p {
+    font-size: 0.85rem;
+    color: rgba(245,240,232,0.6);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+  .contact-email {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--gold);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 2rem;
+    transition: opacity 0.2s;
+  }
+  .contact-email:hover { opacity: 0.7; }
+  .contact-links { display: flex; flex-direction: column; gap: 0.8rem; }
+  .contact-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.5);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 0.8rem;
+    transition: color 0.2s;
+  }
+  .contact-links a::before { content: '→'; color: var(--accent); }
+  .contact-links a:hover { color: var(--paper); }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: rgba(245,240,232,0.3);
+    padding: 2rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(14, 13, 11, 0.85);
+    z-index: 500;
+    backdrop-filter: blur(6px);
+    align-items: center; justify-content: center;
+    padding: 2rem;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--paper);
+    max-width: 680px; width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalIn 0.3s ease;
+  }
+  @keyframes modalIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .modal-header {
+    background: var(--ink);
+    padding: 2.4rem 2.4rem 2rem;
+    position: sticky; top: 0; z-index: 1;
+  }
+  .modal-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+  .modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--paper);
+    line-height: 1.25;
+  }
+  .modal-close {
+    position: absolute; top: 1.4rem; right: 1.6rem;
+    background: none; border: none;
+    color: rgba(245,240,232,0.4);
+    font-size: 1.4rem;
+    cursor: none;
+    transition: color 0.2s;
+    line-height: 1;
+  }
+  .modal-close:hover { color: var(--paper); }
+  .modal-body { padding: 2.4rem; }
+  .modal-body p {
+    font-size: 0.9rem;
+    line-height: 1.85;
+    color: var(--muted);
+    margin-bottom: 1.4rem;
+  }
+  .modal-body p strong { color: var(--ink); font-weight: 700; }
+  .modal-body .modal-link {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--accent);
+    color: var(--paper);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.8rem 1.6rem;
+    margin-top: 0.5rem;
+    transition: background 0.2s;
+  }
+  .modal-body .modal-link:hover { background: var(--accent-light); }
+  .modal-kv { display: flex; flex-direction: column; gap: 1px; background: var(--rule); margin-bottom: 1.8rem; }
+  .modal-kv-row { display: flex; background: var(--paper-dark); padding: 0.8rem 1.2rem; gap: 2rem; }
+  .modal-kv-key { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); min-width: 100px; }
+  .modal-kv-val { font-size: 0.85rem; color: var(--ink); }
+
+  /* ANIMATIONS */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { min-height: 50vh; }
+    .featured-inner, .about { grid-template-columns: 1fr; gap: 3rem; }
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    section, .featured, .about { padding: 4rem 1.5rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">A. Gaible</a>
+  <ul class="nav-links">
+    <li><a href="#matieres">Raw Materials</a></li>
+    <li><a href="#data">Data</a></li>
+    <li><a href="#geopolitique">Geopolitics</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding: 0; padding-top: 80px;">
+  <div class="hero-left fade-in">
+    <h1 class="hero-name">Arthur<br><em>Gaible</em></h1>
+    <p class="hero-subtitle">Critical Raw Materials & Market Intelligence</p>
+    <p class="hero-desc">
+      Geopolitics of supply chains, market structure analysis, and risk modelling — applied to the metals and resources shaping the next industrial order. Dual focus: strategic research and industrial data.
+    </p>
+    <div class="hero-cta">
+      <a href="#matieres" class="btn-primary">Voir les projets →</a>
+      <a href="mailto:agaiblepro@gmail.com" class="btn-secondary">✉ Contact</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <svg class="hero-chart" viewBox="0 0 500 400" preserveAspectRatio="none">
+      <polyline points="0,320 50,310 100,280 150,290 200,240 250,200 300,220 350,170 400,140 450,160 500,100" fill="none" stroke="#b8341b" stroke-width="2"/>
+      <polyline points="0,350 50,340 100,360 150,330 200,310 250,320 300,280 350,260 400,270 450,230 500,210" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-dasharray="4,4"/>
+      <line x1="0" y1="200" x2="500" y2="200" stroke="rgba(245,240,232,0.15)" stroke-width="0.5" stroke-dasharray="2,6"/>
+      <line x1="0" y1="300" x2="500" y2="300" stroke="rgba(245,240,232,0.15)" stroke-width="0.5" stroke-dasharray="2,6"/>
+      <line x1="0" y1="100" x2="500" y2="100" stroke="rgba(245,240,232,0.15)" stroke-width="0.5" stroke-dasharray="2,6"/>
+    </svg>
+    <div class="hero-tagline fade-in" style="transition-delay: 0.3s">
+      <p>Géopolitique des ressources,<br>structure de marché,<br><strong>modélisation du risque.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- RAW MATERIALS -->
+<section id="matieres">
+  <div class="section-rule"><span class="section-rule-text">I — Matières premières</span></div>
+  <div class="section-header fade-in">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Critical Raw<br>Materials</h2>
+  </div>
+  <div class="niobium-stats fade-in">
+    <div class="stat-card">
+      <div class="stat-num">90%</div>
+      <div class="stat-label">Niobium mondial extrait au Brésil</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">+5.8%</div>
+      <div class="stat-label">CAGR marché 2025–2033</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">$1.5B</div>
+      <div class="stat-label">Rachat Catalão par CMOC</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">2011</div>
+      <div class="stat-label">Criticité UE — ininterrompue</div>
+    </div>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card fade-in" onclick="openModal('bresil')">
+      <span class="project-tag">Niobium · Géopolitique</span>
+      <h3 class="project-title">Brésil : La 41ème dépendance</h3>
+      <p class="project-desc">Monopole mondial de la CBMM, mine d'Araxá, prix administrés OTC. Pourquoi la dépendance occidentale est structurelle — et pourquoi elle ne fait pas les grands titres.</p>
+      <div class="project-meta">
+        <span>Rapport · ~4 500 mots</span>
+        <span class="project-arrow">↗</span>
+      </div>
+    </div>
+    <div class="project-card fade-in" style="transition-delay:0.1s" onclick="openModal('chine')">
+      <span class="project-tag">Niobium · Stratégie</span>
+      <h3 class="project-title">Chine : sous le coup de la dépendance</h3>
+      <p class="project-desc">La Chine ne produit pas de niobium — mais a sécurisé 15% de la CBMM et racheté la mine de Catalão pour 1,5 Md$. Analyse des stratégies d'approvisionnement chinoises.</p>
+      <div class="project-meta">
+        <span>Note d'analyse</span>
+        <span class="project-arrow">↗</span>
+      </div>
+    </div>
+    <div class="project-card fade-in" style="transition-delay:0.2s" onclick="openModal('analyse')">
+      <span class="project-tag">Niobium · Modélisation</span>
+      <h3 class="project-title">Coûts, risques & structure de marché</h3>
+      <p class="project-desc">Structure de coûts de production (open-pit vs souterrain), modélisation du risque marché, et analyse du risque géopolitique de concentration. Modèle quantitatif.</p>
+      <div class="project-meta">
+        <span>Analyse quant. & qual.</span>
+        <span class="project-arrow">↗</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED -->
+<div class="featured fade-in" id="featured">
+  <div class="section-rule" style="padding: 0; margin-bottom: 0;">
+    <span class="section-rule-text" style="color: rgba(245,240,232,0.3);">Focus · Analyse principale</span>
+  </div>
+  <div class="section-header" style="margin-top: 3rem;">
+    <span class="section-num">★</span>
+    <h2 class="section-title">La dépendance<br>confortable</h2>
+  </div>
+  <div class="featured-inner">
+    <div class="featured-text">
+      <h3>« Assis sur une bombe à retardement logistique »</h3>
+      <p>Le niobium illustre une forme singulière de risque géopolitique : celle de la dépendance confortable. Contrairement aux terres rares chinoises dont la menace est régulièrement brandée, le niobium brésilien ne fait pas de bruit.</p>
+      <p>Cette absence de friction a anesthésié la vigilance des industries de défense et de haute technologie. La dépendance au 41ème élément n'est pas une fatalité géologique, mais le résultat d'un arbitrage économique qui a sacrifié la souveraineté sur l'autel de la stabilité des prix.</p>
+      <a href="https://www.notion.so/35dfe51e040d800ca9caf26568d2163c" target="_blank">Lire l'analyse complète →</a>
+    </div>
+    <div class="featured-data">
+      <div class="data-row"><span class="data-key">Mine principale</span><span class="data-val">Araxá, Minas Gerais</span></div>
+      <div class="data-row"><span class="data-key">Part mondiale</span><span class="data-val accent">83%</span></div>
+      <div class="data-row"><span class="data-key">Cotation</span><span class="data-val">OTC — prix administré</span></div>
+      <div class="data-row"><span class="data-key">Prix FeNb</span><span class="data-val">~$45–50 / kg</span></div>
+      <div class="data-row"><span class="data-key">Réserves</span><span class="data-val accent">> 200 ans</span></div>
+      <div class="data-row"><span class="data-key">Criticité UE</span><span class="data-val">Depuis 2011 — CRMA</span></div>
+      <div class="data-row"><span class="data-key">Part chinoise CBMM</span><span class="data-val accent">15%</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- DATA -->
+<section id="data">
+  <div class="section-rule"><span class="section-rule-text">II — Data & Analytics</span></div>
+  <div class="section-header fade-in">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Data &<br>Industrial Analytics</h2>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card fade-in" onclick="openModal('aura')">
+      <span class="project-tag">SQL · Power BI</span>
+      <h3 class="project-title">AURA Energy Consumption</h3>
+      <p class="project-desc">Analyse de la consommation énergétique d'un parc industriel. Traitement SQL, construction d'un dashboard Power BI pour le suivi des KPIs énergétiques.</p>
+      <div class="project-meta">
+        <span>SQL · Power BI</span>
+        <span class="project-arrow">↗</span>
+      </div>
+    </div>
+    <div class="project-card fade-in" style="transition-delay:0.1s" onclick="openModal('palantir')">
+      <span class="project-tag">Palantir · Foundry</span>
+      <h3 class="project-title">Introduction / Palantir Vertex</h3>
+      <p class="project-desc">Exploration de la plateforme Palantir Vertex appliquée à l'analyse de données industrielles et opérationnelles à grande échelle.</p>
+      <div class="project-meta">
+        <span>Palantir Foundry / Vertex</span>
+        <span class="project-arrow">↗</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GEOPOLITICS -->
+<section id="geopolitique" style="background: var(--paper-dark);">
+  <div class="section-rule"><span class="section-rule-text">III — Géopolitique & marchés</span></div>
+  <div class="section-header fade-in">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Geopolitics &<br>Markets</h2>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card fade-in" onclick="openModal('afrique')">
+      <span class="project-tag">Afrique · Influence</span>
+      <h3 class="project-title">La puissance française en Afrique : un soft-power rompu ?</h3>
+      <p class="project-desc">Retrait militaire, contestation du franc CFA, montée des alternatives (Russie, Chine, Turquie). Quand la présence historique devient un passif stratégique.</p>
+      <div class="project-meta">
+        <span>Essai géopolitique</span>
+        <span class="project-arrow">↗</span>
+      </div>
+    </div>
+    <div class="project-card fade-in" style="transition-delay:0.1s" onclick="openModal('truss')">
+      <span class="project-tag">UK · Finance · 2022</span>
+      <h3 class="project-title">44 Days: Liz Truss and the Collapse of Confidence</h3>
+      <p class="project-desc">Autopsie des 44 jours Truss : mini-budget non financé, réaction des gilt markets, intervention de la BoE. Un cas d'école sur la souveraineté monétaire et la crédibilité budgétaire.</p>
+      <div class="project-meta">
+        <span>Market analysis · EN</span>
+        <span class="project-arrow">↗</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / CONTACT -->
+<div class="about" id="contact">
+  <div class="about-left fade-in">
+    <h2>Analyse,<br><em>rigueur</em>,<br>indépendance.</h2>
+    <p>Profil hybride alliant l'analyse de marchés de matières premières critiques (géopolitique, structure de coûts, risque) à la maîtrise des outils data (SQL, Power BI, Palantir).</p>
+    <p>Intérêt particulier pour les marchés OTC, les chaînes d'approvisionnement stratégiques, et les zones de friction entre logiques économiques et souveraineté industrielle.</p>
+    <div class="skills-grid">
+      <div class="skill-item">
+        <div class="skill-name">Analyse</div>
+        <div class="skill-list">Géopolitique · Risque · Structure de coûts · OTC markets</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Data</div>
+        <div class="skill-list">SQL · Power BI · Palantir Foundry · Modélisation</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Langues</div>
+        <div class="skill-list">Français (natif) · Anglais (courant)</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name">Secteurs</div>
+        <div class="skill-list">Matières premières · Défense · Énergie · Finance</div>
+      </div>
+    </div>
+  </div>
+  <div class="fade-in" style="transition-delay: 0.2s">
+    <div class="contact-block">
+      <h3>Prendre contact</h3>
+      <p>Disponible pour des missions d'analyse, de conseil en intelligence de marché, ou des échanges sur les matières premières critiques et la géopolitique des ressources.</p>
+      <a href="mailto:agaiblepro@gmail.com" class="contact-email">agaiblepro@gmail.com</a>
+      <div class="contact-links">
+        <a href="https://www.notion.so/35dfe51e040d80249913c543beffe0f2" target="_blank">Profil complet Notion</a>
+        <a href="https://www.notion.so/35dfe51e040d81e0853bca487102fe57" target="_blank">Retour au portfolio</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Arthur Gaible</span>
+</footer>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal" id="modalContent">
+    <div class="modal-header">
+      <div class="modal-tag" id="modalTag"></div>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <button class="modal-close" onclick="closeModalDirect()">×</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+// Cursor
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+  setTimeout(() => {
+    ring.style.left = e.clientX + 'px';
+    ring.style.top = e.clientY + 'px';
+  }, 60);
+});
+
+// Scroll animations
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Modal data
+const projects = {
+  bresil: {
+    tag: 'Niobium · Géopolitique · Rapport',
+    title: 'Brésil : La 41ème dépendance',
+    kv: [
+      ['Sujet', 'Monopole brésilien du niobium'],
+      ['Format', 'Rapport de recherche · ~4 500 mots'],
+      ['Sources', 'Académiques, institutionnelles (UE/JRC), OTC'],
+      ['Langue', 'Français'],
+    ],
+    body: `<p>Le niobium est extrait à <strong>90% par le Brésil</strong>, principalement via la mine à ciel ouvert d'Araxá (83% du niobium mondial), opérée par la CBMM. Classé métal critique par l'UE et les États-Unis depuis 2011, il ne fait pourtant pas les grands titres — contrairement aux terres rares chinoises.</p>
+    <p>Cette étude examine le mécanisme de la <strong>dépendance confortable</strong> : un prix administré OTC maintenu artificiellement bas par la CBMM, une perception du Brésil comme partenaire non conflictuel, et l'absence de cotation publique masquant les volumes réels.</p>
+    <p>Sont également analysées les alternatives théoriques : Niobec (Canada), Elk Creek (Nebraska), Mrima Hill (Kenya), Dubbo Project (Australie) — et pourquoi chacune reste économiquement non viable tant que la CBMM maintient ses prix sous le seuil de rentabilité des nouveaux entrants.</p>
+    <a href="https://www.notion.so/35dfe51e040d800ca9caf26568d2163c" target="_blank" class="modal-link">Lire sur Notion →</a>`,
+  },
+  chine: {
+    tag: 'Niobium · Stratégie chinoise',
+    title: 'Chine : sous le coup de la dépendance',
+    kv: [
+      ['Sujet', 'Stratégie d\'approvisionnement chinoise'],
+      ['Format', 'Note d\'analyse géopolitique'],
+      ['Langue', 'Français'],
+    ],
+    body: `<p>La Chine ne possède pas de gisement de niobium significatif sur son sol — mais plutôt que de chercher à concurrencer le Brésil, elle a choisi d'y <strong>investir directement</strong>.</p>
+    <p>En 2011, un consortium chinois rachète <strong>15% des parts de la CBMM</strong>. Par ailleurs, la mine de Catalão (2ème productrice mondiale, Goiás) passe du britannique Anglo American au groupe <strong>CMOC pour 1,5 Md$</strong>. Pékin sécurise ainsi une part directe de la production mondiale, laissant l'Europe et les États-Unis en position de simples clients.</p>
+    <a href="https://www.notion.so/35dfe51e040d80bfaae7d09d91595497" target="_blank" class="modal-link">Lire sur Notion →</a>`,
+  },
+  analyse: {
+    tag: 'Niobium · Modélisation · Risque',
+    title: 'Coûts, risques & structure de marché',
+    kv: [
+      ['Sujet', 'Modélisation risque marché & géopolitique'],
+      ['Format', 'Analyse quantitative et qualitative'],
+      ['Outils', 'Modélisation financière, sources OTC'],
+      ['Langue', 'Français'],
+    ],
+    body: `<p>Cette analyse porte sur la <strong>structure de coûts de production</strong> du niobium — comparaison open-pit (Araxá) vs souterrain (Niobec, Elk Creek) — et sur les implications pour la viabilité économique des alternatives.</p>
+    <p>Elle inclut une <strong>modélisation du risque marché</strong> (prix administré vs volatilité potentielle en cas de crise) et une évaluation du risque géopolitique de concentration : probabilité, délai de réponse, options de substitution.</p>
+    <a href="https://www.notion.so/35dfe51e040d80ec9301c81c5b2c0ac5" target="_blank" class="modal-link">Lire sur Notion →</a>`,
+  },
+  aura: {
+    tag: 'Data · SQL · Power BI',
+    title: 'AURA Energy Consumption',
+    kv: [
+      ['Sujet', 'Consommation énergétique industrielle'],
+      ['Outils', 'SQL · Power BI'],
+      ['Format', 'Dashboard + analyse de données'],
+    ],
+    body: `<p>Analyse de la consommation énergétique d'un parc industriel via traitement SQL et construction d'un dashboard Power BI. Suivi des <strong>indicateurs clés de performance énergétique</strong>, identification des anomalies, visualisation des tendances temporelles.</p>
+    <a href="https://www.notion.so/35dfe51e040d80ba905cd575fb14d76a" target="_blank" class="modal-link">Voir le projet →</a>`,
+  },
+  palantir: {
+    tag: 'Data · Palantir · Foundry',
+    title: 'Introduction / Palantir Vertex',
+    kv: [
+      ['Sujet', 'Analyse de données industrielles'],
+      ['Outils', 'Palantir Foundry / Vertex'],
+      ['Format', 'Exploration plateforme'],
+    ],
+    body: `<p>Exploration de la plateforme <strong>Palantir Vertex</strong> appliquée à l'analyse de données industrielles et opérationnelles. Prise en main des fonctionnalités de modélisation et de visualisation à grande échelle.</p>
+    <a href="https://www.notion.so/35dfe51e040d8033a363dbbc326a523a" target="_blank" class="modal-link">Voir le projet →</a>`,
+  },
+  afrique: {
+    tag: 'Géopolitique · Afrique · France',
+    title: 'La puissance française en Afrique : un soft-power rompu ?',
+    kv: [
+      ['Sujet', 'Influence française en Afrique subsaharienne'],
+      ['Format', 'Essai géopolitique'],
+      ['Langue', 'Français'],
+    ],
+    body: `<p>Diagnostic de l'influence française en Afrique subsaharienne : <strong>retrait militaire</strong> (Mali, Burkina, Niger), contestation croissante du franc CFA, et montée en puissance des alternatives — Russie (Wagner/Africa Corps), Chine, Turquie.</p>
+    <p>L'analyse interroge le moment où une présence historique se retourne en <strong>passif stratégique</strong> — et les leviers qui restent mobilisables pour Paris.</p>
+    <a href="https://www.notion.so/35dfe51e040d80668f9fdab79f2b1b97" target="_blank" class="modal-link">Lire sur Notion →</a>`,
+  },
+  truss: {
+    tag: 'UK · Finance · Politique économique',
+    title: '44 Days: Liz Truss and the Collapse of Confidence',
+    kv: [
+      ['Sujet', 'Crise budgétaire UK 2022'],
+      ['Format', 'Analyse de marché & politique'],
+      ['Langue', 'Anglais'],
+      ['Période', 'Septembre–Octobre 2022'],
+    ],
+    body: `<p>Autopsie des 44 jours de gouvernement Truss (sept.–oct. 2022). Le <strong>mini-budget non financé</strong> de Kwasi Kwarteng déclenche une réaction immédiate des gilt markets : les rendements à 30 ans bondissent, la livre sterling chute, la Bank of England est contrainte d'intervenir en urgence pour éviter un effondrement des fonds de pension.</p>
+    <p>Ce cas d'école illustre les limites de la <strong>souveraineté monétaire</strong> et le poids de la crédibilité budgétaire — même pour une grande économie avec sa propre monnaie.</p>
+    <a href="https://www.notion.so/35dfe51e040d80a28bebdb7283fba9c4" target="_blank" class="modal-link">Read on Notion →</a>`,
+  },
+};
+
+function openModal(id) {
+  const p = projects[id];
+  if (!p) return;
+  document.getElementById('modalTag').textContent = p.tag;
+  document.getElementById('modalTitle').textContent = p.title;
+  let kv = '<div class="modal-kv">';
+  p.kv.forEach(([k, v]) => { kv += `<div class="modal-kv-row"><span class="modal-kv-key">${k}</span><span class="modal-kv-val">${v}</span></div>`; });
+  kv += '</div>';
+  document.getElementById('modalBody').innerHTML = kv + p.body;
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(e) {
+  if (e.target === document.getElementById('modal')) closeModalDirect();
+}
+function closeModalDirect() {
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
+</script>
+</body>
+</html>
