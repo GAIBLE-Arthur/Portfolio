@@ -60,7 +60,6 @@
     align-items: center;
     gap: 0.7rem;
     text-decoration: none;
-    margin-bottom: 1.8rem;
     padding: 0.6rem 1rem 0.6rem 0.7rem;
     border: 1px solid var(--rule);
     position: relative;
@@ -123,10 +122,6 @@
   @keyframes dotPulse {
     0%, 100% { box-shadow: 0 0 0 3px rgba(184,52,27,0.15); }
     50% { box-shadow: 0 0 0 6px rgba(184,52,27,0.05); }
-  }
-  @keyframes pillFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-3px); }
   }
 
   /* NAV */
@@ -205,16 +200,22 @@
     margin-bottom: 2.8rem;
     line-height: 1.5;
   }
-  .hero-desc {
-    font-size: 0.95rem;
-    line-height: 1.85;
-    color: var(--ink);
-    max-width: 38ch;
-    margin-bottom: 3rem;
-    opacity: 0.85;
-  }
   .hero-cta {
     display: flex; gap: 1.2rem; flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+  .hero-mini-profile {
+    font-size: 0.90rem;
+    line-height: 1.75;
+    color: var(--ink);
+    max-width: 46ch;
+    opacity: 0.85;
+  }
+  .hero-mini-profile p {
+    margin-bottom: 1rem;
+  }
+  .hero-mini-profile p:last-child {
+    margin-bottom: 0;
   }
   .btn-primary {
     display: inline-flex; align-items: center; gap: 0.6rem;
@@ -732,6 +733,10 @@
         <span class="notion-pill-arrow">→</span>
       </a>
     </div>
+    <div class="hero-mini-profile">
+      <p>Profil hybride alliant l'analyse de marchés de matières premières critiques (géopolitique, structure de coûts, risque) à la maîtrise des outils data (Excel, SQL, Power BI, Palantir).</p>
+      <p>Intérêt particulier pour les marchés OTC, les chaînes d'approvisionnement stratégiques, et les zones de friction entre logiques économiques et souveraineté industrielle.</p>
+    </div>
   </div>
   <div class="hero-right">
     <svg class="hero-chart" viewBox="0 0 500 400" preserveAspectRatio="none">
@@ -776,7 +781,7 @@
     <div class="project-card fade-in" onclick="openModal('bresil')">
       <span class="project-tag">Niobium · Géopolitique</span>
       <h3 class="project-title">Brésil : La 41ème dépendance</h3>
-      <p class="project-desc">Monopole mondial de la CBMM, mine d'Araxá, prix administrés OTC. Pourquoi la dépendance occidentale est structurelle, et pourquoi elle ne fait pas les grands titres.</p>
+      <p class="project-desc">Monopole mondial de la CBMM, mine d'Araxá, prix administrés OTC. Pourquoi la dépendance occidentale est structurelle, et why elle ne fait pas les grands titres.</p>
       <div class="project-meta">
         <span>Rapport · ~4 500 mots</span>
         <span class="project-arrow">↗</span>
