@@ -272,7 +272,7 @@
   .hero-tagline strong { color: var(--gold); font-style: normal; }
   .niobium-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2px;
     background: var(--rule);
     border: 1px solid var(--rule);
@@ -354,7 +354,7 @@
   /* PROJECT CARDS */
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: 2px;
     background: var(--rule);
     border: 1px solid var(--rule);
@@ -817,7 +817,7 @@
       <h3>« Assis sur une bombe à retardement logistique »</h3>
       <p>Le niobium illustre une forme singulière de risque géopolitique : celle de la dépendance confortable. Contrairement aux terres rares chinoises dont la menace est régulièrement brandie, le niobium brésilien ne fait pas de bruit.</p>
       <p>Cette absence de friction a anesthésié la vigilance des industries de défense et de haute technologie. La dépendance au 41ème élément n'est pas une fatalité géologique, mais le résultat d'un arbitrage économique qui a sacrifié la souveraineté sur l'autel de la stabilité des prix.</p>
-      <a href="https://www.notion.so/35dfe51e040d800ca9caf26568d2163c" target="_blank">Lire l'analyse complète →</a>
+      <a href="https://www.notion.so/Sommaire-g-n-ral-analyse-Niobium-364fe51e040d809e907ce99074968209" target="_blank">Lire l'analyse complète →</a>
     </div>
     <div class="featured-data">
       <div class="data-row"><span class="data-key">Mine principale</span><span class="data-val">Araxá, Minas Gerais</span></div>
@@ -982,9 +982,9 @@ const projects = {
       ['Sources', 'Académiques, institutionnelles (UE/JRC), OTC'],
       ['Langue', 'Français'],
     ],
-    body: `<p>Le niobium est extrait à <strong>90% par le Brésil</strong>, principalement via la mine à ciel ouvert d'Araxá (83% du niobium mondial), opérée par la CBMM. Classé métal critique par l'UE et les États-Unis depuis 2011, il ne fait pourtant pas les grands titres — contrairement aux terres rares chinoises.</p>
-    <p>Cette étude examine le mécanisme de la <strong>dépendance confortable</strong> : un prix administré OTC maintenu artificiellement bas par la CBMM, une perception du Brésil comme partenaire non conflictuel, et l'absence de cotation publique masquant les volumes réels.</p>
-    <p>Sont également analysées les alternatives théoriques : Niobec (Canada), Elk Creek (Nebraska), Mrima Hill (Kenya), Dubbo Project (Australie) — et pourquoi chacune reste économiquement non viable tant que la CBMM maintient ses prix sous le seuil de rentabilité des nouveaux entrants.</p>
+    body: `<p>Le niobium est extrait à 90% par le Brésil, principalement via la mine à ciel ouvert d'Araxá (83% du niobium mondial), opérée par la CBMM. Classé métal critique par l'UE et les États-Unis depuis 2011, il ne fait pourtant pas les grands titres, contrairement aux terres rares chinoises.</p>
+    <p>Cette étude examine le mécanisme de la dépendance confortable : un prix administré OTC maintenu artificiellement bas par la CBMM, une perception du Brésil comme partenaire non conflictuel, et l'absence de cotation publique masquant les volumes réels.</p>
+    <p>Sont également analysées les alternatives théoriques, et pourquoi chacune reste économiquement non viable tant que la CBMM maintient ses prix sous le seuil de rentabilité des nouveaux entrants.</p>
     <a href="https://www.notion.so/35dfe51e040d800ca9caf26568d2163c" target="_blank" class="modal-link">Lire sur Notion →</a>`,
   },
   chine: {
@@ -995,8 +995,8 @@ const projects = {
       ['Format', 'Note d\'analyse géopolitique'],
       ['Langue', 'Français'],
     ],
-    body: `<p>La Chine ne possède pas de gisement de niobium significatif sur son sol — mais plutôt que de chercher à concurrencer le Brésil, elle a choisi d'y <strong>investir directement</strong>.</p>
-    <p>En 2011, un consortium chinois rachète <strong>15% des parts de la CBMM</strong>. Par ailleurs, la mine de Catalão (2ème productrice mondiale, Goiás) passe du britannique Anglo American au groupe <strong>CMOC pour 1,5 Md$</strong>. Pékin sécurise ainsi une part directe de la production mondiale, laissant l'Europe et les États-Unis en position de simples clients.</p>
+    body: `<p>La Chine ne possède pas de gisement de niobium significatif sur son sol, mais plutôt que de chercher à concurrencer le Brésil, elle a choisi d'y investir directement.</p>
+    <p>En 2011, un consortium chinois rachète 15% des parts de la CBMM. Par ailleurs, la mine de Catalão (2ème productrice mondiale, Goiás) passe du britannique Anglo American au groupe CMOC pour 1,5 Md$. Pékin sécurise ainsi une part directe de la production mondiale, laissant l'Europe et les États-Unis en position de simples clients.</p>
     <a href="https://www.notion.so/35dfe51e040d80bfaae7d09d91595497" target="_blank" class="modal-link">Lire sur Notion →</a>`,
   },
   analyse: {
@@ -1008,8 +1008,8 @@ const projects = {
       ['Outils', 'Modélisation financière, sources OTC'],
       ['Langue', 'Français'],
     ],
-    body: `<p>Cette analyse porte sur la <strong>structure de coûts de production</strong> du niobium — comparaison open-pit (Araxá) vs souterrain (Niobec, Elk Creek) — et sur les implications pour la viabilité économique des alternatives.</p>
-    <p>Elle inclut une <strong>modélisation du risque marché</strong> (prix administré vs volatilité potentielle en cas de crise) et une évaluation du risque géopolitique de concentration : probabilité, délai de réponse, options de substitution.</p>
+    body: `<p>Cette analyse porte sur la structure de coûts de production du niobium et sur les implications pour la viabilité économique des alternatives.</p>
+    <p>Elle inclut une modélisation du risque marché (prix administré vs volatilité potentielle en cas de crise) et une évaluation du risque géopolitique de concentration : probabilité, délai de réponse, options de substitution.</p>
     <a href="https://www.notion.so/35dfe51e040d80ec9301c81c5b2c0ac5" target="_blank" class="modal-link">Lire sur Notion →</a>`,
   },
   aura: {
@@ -1020,7 +1020,7 @@ const projects = {
       ['Outils', 'SQL · Power BI'],
       ['Format', 'Dashboard + analyse de données'],
     ],
-    body: `<p>Analyse de la consommation énergétique d'un parc industriel via traitement SQL et construction d'un dashboard Power BI. Suivi des <strong>indicateurs clés de performance énergétique</strong>, identification des anomalies, visualisation des tendances temporelles.</p>
+    body: `<p>Analyse de la consommation énergétique d'un parc industriel via traitement SQL et construction d'un dashboard Power BI. Suivi des indicateurs clés de performance énergétique, identification des anomalies, visualisation des tendances temporelles.</p>
     <a href="https://www.notion.so/35dfe51e040d80ba905cd575fb14d76a" target="_blank" class="modal-link">Voir le projet →</a>`,
   },
   palantir: {
@@ -1031,7 +1031,7 @@ const projects = {
       ['Outils', 'Palantir Foundry / Vertex'],
       ['Format', 'Exploration plateforme'],
     ],
-    body: `<p>Exploration de la plateforme <strong>Palantir Vertex</strong> appliquée à l'analyse de données industrielles et opérationnelles. Prise en main des fonctionnalités de modélisation et de visualisation à grande échelle.</p>
+    body: `<p>Exploration de la plateforme Palantir Vertex appliquée à l'analyse de données industrielles et opérationnelles. Prise en main des fonctionnalités de modélisation et de visualisation à grande échelle.</p>
     <a href="https://www.notion.so/35dfe51e040d8033a363dbbc326a523a" target="_blank" class="modal-link">Voir le projet →</a>`,
   },
   afrique: {
@@ -1042,8 +1042,8 @@ const projects = {
       ['Format', 'Essai géopolitique'],
       ['Langue', 'Français'],
     ],
-    body: `<p>Diagnostic de l'influence française en Afrique subsaharienne : <strong>retrait militaire</strong> (Mali, Burkina, Niger), contestation croissante du franc CFA, et montée en puissance des alternatives — Russie (Wagner/Africa Corps), Chine, Turquie.</p>
-    <p>L'analyse interroge le moment où une présence historique se retourne en <strong>passif stratégique</strong> — et les leviers qui restent mobilisables pour Paris.</p>
+    body: `<p>Diagnostic de l'influence française en Afrique subsaharienne : retrait militaire (Mali, Burkina, Niger), contestation croissante du franc CFA, et montée en puissance des alternatives : Russie (Wagner/Africa Corps), Chine, Turquie.</p>
+    <p>L'analyse interroge le moment où une présence historique se retourne en passif stratégique, et les leviers qui restent mobilisables pour Paris.</p>
     <a href="https://www.notion.so/35dfe51e040d80668f9fdab79f2b1b97" target="_blank" class="modal-link">Lire sur Notion →</a>`,
   },
   truss: {
@@ -1055,9 +1055,20 @@ const projects = {
       ['Langue', 'Anglais'],
       ['Période', 'Septembre–Octobre 2022'],
     ],
-    body: `<p>Autopsie des 44 jours de gouvernement Truss (sept.–oct. 2022). Le <strong>mini-budget non financé</strong> de Kwasi Kwarteng déclenche une réaction immédiate des gilt markets : les rendements à 30 ans bondissent, la livre sterling chute, la Bank of England est contrainte d'intervenir en urgence pour éviter un effondrement des fonds de pension.</p>
-    <p>Ce cas d'école illustre les limites de la <strong>souveraineté monétaire</strong> et le poids de la crédibilité budgétaire — même pour une grande économie avec sa propre monnaie.</p>
+    body: `<p>Autopsie des 44 jours de gouvernement Truss (sept–oct 2022). Le mini-budget non financé déclenche une réaction immédiate des marchés : les rendements à 30 ans bondissent, la livre sterling chute, la banque centrale est contrainte d'intervenir en urgence pour éviter un effondrement des fonds de pension.</p>
+    <p>Ce cas d'école illustre les limites de la souveraineté monétaire et le poids de la crédibilité budgétaire.</p>
     <a href="https://www.notion.so/35dfe51e040d80a28bebdb7283fba9c4" target="_blank" class="modal-link">Read on Notion →</a>`,
+  },
+  memoire: {
+    tag: 'Mémoire · Achats · Data · GE Vernova',
+    title: 'Strategic Centralization of Procurement in Multi-Site Industrial Groups',
+    kv: [
+      ['Sujet', 'Centralisation data-driven des achats'],
+      ['Cadre', 'Mémoire de recherche · GE Vernova'],
+      ['Outils', 'Palantir Foundry · Ontologies data'],
+      ['Langue', 'Anglais'],
+    ],
+    body: `<p>Comment la centralisation data-driven des achats renforce le pouvoir de décision corporate sur les marchés fournisseurs sans détruire l'autonomie locale. Théorie des organisations, ontologies data, Palantir Foundry, terrain GE Vernova.</p>`,
   },
 };
 
