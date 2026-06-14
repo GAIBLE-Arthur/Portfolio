@@ -18,8 +18,8 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--paper); color: var(--ink); font-family: 'Libre Baskerville', Georgia, serif; overflow-x: hidden; cursor: none; }
+  html { scroll-behavior: smooth; overflow-x: hidden; overscroll-behavior: none; }
+  body { background: var(--paper); color: var(--ink); font-family: 'Libre Baskerville', Georgia, serif; overflow-x: hidden; cursor: none; overscroll-behavior: none; }
 
   /* CURSOR */
   .cursor { position: fixed; width: 12px; height: 12px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease; }
@@ -66,11 +66,11 @@
   .hero-tag {
     font-family: 'DM Mono', monospace; font-size: 0.7rem;
     letter-spacing: 0.18em; text-transform: uppercase;
-    color: #d4a043; margin-bottom: 1.6rem;
+    color: var(--paper); margin-bottom: 1.6rem;
     display: flex; align-items: center; gap: 0.8rem;
-    text-shadow: 0 0 18px rgba(212,160,67,0.6), 0 1px 4px rgba(0,0,0,0.7);
+    text-shadow: 0 1px 6px rgba(0,0,0,0.7);
   }
-  .hero-tag::before { content: ''; display: block; width: 2rem; height: 1px; background: #d4a043; box-shadow: 0 0 6px rgba(212,160,67,0.8); }
+  .hero-tag::before { content: ''; display: block; width: 2rem; height: 1px; background: var(--paper); }
   .hero-name { font-family: 'Playfair Display', serif; font-size: clamp(3.2rem, 6vw, 5.5rem); font-weight: 900; line-height: 1.0; margin-bottom: 0.4rem; color: var(--paper); text-shadow: 0 2px 24px rgba(14,13,11,0.55), 0 1px 4px rgba(14,13,11,0.4); }
   .hero-name em { font-style: italic; color: var(--gold); }
   .hero-subtitle { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(1rem, 1.8vw, 1.25rem); color: var(--paper); margin-bottom: 2.8rem; line-height: 1.65; max-width: 50ch; text-shadow: 0 1px 12px rgba(14,13,11,0.6); opacity: 0.92; }
