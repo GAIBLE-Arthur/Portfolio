@@ -21,6 +21,12 @@
   html { scroll-behavior: smooth; overflow-x: hidden; }
   body { background: var(--paper); color: var(--ink); font-family: 'Libre Baskerville', Georgia, serif; overflow-x: hidden; cursor: none; }
 
+  /* LANG TOGGLE */
+  .lang-toggle { position: fixed; top: 1.4rem; right: 2rem; z-index: 200; display: flex; border: 1px solid rgba(245,240,232,0.2); backdrop-filter: blur(8px); }
+  .lang-btn { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; padding: 0.4rem 0.75rem; background: rgba(14,13,11,0.75); color: rgba(245,240,232,0.35); border: none; cursor: none; transition: background 0.2s, color 0.2s; }
+  .lang-btn.active { background: var(--gold); color: var(--ink); }
+  .lang-btn:hover:not(.active) { color: var(--paper); }
+
   /* CURSOR */
   .cursor { position: fixed; width: 12px; height: 12px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease; }
   .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1px solid var(--accent); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: transform 0.18s ease, width 0.2s ease, height 0.2s ease, opacity 0.2s ease; opacity: 0.5; }
@@ -277,6 +283,21 @@
   .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+  @keyframes heroDrift {
+    0%   { transform: scale(1)    translate(0, 0); }
+    33%  { transform: scale(1.06) translate(-0.8%, 0.4%); }
+    66%  { transform: scale(1.04) translate(0.6%, -0.5%); }
+    100% { transform: scale(1)    translate(0, 0); }
+  }
+  @keyframes imgDrift {
+    0%   { transform: scale(1.01) translate(0, 0); }
+    40%  { transform: scale(1.05) translate(-1%, 0.5%); }
+    75%  { transform: scale(1.03) translate(0.8%, -0.4%); }
+    100% { transform: scale(1.01) translate(0, 0); }
+  }
+  .hero-bg { animation: heroDrift 28s ease-in-out infinite; }
+  .section-photo img { animation: imgDrift 22s ease-in-out infinite; }
+
   @media (max-width: 900px) {
     .hero-content { padding: 6rem 1.5rem 4rem; }
     .fp-inner, .featured-inner, .about { grid-template-columns: 1fr; gap: 3rem; }
@@ -293,6 +314,10 @@
 
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
+<div class="lang-toggle">
+  <button class="lang-btn active" data-lang="fr" onclick="setLang('fr')">FR</button>
+  <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+</div>
 
 
 <!-- HERO — vallee.jpg full bleed -->
@@ -302,17 +327,101 @@
   <div class="hero-content fade-in">
     <div class="hero-tag">Digital Procurement & Market Intelligence</div>
     <h1 class="hero-name">Arthur<br><em>Gaible</em></h1>
-    <p class="hero-subtitle">Centraliser l'information, construire des solutions end-to-end de Business Intelligence pour les équipes métier.</p>
+    <p class="hero-subtitle" data-i18n="hero-subtitle">Centraliser l'information, construire des solutions end-to-end de Business Intelligence pour les équipes métier.</p>
   </div>
 </div>
 
-<!-- PHOTO BANNER 1 — Fine_art_museum (procurement) -->
+<!-- PHOTO BANNER 1 — turin (profil) -->
+<div class="section-photo" data-section="section-profil" onclick="toggleSection('section-profil')">
+  <img src="turin.jpg" alt="Mon profil">
+  <div class="section-photo-overlay"></div>
+  <div class="section-photo-label fade-in">
+    <h2 class="section-photo-title" data-i18n="banner-profil">Découvrir <em>mon profil</em></h2>
+  </div>
+  <div class="toggle-btn" id="toggle-section-profil">+</div>
+</div>
+
+<div class="section-content collapsed" id="section-profil">
+<section style="background:var(--ink); color:var(--paper);">
+  <div class="section-rule"><span class="section-rule-text" data-i18n="profil-rule" style="color:rgba(245,240,232,0.3);">Profil & Certifications</span></div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; margin-top:3rem;" class="fade-in">
+
+    <!-- Profil texte -->
+    <div>
+      <div class="fp-eyebrow" data-i18n="profil-label">Profil</div>
+      <p data-i18n="profil-p1" style="font-size:0.95rem; line-height:1.85; color:rgba(245,240,232,0.75); margin-top:1rem;">Profil hybride alliant maîtrise des outils data (Palantir Foundry, SQL, Power BI, Microsoft Fabric) et intelligence des marchés. Orienté résultats, à l'aise dans les environnements complexes et les chaînes d'approvisionnement stratégiques.</p>
+      <p data-i18n="profil-p2" style="font-size:0.88rem; line-height:1.85; color:rgba(245,240,232,0.45); margin-top:0.9rem; font-style:italic;">Ce portfolio reflète mon appétence pour les environnements analytiques et une de mes passions, la géopolitique. Les en-têtes des sections sont des endroits qui me sont chers.</p>
+
+      <div style="margin-top:2.5rem;">
+        <div class="fp-eyebrow" data-i18n="skills-label" style="margin-bottom:1.2rem;">Compétences</div>
+        <div class="skills-grid" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.06);">
+          <div class="skill-item" style="background:rgba(255,255,255,0.04);">
+            <div class="skill-name" style="color:var(--gold);">Procurement</div>
+            <div class="skill-list" data-i18n="skill-proc" style="color:rgba(245,240,232,0.75);">Centralisation achats, GE Vernova</div>
+          </div>
+          <div class="skill-item" style="background:rgba(255,255,255,0.04);">
+            <div class="skill-name" style="color:var(--gold);">Data</div>
+            <div class="skill-list" style="color:rgba(245,240,232,0.75);">Excel, Dataiku, SQL, Microsoft Fabric, Power BI, ML, Palantir</div>
+          </div>
+          <div class="skill-item" style="background:rgba(255,255,255,0.04);">
+            <div class="skill-name" data-i18n="skill-marches-name" style="color:var(--gold);">Marchés</div>
+            <div class="skill-list" data-i18n="skill-marches-list" style="color:rgba(245,240,232,0.75);">Matières premières critiques, Analyse VAN, Risk modelling</div>
+          </div>
+          <div class="skill-item" style="background:rgba(255,255,255,0.04);">
+            <div class="skill-name" data-i18n="skill-langues-name" style="color:var(--gold);">Langues</div>
+            <div class="skill-list" data-i18n="skill-langues-list" style="color:rgba(245,240,232,0.75);">Français (natif), Anglais (courant), Italien (courant)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certifications -->
+    <div>
+      <div class="fp-eyebrow" style="margin-bottom:1.4rem;">Certifications</div>
+      <div style="display:flex; flex-direction:column; gap:1px; background:rgba(255,255,255,0.06);">
+        <a href="https://learn.microsoft.com/fr-fr/users/arthurgaible-2502/transcript/d58gcjz13xogxzd" target="_blank" style="display:flex; justify-content:space-between; align-items:center; padding:1.3rem 1.6rem; background:rgba(255,255,255,0.04); text-decoration:none; border-left:3px solid transparent; transition:border-color 0.2s, background 0.2s;" onmouseover="this.style.borderColor='var(--gold)';this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.borderColor='transparent';this.style.background='rgba(255,255,255,0.04)'">
+          <div>
+            <div style="font-family:'Playfair Display', serif; font-size:1rem; font-weight:700; color:var(--paper); margin-bottom:0.3rem;">Power BI — PL-300</div>
+            <div style="font-family:'DM Mono', monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(245,240,232,0.4);">Microsoft</div>
+          </div>
+          <span style="color:var(--gold); font-size:0.85rem;">↗</span>
+        </a>
+        <a href="https://verify.skilljar.com/c/sgrkh24eicc6" target="_blank" style="display:flex; justify-content:space-between; align-items:center; padding:1.3rem 1.6rem; background:rgba(255,255,255,0.04); text-decoration:none; border-left:3px solid transparent; transition:border-color 0.2s, background 0.2s;" onmouseover="this.style.borderColor='var(--gold)';this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.borderColor='transparent';this.style.background='rgba(255,255,255,0.04)'">
+          <div>
+            <div style="font-family:'Playfair Display', serif; font-size:1rem; font-weight:700; color:var(--paper); margin-bottom:0.3rem;">Advanced Designer</div>
+            <div style="font-family:'DM Mono', monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(245,240,232,0.4);">Dataiku</div>
+          </div>
+          <span style="color:var(--gold); font-size:0.85rem;">↗</span>
+        </a>
+        <a href="https://verify.skilljar.com/c/o735s266d4gg" target="_blank" style="display:flex; justify-content:space-between; align-items:center; padding:1.3rem 1.6rem; background:rgba(255,255,255,0.04); text-decoration:none; border-left:3px solid transparent; transition:border-color 0.2s, background 0.2s;" onmouseover="this.style.borderColor='var(--gold)';this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.borderColor='transparent';this.style.background='rgba(255,255,255,0.04)'">
+          <div>
+            <div style="font-family:'Playfair Display', serif; font-size:1rem; font-weight:700; color:var(--paper); margin-bottom:0.3rem;">AIP Aware</div>
+            <div style="font-family:'DM Mono', monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(245,240,232,0.4);">Palantir Foundry</div>
+          </div>
+          <span style="color:var(--gold); font-size:0.85rem;">↗</span>
+        </a>
+        <a href="https://www.credly.com/badges/92f5f5f5-500e-42d6-abd5-1af7b452266c" target="_blank" style="display:flex; justify-content:space-between; align-items:center; padding:1.3rem 1.6rem; background:rgba(255,255,255,0.04); text-decoration:none; border-left:3px solid transparent; transition:border-color 0.2s, background 0.2s;" onmouseover="this.style.borderColor='var(--gold)';this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.borderColor='transparent';this.style.background='rgba(255,255,255,0.04)'">
+          <div>
+            <div style="font-family:'Playfair Display', serif; font-size:1rem; font-weight:700; color:var(--paper); margin-bottom:0.3rem;">Python Fundamentals</div>
+            <div style="font-family:'DM Mono', monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(245,240,232,0.4);">Cisco</div>
+          </div>
+          <span style="color:var(--gold); font-size:0.85rem;">↗</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div><!-- /section-content profil -->
+
+<!-- PHOTO BANNER 2 — Fine_art_museum (procurement) -->
 <div class="section-photo" id="procurement" data-section="section-procurement" onclick="toggleSection('section-procurement')">
   <img src="Fine_art_museum.jpg" alt="Procurement & Data">
   <div class="section-photo-overlay"></div>
   <div class="section-photo-label fade-in">
     <div class="section-photo-num">01 — Procurement & Data</div>
-    <h2 class="section-photo-title">Piloter par la <em>donnée</em></h2>
+    <h2 class="section-photo-title" data-i18n="banner-procurement">Piloter par la <em>donnée</em></h2>
   </div>
   <div class="toggle-btn" id="toggle-section-procurement">+</div>
 </div>
@@ -322,11 +431,11 @@
 <!-- FEATURED: MEMOIRE GE VERNOVA -->
 <div class="featured-procurement fade-in" style="padding-top:2rem;">
   <div class="section-rule" style="margin-bottom:0;">
-    <span class="section-rule-text" style="color:rgba(245,240,232,0.3);">Focus · Travail principal</span>
+    <span class="section-rule-text" data-i18n="proc-rule" style="color:rgba(245,240,232,0.3);">Focus, Travail principal</span>
   </div>
   <div style="margin-top:3rem;">
-    <div class="fp-eyebrow">Mémoire de recherche</div>
-    <h2 class="fp-title">Centralisation<br>data-driven des achats</h2>
+    <div class="fp-eyebrow" data-i18n="proc-eyebrow">Mémoire de recherche</div>
+    <h2 class="fp-title" data-i18n="proc-title">Centralisation<br>data-driven des achats</h2>
   </div>
   <div class="fp-inner">
     <div class="fp-text">
@@ -337,18 +446,18 @@
         <span class="fp-tag">Digital Procurement</span>
         <span class="fp-tag">Multi-site</span>
       </div>
-      <h3>« Comment la donnée redéfinit le pouvoir d'achat corporatif »</h3>
-      <p>Ce mémoire de recherche, conduit sur le terrain de GE Vernova, examine comment la centralisation data-driven des achats renforce le pouvoir de décision corporate sur les marchés fournisseurs — sans détruire l'autonomie locale des sites.</p>
-      <p>La modélisation ontologique dans Palantir Foundry constitue l'épine dorsale de la démarche : en structurant les objets achats (contrats, fournisseurs, commandes) en un graphe cohérent, elle permet à la direction corporate de passer de la consolidation à la gouvernance active.</p>
-      <a href="#" onclick="openModal('memoire'); return false;">Lire la synthèse →</a>
+      <h3 data-i18n="proc-quote">« Comment la donnée redéfinit le pouvoir d'achat corporatif »</h3>
+      <p data-i18n="proc-p1">Ce mémoire de recherche, conduit sur le terrain de GE Vernova, examine comment la centralisation data-driven des achats renforce le pouvoir de décision corporate sur les marchés fournisseurs — sans détruire l'autonomie locale des sites.</p>
+      <p data-i18n="proc-p2">La modélisation ontologique dans Palantir Foundry constitue l'épine dorsale de la démarche : en structurant les objets achats (contrats, fournisseurs, commandes) en un graphe cohérent, elle permet à la direction corporate de passer de la consolidation à la gouvernance active.</p>
+      <a href="#" onclick="openModal('memoire'); return false;" data-i18n="proc-link">Lire la synthèse →</a>
     </div>
     <div class="fp-data">
-      <div class="fp-row"><span class="fp-key">Cadre</span><span class="fp-val">GE Vernova — Terrain</span></div>
+      <div class="fp-row"><span class="fp-key" data-i18n="fp-cadre">Cadre</span><span class="fp-val">GE Vernova — Terrain</span></div>
       <div class="fp-row"><span class="fp-key">Plateforme</span><span class="fp-val accent">Palantir Foundry</span></div>
-      <div class="fp-row"><span class="fp-key">Approche</span><span class="fp-val">Ontologies Data</span></div>
-      <div class="fp-row"><span class="fp-key">Enjeu</span><span class="fp-val">Centralisation vs autonomie</span></div>
-      <div class="fp-row"><span class="fp-key">Contexte</span><span class="fp-val">Groupes multi-sites</span></div>
-      <div class="fp-row"><span class="fp-key">Langue</span><span class="fp-val accent">EN</span></div>
+      <div class="fp-row"><span class="fp-key" data-i18n="fp-approche">Approche</span><span class="fp-val">Ontologies Data</span></div>
+      <div class="fp-row"><span class="fp-key" data-i18n="fp-enjeu">Enjeu</span><span class="fp-val" data-i18n="fp-val-enjeu">Centralisation vs autonomie</span></div>
+      <div class="fp-row"><span class="fp-key" data-i18n="fp-contexte">Contexte</span><span class="fp-val" data-i18n="fp-val-contexte">Groupes multi-sites</span></div>
+      <div class="fp-row"><span class="fp-key" data-i18n="fp-langue">Langue</span><span class="fp-val accent">EN</span></div>
     </div>
   </div>
 </div>
@@ -362,20 +471,20 @@
   </div>
   <div class="projects-grid">
     <div class="project-card fade-in" onclick="openModal('aura')">
-      <span class="project-tag">SQL · SQLite · Power BI</span>
+      <span class="project-tag">SQL, SQLite, Power BI</span>
       <h3 class="project-title">AURA Energy Consumption</h3>
-      <p class="project-desc">Analyse du mix électrique de la région Auvergne-Rhône-Alpes sur 11 ans (2013–2024). Données RTE éco2mix traitées via SQLite, dashboard Power BI. Nucléaire structurellement dominant à +70%, saisonnalité hydraulique forte, thermique en corrélation inverse avec la disponibilité nucléaire.</p>
+      <p class="project-desc" data-i18n="aura-desc">Analyse du mix électrique de la région Auvergne-Rhône-Alpes sur 11 ans (2013–2024). Données RTE éco2mix traitées via SQLite, dashboard Power BI. Nucléaire structurellement dominant à +70%, saisonnalité hydraulique forte, thermique en corrélation inverse avec la disponibilité nucléaire.</p>
       <div class="project-meta">
-        <span>SQL · SQLite · Power BI · 11 ans de données</span>
+        <span data-i18n="aura-meta">SQL, SQLite, Power BI, 11 ans de données</span>
         <span class="project-arrow">↗</span>
       </div>
     </div>
     <div class="project-card fade-in" style="transition-delay:0.1s" onclick="openModal('palantir')">
-      <span class="project-tag">Palantir · Foundry · Ontologie</span>
-      <h3 class="project-title">Palantir Vertex — Graphes de relations</h3>
-      <p class="project-desc">Cas d'usage sur la détection de réseaux suspects via graphes ontologiques dans Palantir Foundry. Construction du pipeline de nettoyage, modélisation des objets et liens ontologiques, utilisation de Vertex pour croiser transactions financières et communications entre entités à risque.</p>
+      <span class="project-tag">Palantir, Foundry, Ontologie</span>
+      <h3 class="project-title" data-i18n="palantir-title">Palantir Vertex — Graphes de relations</h3>
+      <p class="project-desc" data-i18n="palantir-desc">Cas d'usage sur la détection de réseaux suspects via graphes ontologiques dans Palantir Foundry. Construction du pipeline de nettoyage, modélisation des objets et liens ontologiques, utilisation de Vertex pour croiser transactions financières et communications entre entités à risque.</p>
       <div class="project-meta">
-        <span>Palantir Foundry · Ontologie · Graph analysis</span>
+        <span>Palantir Foundry, Ontologie, Graph analysis</span>
         <span class="project-arrow">↗</span>
       </div>
     </div>
@@ -390,7 +499,7 @@
   <div class="section-photo-overlay"></div>
   <div class="section-photo-label fade-in">
     <div class="section-photo-num">02 — Matières premières critiques</div>
-    <h2 class="section-photo-title">Connaître sa <em>chaîne amont</em></h2>
+    <h2 class="section-photo-title" data-i18n="banner-marches">Connaître sa <em>chaîne amont</em></h2>
   </div>
   <div class="toggle-btn" id="toggle-section-marches">+</div>
 </div>
@@ -407,39 +516,39 @@
   <div class="stats-strip fade-in">
     <div class="stat-card">
       <div class="stat-num">90%</div>
-      <div class="stat-label">Niobium mondial extrait au Brésil</div>
+      <div class="stat-label" data-i18n="stat-niobium">Niobium mondial extrait au Brésil</div>
     </div>
     <div class="stat-card">
       <div class="stat-num">+5.8%</div>
-      <div class="stat-label">CAGR marché 2025–2033</div>
+      <div class="stat-label" data-i18n="stat-cagr">CAGR marché 2025–2033</div>
     </div>
     <div class="stat-card">
       <div class="stat-num">$1.5B</div>
-      <div class="stat-label">Rachat Catalão par CMOC</div>
+      <div class="stat-label" data-i18n="stat-catalao">Rachat Catalão par CMOC</div>
     </div>
     <div class="stat-card">
       <div class="stat-num">2011</div>
-      <div class="stat-label">Criticité UE — ininterrompue</div>
+      <div class="stat-label" data-i18n="stat-criticite">Criticité UE — ininterrompue</div>
     </div>
   </div>
   <div class="projects-grid">
     <div class="project-card fade-in" onclick="openModal('bresil')">
-      <span class="project-tag">Niobium · Géopolitique</span>
-      <h3 class="project-title">Brésil : La 41ème dépendance</h3>
-      <p class="project-desc">Monopole mondial de la CBMM, mine d'Araxá, prix administrés OTC. Pourquoi la dépendance occidentale est structurelle, et pourquoi elle ne fait pas les grands titres.</p>
-      <div class="project-meta"><span>Rapport · ~4 500 mots</span><span class="project-arrow">↗</span></div>
+      <span class="project-tag">Niobium, Géopolitique</span>
+      <h3 class="project-title" data-i18n="bresil-title">Brésil : La 41ème dépendance</h3>
+      <p class="project-desc" data-i18n="bresil-desc">Monopole mondial de la CBMM, mine d'Araxá, prix administrés OTC. Pourquoi la dépendance occidentale est structurelle, et pourquoi elle ne fait pas les grands titres.</p>
+      <div class="project-meta"><span data-i18n="bresil-meta">Rapport, ~4 500 mots</span><span class="project-arrow">↗</span></div>
     </div>
     <div class="project-card fade-in" style="transition-delay:0.1s" onclick="openModal('chine')">
-      <span class="project-tag">Niobium · Stratégie</span>
-      <h3 class="project-title">Chine : sous le coup de la dépendance</h3>
-      <p class="project-desc">La Chine ne produit pas de niobium, mais a sécurisé 15% de la CBMM et racheté la mine de Catalão pour 1,5 Md$. Analyse des stratégies d'approvisionnement chinoises.</p>
-      <div class="project-meta"><span>Note d'analyse</span><span class="project-arrow">↗</span></div>
+      <span class="project-tag">Niobium, Stratégie</span>
+      <h3 class="project-title" data-i18n="chine-title">Chine : sous le coup de la dépendance</h3>
+      <p class="project-desc" data-i18n="chine-desc">La Chine ne produit pas de niobium, mais a sécurisé 15% de la CBMM et racheté la mine de Catalão pour 1,5 Md$. Analyse des stratégies d'approvisionnement chinoises.</p>
+      <div class="project-meta"><span data-i18n="chine-meta">Note d'analyse</span><span class="project-arrow">↗</span></div>
     </div>
     <div class="project-card fade-in" style="transition-delay:0.2s" onclick="openModal('analyse')">
-      <span class="project-tag">Niobium · Modélisation</span>
-      <h3 class="project-title">Coûts, risques & structure de marché</h3>
-      <p class="project-desc">Structure de coûts de production (open-pit vs souterrain), modélisation du risque marché, et analyse du risque géopolitique de concentration. Modèle quantitatif.</p>
-      <div class="project-meta"><span>Analyse quant. & qual.</span><span class="project-arrow">↗</span></div>
+      <span class="project-tag">Niobium, Modélisation</span>
+      <h3 class="project-title" data-i18n="analyse-title">Coûts, risques & structure de marché</h3>
+      <p class="project-desc" data-i18n="analyse-desc">Structure de coûts de production (open-pit vs souterrain), modélisation du risque marché, et analyse du risque géopolitique de concentration. Modèle quantitatif.</p>
+      <div class="project-meta"><span data-i18n="analyse-meta">Analyse quant. & qual.</span><span class="project-arrow">↗</span></div>
     </div>
   </div>
 </section>
@@ -447,27 +556,27 @@
 <!-- FEATURED NIOBIUM -->
 <div class="featured fade-in" style="background:#1a0803;">
   <div class="section-rule" style="margin-bottom:0;">
-    <span class="section-rule-text" style="color:rgba(245,240,232,0.3);">Focus · Analyse principale</span>
+    <span class="section-rule-text" data-i18n="niobium-rule" style="color:rgba(245,240,232,0.3);">Focus, Analyse principale</span>
   </div>
   <div class="section-header" style="margin-top:3rem;">
     <span class="section-num">★</span>
-    <h2 class="section-title">La dépendance<br>confortable</h2>
+    <h2 class="section-title" data-i18n="niobium-title">La dépendance<br>confortable</h2>
   </div>
   <div class="featured-inner">
     <div class="featured-text">
-      <h3>« Assis sur une bombe à retardement logistique »</h3>
-      <p>Le niobium illustre une forme singulière de risque géopolitique : celle de la dépendance confortable. Contrairement aux terres rares chinoises dont la menace est régulièrement brandie, le niobium brésilien ne fait pas de bruit.</p>
-      <p>Cette absence de friction a anesthésié la vigilance des industries de défense et de haute technologie. La dépendance au 41ème élément n'est pas une fatalité géologique, mais le résultat d'un arbitrage économique qui a sacrifié la souveraineté sur l'autel de la stabilité des prix.</p>
-      <a href="https://www.notion.so/Sommaire-g-n-ral-analyse-Niobium-364fe51e040d809e907ce99074968209" target="_blank">Lire l'analyse complète →</a>
+      <h3 data-i18n="niobium-quote">« Assis sur une bombe à retardement logistique »</h3>
+      <p data-i18n="niobium-p1">Le niobium illustre une forme singulière de risque géopolitique : celle de la dépendance confortable. Contrairement aux terres rares chinoises dont la menace est régulièrement brandie, le niobium brésilien ne fait pas de bruit.</p>
+      <p data-i18n="niobium-p2">Cette absence de friction a anesthésié la vigilance des industries de défense et de haute technologie. La dépendance au 41ème élément n'est pas une fatalité géologique, mais le résultat d'un arbitrage économique qui a sacrifié la souveraineté sur l'autel de la stabilité des prix.</p>
+      <a href="https://www.notion.so/Sommaire-g-n-ral-analyse-Niobium-364fe51e040d809e907ce99074968209" target="_blank" data-i18n="niobium-link">Lire l'analyse complète →</a>
     </div>
     <div class="featured-data">
-      <div class="data-row"><span class="data-key">Mine principale</span><span class="data-val">Araxá, Minas Gerais</span></div>
-      <div class="data-row"><span class="data-key">Part mondiale</span><span class="data-val accent">83%</span></div>
-      <div class="data-row"><span class="data-key">Cotation</span><span class="data-val">OTC — prix administré</span></div>
+      <div class="data-row"><span class="data-key" data-i18n="dk-mine">Mine principale</span><span class="data-val">Araxá, Minas Gerais</span></div>
+      <div class="data-row"><span class="data-key" data-i18n="dk-part">Part mondiale</span><span class="data-val accent">83%</span></div>
+      <div class="data-row"><span class="data-key" data-i18n="dk-cotation">Cotation</span><span class="data-val" data-i18n="dv-cotation">OTC — prix administré</span></div>
       <div class="data-row"><span class="data-key">Prix FeNb</span><span class="data-val">~$45–50 / kg</span></div>
-      <div class="data-row"><span class="data-key">Réserves</span><span class="data-val accent">> 200 ans</span></div>
-      <div class="data-row"><span class="data-key">Criticité UE</span><span class="data-val">Depuis 2011 — CRMA</span></div>
-      <div class="data-row"><span class="data-key">Part chinoise CBMM</span><span class="data-val accent">15%</span></div>
+      <div class="data-row"><span class="data-key" data-i18n="dk-reserves">Réserves</span><span class="data-val accent" data-i18n="dv-reserves">> 200 ans</span></div>
+      <div class="data-row"><span class="data-key" data-i18n="dk-criticite">Criticité UE</span><span class="data-val" data-i18n="dv-criticite">Depuis 2011 — CRMA</span></div>
+      <div class="data-row"><span class="data-key" data-i18n="dk-chine">Part chinoise CBMM</span><span class="data-val accent">15%</span></div>
     </div>
   </div>
 </div>
@@ -480,7 +589,7 @@
   <div class="section-photo-overlay"></div>
   <div class="section-photo-label fade-in">
     <div class="section-photo-num">03 — Analyses géopolitiques</div>
-    <h2 class="section-photo-title">Comprendre <em>le monde</em></h2>
+    <h2 class="section-photo-title" data-i18n="banner-geopo">Comprendre <em>le monde</em></h2>
   </div>
   <div class="toggle-btn" id="toggle-section-geopo">+</div>
 </div>
@@ -496,111 +605,29 @@
   </div>
   <div class="projects-grid">
     <div class="project-card fade-in" onclick="openModal('afrique')">
-      <span class="project-tag">Afrique · Influence</span>
-      <h3 class="project-title">La puissance française en Afrique : un soft-power rompu ?</h3>
-      <p class="project-desc">Retrait militaire, contestation du franc CFA, montée des alternatives (Russie, Chine, Turquie). Quand la présence historique devient un passif stratégique.</p>
-      <div class="project-meta"><span>Essai géopolitique</span><span class="project-arrow">↗</span></div>
+      <span class="project-tag">Afrique, Influence</span>
+      <h3 class="project-title" data-i18n="afrique-title">La puissance française en Afrique : un soft-power rompu ?</h3>
+      <p class="project-desc" data-i18n="afrique-desc">Retrait militaire, contestation du franc CFA, montée des alternatives (Russie, Chine, Turquie). Quand la présence historique devient un passif stratégique.</p>
+      <div class="project-meta"><span data-i18n="afrique-meta">Essai géopolitique</span><span class="project-arrow">↗</span></div>
     </div>
     <div class="project-card fade-in" style="transition-delay:0.1s" onclick="openModal('truss')">
-      <span class="project-tag">UK · Finance · 2022</span>
+      <span class="project-tag">UK, Finance,2022</span>
       <h3 class="project-title">44 Days: Liz Truss and the Collapse of Confidence</h3>
-      <p class="project-desc">Autopsie des 44 jours Truss : mini-budget non financé, réaction des marchés, intervention de la Banque Centrale. Un cas d'école sur la souveraineté monétaire.</p>
-      <div class="project-meta"><span>Market analysis · EN</span><span class="project-arrow">↗</span></div>
+      <p class="project-desc" data-i18n="truss-desc">Autopsie des 44 jours Truss : mini-budget non financé, réaction des marchés, intervention de la Banque Centrale. Un cas d'école sur la souveraineté monétaire.</p>
+      <div class="project-meta"><span>Market analysis, EN</span><span class="project-arrow">↗</span></div>
     </div>
   </div>
 </section>
 
 </div><!-- /section-content geopo -->
 
-<!-- PHOTO BANNER 4 — turin (profil) -->
-<div class="section-photo" data-section="section-profil" onclick="toggleSection('section-profil')">
-  <img src="turin.jpg" alt="Mon profil">
-  <div class="section-photo-overlay"></div>
-  <div class="section-photo-label fade-in">
-    <h2 class="section-photo-title">Découvrir <em>mon profil</em></h2>
-  </div>
-  <div class="toggle-btn" id="toggle-section-profil">+</div>
-</div>
-
-<div class="section-content collapsed" id="section-profil">
-<section style="background:var(--ink); color:var(--paper);">
-  <div class="section-rule"><span class="section-rule-text" style="color:rgba(245,240,232,0.3);">Profil & Certifications</span></div>
-
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; margin-top:3rem;" class="fade-in">
-
-    <!-- Profil texte -->
-    <div>
-      <div class="fp-eyebrow">Profil</div>
-      <p style="font-size:0.95rem; line-height:1.85; color:rgba(245,240,232,0.75); margin-top:1rem;">Profil hybride alliant maîtrise des outils data (Palantir Foundry, SQL, Power BI, Microsoft Fabric) et intelligence des marchés. Orienté résultats, à l'aise dans les environnements complexes et les chaînes d'approvisionnement stratégiques.</p>
-
-      <div style="margin-top:2.5rem;">
-        <div class="fp-eyebrow" style="margin-bottom:1.2rem;">Compétences</div>
-        <div class="skills-grid" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.06);">
-          <div class="skill-item" style="background:rgba(255,255,255,0.04);">
-            <div class="skill-name" style="color:var(--gold);">Procurement</div>
-            <div class="skill-list" style="color:rgba(245,240,232,0.75);">Centralisation achats · GE Vernova</div>
-          </div>
-          <div class="skill-item" style="background:rgba(255,255,255,0.04);">
-            <div class="skill-name" style="color:var(--gold);">Data</div>
-            <div class="skill-list" style="color:rgba(245,240,232,0.75);">Excel · Dataiku · SQL · Microsoft Fabric · Power BI · ML · Palantir</div>
-          </div>
-          <div class="skill-item" style="background:rgba(255,255,255,0.04);">
-            <div class="skill-name" style="color:var(--gold);">Marchés</div>
-            <div class="skill-list" style="color:rgba(245,240,232,0.75);">Matières premières critiques · Analyse VAN · Risk modelling</div>
-          </div>
-          <div class="skill-item" style="background:rgba(255,255,255,0.04);">
-            <div class="skill-name" style="color:var(--gold);">Langues</div>
-            <div class="skill-list" style="color:rgba(245,240,232,0.75);">Français (natif) · Anglais (courant) · Italien (courant)</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Certifications -->
-    <div>
-      <div class="fp-eyebrow" style="margin-bottom:1.4rem;">Certifications</div>
-      <div style="display:flex; flex-direction:column; gap:1px; background:rgba(255,255,255,0.06);">
-        <a href="https://learn.microsoft.com/fr-fr/users/arthurgaible-2502/transcript/d58gcjz13xogxzd" target="_blank" style="display:flex; justify-content:space-between; align-items:center; padding:1.3rem 1.6rem; background:rgba(255,255,255,0.04); text-decoration:none; border-left:3px solid transparent; transition:border-color 0.2s, background 0.2s;" onmouseover="this.style.borderColor='var(--gold)';this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.borderColor='transparent';this.style.background='rgba(255,255,255,0.04)'">
-          <div>
-            <div style="font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; color:var(--paper); margin-bottom:0.3rem;">Power BI — PL-300</div>
-            <div style="font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(245,240,232,0.4);">Microsoft</div>
-          </div>
-          <span style="color:var(--gold); font-size:0.85rem;">↗</span>
-        </a>
-        <a href="https://verify.skilljar.com/c/sgrkh24eicc6" target="_blank" style="display:flex; justify-content:space-between; align-items:center; padding:1.3rem 1.6rem; background:rgba(255,255,255,0.04); text-decoration:none; border-left:3px solid transparent; transition:border-color 0.2s, background 0.2s;" onmouseover="this.style.borderColor='var(--gold)';this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.borderColor='transparent';this.style.background='rgba(255,255,255,0.04)'">
-          <div>
-            <div style="font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; color:var(--paper); margin-bottom:0.3rem;">Advanced Designer</div>
-            <div style="font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(245,240,232,0.4);">Dataiku</div>
-          </div>
-          <span style="color:var(--gold); font-size:0.85rem;">↗</span>
-        </a>
-        <a href="https://verify.skilljar.com/c/o735s266d4gg" target="_blank" style="display:flex; justify-content:space-between; align-items:center; padding:1.3rem 1.6rem; background:rgba(255,255,255,0.04); text-decoration:none; border-left:3px solid transparent; transition:border-color 0.2s, background 0.2s;" onmouseover="this.style.borderColor='var(--gold)';this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.borderColor='transparent';this.style.background='rgba(255,255,255,0.04)'">
-          <div>
-            <div style="font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; color:var(--paper); margin-bottom:0.3rem;">AIP Aware</div>
-            <div style="font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(245,240,232,0.4);">Palantir Foundry</div>
-          </div>
-          <span style="color:var(--gold); font-size:0.85rem;">↗</span>
-        </a>
-        <a href="https://www.credly.com/badges/92f5f5f5-500e-42d6-abd5-1af7b452266c" target="_blank" style="display:flex; justify-content:space-between; align-items:center; padding:1.3rem 1.6rem; background:rgba(255,255,255,0.04); text-decoration:none; border-left:3px solid transparent; transition:border-color 0.2s, background 0.2s;" onmouseover="this.style.borderColor='var(--gold)';this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.borderColor='transparent';this.style.background='rgba(255,255,255,0.04)'">
-          <div>
-            <div style="font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; color:var(--paper); margin-bottom:0.3rem;">Python Fundamentals</div>
-            <div style="font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(245,240,232,0.4);">Credly</div>
-          </div>
-          <span style="color:var(--gold); font-size:0.85rem;">↗</span>
-        </a>
-      </div>
-    </div>
-
-  </div>
-</section>
-</div><!-- /section-content profil -->
 
 <!-- PHOTO BANNER 5 — angelview2 (contact) -->
 <div class="section-photo" data-section="section-contact" onclick="toggleSection('section-contact')">
   <img src="angelview2.jpg" alt="Prendre contact">
   <div class="section-photo-overlay"></div>
   <div class="section-photo-label fade-in">
-    <h2 class="section-photo-title">Prendre <em>contact</em></h2>
+    <h2 class="section-photo-title" data-i18n="banner-contact">Prendre <em>contact</em></h2>
   </div>
   <div class="toggle-btn" id="toggle-section-contact">+</div>
 </div>
@@ -611,7 +638,7 @@
 <div style="padding:6rem 4rem;" id="contact">
   <div class="fade-in" style="max-width:480px;">
     <div class="contact-block">
-      <h3>Prendre contact</h3>
+      <h3 data-i18n="contact-h3">Prendre contact</h3>
       <a href="mailto:agaiblepro@gmail.com" class="contact-email">agaiblepro@gmail.com</a>
       <div class="contact-links">
         <a href="tel:+33781876999">+(33) 7 81 87 69 99</a>
@@ -625,7 +652,7 @@
 <!-- FOOTER -->
 <footer>
   <span>© 2026 Arthur Gaible</span>
-  <span>Digital Procurement · Market Intelligence · Data Analytics</span>
+  <span>Digital Procurement, Market Intelligence, Data Analytics</span>
 </footer>
 
 <!-- MODALS -->
@@ -678,63 +705,201 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+const T = {
+  fr: {
+    'hero-subtitle': "Centraliser l'information, construire des solutions end-to-end de Business Intelligence pour les équipes métier.",
+    'banner-profil': 'Découvrir <em>mon profil</em>',
+    'profil-rule': 'Profil & Certifications',
+    'profil-label': 'Profil',
+    'profil-p1': "Profil hybride alliant maîtrise des outils data (Palantir Foundry, SQL, Power BI, Microsoft Fabric) et intelligence des marchés. Orienté résultats, à l'aise dans les environnements complexes et les chaînes d'approvisionnement stratégiques.",
+    'profil-p2': "Ce portfolio reflète mon appétence pour les environnements analytiques et une de mes passions, la géopolitique. Les en-têtes des sections sont des endroits qui me sont chers.",
+    'skills-label': 'Compétences',
+    'skill-proc': 'Centralisation achats, GE Vernova',
+    'skill-marches-name': 'Marchés',
+    'skill-marches-list': 'Matières premières critiques, Analyse VAN, Risk modelling',
+    'skill-langues-name': 'Langues',
+    'skill-langues-list': 'Français (natif), Anglais (courant), Italien (courant)',
+    'banner-procurement': 'Piloter par la <em>donnée</em>',
+    'proc-rule': 'Focus, Travail principal',
+    'proc-eyebrow': 'Mémoire de recherche',
+    'proc-title': 'Centralisation<br>data-driven des achats',
+    'proc-quote': "« Comment la donnée redéfinit le pouvoir d'achat corporatif »",
+    'proc-p1': "Ce mémoire de recherche, conduit sur le terrain de GE Vernova, examine comment la centralisation data-driven des achats renforce le pouvoir de décision corporate sur les marchés fournisseurs — sans détruire l'autonomie locale des sites.",
+    'proc-p2': "La modélisation ontologique dans Palantir Foundry constitue l'épine dorsale de la démarche : en structurant les objets achats (contrats, fournisseurs, commandes) en un graphe cohérent, elle permet à la direction corporate de passer de la consolidation à la gouvernance active.",
+    'proc-link': 'Lire la synthèse →',
+    'fp-cadre': 'Cadre', 'fp-approche': 'Approche', 'fp-enjeu': 'Enjeu', 'fp-contexte': 'Contexte', 'fp-langue': 'Langue',
+    'fp-val-enjeu': 'Centralisation vs autonomie', 'fp-val-contexte': 'Groupes multi-sites',
+    'aura-desc': "Analyse du mix électrique de la région Auvergne-Rhône-Alpes sur 11 ans (2013–2024). Données RTE éco2mix traitées via SQLite, dashboard Power BI. Nucléaire structurellement dominant à +70%, saisonnalité hydraulique forte, thermique en corrélation inverse avec la disponibilité nucléaire.",
+    'aura-meta': 'SQL, SQLite, Power BI, 11 ans de données',
+    'palantir-title': 'Palantir Vertex — Graphes de relations',
+    'palantir-desc': "Cas d'usage sur la détection de réseaux suspects via graphes ontologiques dans Palantir Foundry. Construction du pipeline de nettoyage, modélisation des objets et liens ontologiques, utilisation de Vertex pour croiser transactions financières et communications entre entités à risque.",
+    'banner-marches': 'Connaître sa <em>chaîne amont</em>',
+    'stat-niobium': 'Niobium mondial extrait au Brésil', 'stat-cagr': 'CAGR marché 2025–2033',
+    'stat-catalao': 'Rachat Catalão par CMOC', 'stat-criticite': 'Criticité UE — ininterrompue',
+    'bresil-title': 'Brésil : La 41ème dépendance',
+    'bresil-desc': "Monopole mondial de la CBMM, mine d'Araxá, prix administrés OTC. Pourquoi la dépendance occidentale est structurelle, et pourquoi elle ne fait pas les grands titres.",
+    'bresil-meta': 'Rapport, ~4 500 mots',
+    'chine-title': 'Chine : sous le coup de la dépendance',
+    'chine-desc': "La Chine ne produit pas de niobium, mais a sécurisé 15% de la CBMM et racheté la mine de Catalão pour 1,5 Md$. Analyse des stratégies d'approvisionnement chinoises.",
+    'chine-meta': "Note d'analyse",
+    'analyse-title': 'Coûts, risques & structure de marché',
+    'analyse-desc': 'Structure de coûts de production (open-pit vs souterrain), modélisation du risque marché, et analyse du risque géopolitique de concentration. Modèle quantitatif.',
+    'analyse-meta': 'Analyse quant. & qual.',
+    'niobium-rule': 'Focus, Analyse principale',
+    'niobium-title': 'La dépendance<br>confortable',
+    'niobium-quote': '« Assis sur une bombe à retardement logistique »',
+    'niobium-p1': "Le niobium illustre une forme singulière de risque géopolitique : celle de la dépendance confortable. Contrairement aux terres rares chinoises dont la menace est régulièrement brandie, le niobium brésilien ne fait pas de bruit.",
+    'niobium-p2': "Cette absence de friction a anesthésié la vigilance des industries de défense et de haute technologie. La dépendance au 41ème élément n'est pas une fatalité géologique, mais le résultat d'un arbitrage économique qui a sacrifié la souveraineté sur l'autel de la stabilité des prix.",
+    'niobium-link': "Lire l'analyse complète →",
+    'dk-mine': 'Mine principale', 'dk-part': 'Part mondiale', 'dk-cotation': 'Cotation',
+    'dv-cotation': 'OTC — prix administré', 'dk-reserves': 'Réserves', 'dv-reserves': '> 200 ans',
+    'dk-criticite': 'Criticité UE', 'dv-criticite': 'Depuis 2011 — CRMA', 'dk-chine': 'Part chinoise CBMM',
+    'banner-geopo': 'Comprendre <em>le monde</em>',
+    'afrique-title': 'La puissance française en Afrique : un soft-power rompu ?',
+    'afrique-desc': 'Retrait militaire, contestation du franc CFA, montée des alternatives (Russie, Chine, Turquie). Quand la présence historique devient un passif stratégique.',
+    'afrique-meta': 'Essai géopolitique',
+    'truss-desc': "Autopsie des 44 jours Truss : mini-budget non financé, réaction des marchés, intervention de la Banque Centrale. Un cas d'école sur la souveraineté monétaire.",
+    'banner-contact': 'Prendre <em>contact</em>',
+    'contact-h3': 'Prendre contact',
+  },
+  en: {
+    'hero-subtitle': 'Centralising information, building end-to-end Business Intelligence solutions for business teams.',
+    'banner-profil': 'Discover <em>my profile</em>',
+    'profil-rule': 'Profile & Certifications',
+    'profil-label': 'Profile',
+    'profil-p1': 'A hybrid profile combining data tool expertise (Palantir Foundry, SQL, Power BI, Microsoft Fabric) and market intelligence. Results-oriented, comfortable in complex environments and strategic supply chains.',
+    'profil-p2': 'This portfolio reflects my passion for analytical environments and one of my interests, geopolitics. The section headers are all places dear to me.',
+    'skills-label': 'Skills',
+    'skill-proc': 'Procurement centralisation, GE Vernova',
+    'skill-marches-name': 'Markets',
+    'skill-marches-list': 'Critical raw materials, NPV analysis, Risk modelling',
+    'skill-langues-name': 'Languages',
+    'skill-langues-list': 'French (native), English (fluent), Italian (fluent)',
+    'banner-procurement': 'Manage by <em>data</em>',
+    'proc-rule': 'Focus, Main project',
+    'proc-eyebrow': 'Research paper',
+    'proc-title': 'Data-driven<br>procurement centralisation',
+    'proc-quote': '« How data redefines corporate purchasing power »',
+    'proc-p1': 'This research paper, conducted in the field at GE Vernova, examines how data-driven procurement centralisation strengthens corporate decision-making power over supplier markets — without destroying local site autonomy.',
+    'proc-p2': 'Ontological modelling in Palantir Foundry forms the backbone of the approach: by structuring procurement objects (contracts, suppliers, orders) into a coherent graph, it enables corporate leadership to move from consolidation to active governance.',
+    'proc-link': 'Read the summary →',
+    'fp-cadre': 'Context', 'fp-approche': 'Approach', 'fp-enjeu': 'Stakes', 'fp-contexte': 'Context', 'fp-langue': 'Language',
+    'fp-val-enjeu': 'Centralisation vs autonomy', 'fp-val-contexte': 'Multi-site groups',
+    'aura-desc': 'Analysis of the electricity mix in the Auvergne-Rhône-Alpes region over 11 years (2013–2024). RTE éco2mix data processed via SQLite, Power BI dashboard. Nuclear structurally dominant at +70%, strong hydraulic seasonality, thermal inversely correlated with nuclear availability.',
+    'aura-meta': 'SQL, SQLite, Power BI,11 years of data',
+    'palantir-title': 'Palantir Vertex — Relationship graphs',
+    'palantir-desc': 'Use case for detecting suspicious networks via ontological graphs in Palantir Foundry. Building the cleaning pipeline, modelling ontological objects and links, using Vertex to cross-reference financial transactions and communications between at-risk entities.',
+    'banner-marches': 'Know your <em>upstream chain</em>',
+    'stat-niobium': 'Global niobium extracted in Brazil', 'stat-cagr': 'Market CAGR 2025–2033',
+    'stat-catalao': 'CMOC acquisition of Catalão', 'stat-criticite': 'EU criticality — uninterrupted',
+    'bresil-title': 'Brazil: The 41st dependency',
+    'bresil-desc': "CBMM's global monopoly, the Araxá mine, OTC administered prices. Why Western dependency is structural, and why it doesn't make headlines.",
+    'bresil-meta': 'Report, ~4,500 words',
+    'chine-title': 'China: caught in dependency',
+    'chine-desc': 'China produces no niobium, but secured 15% of CBMM and acquired the Catalão mine for $1.5B. Analysis of Chinese supply strategies.',
+    'chine-meta': 'Analysis note',
+    'analyse-title': 'Costs, risks & market structure',
+    'analyse-desc': 'Production cost structure (open-pit vs underground), market risk modelling, and geopolitical concentration risk analysis. Quantitative model.',
+    'analyse-meta': 'Quant. & qual. analysis',
+    'niobium-rule': 'Focus, Main analysis',
+    'niobium-title': 'The comfortable<br>dependency',
+    'niobium-quote': '« Sitting on a logistical time bomb »',
+    'niobium-p1': 'Niobium illustrates a singular form of geopolitical risk: comfortable dependency. Unlike Chinese rare earths whose threat is regularly brandished, Brazilian niobium makes no noise.',
+    'niobium-p2': "This absence of friction has anaesthetised the vigilance of defence and high-technology industries. Dependency on the 41st element is not a geological fatality, but the result of an economic trade-off that sacrificed sovereignty on the altar of price stability.",
+    'niobium-link': 'Read the full analysis →',
+    'dk-mine': 'Main mine', 'dk-part': 'World share', 'dk-cotation': 'Pricing',
+    'dv-cotation': 'OTC — administered price', 'dk-reserves': 'Reserves', 'dv-reserves': '> 200 years',
+    'dk-criticite': 'EU Criticality', 'dv-criticite': 'Since 2011 — CRMA', 'dk-chine': 'Chinese share CBMM',
+    'banner-geopo': 'Understanding <em>the world</em>',
+    'afrique-title': 'French influence in Africa: a broken soft-power?',
+    'afrique-desc': 'Military withdrawal, CFA franc contestation, rise of alternatives (Russia, China, Turkey). When historical presence becomes a strategic liability.',
+    'afrique-meta': 'Geopolitical essay',
+    'truss-desc': 'Post-mortem of the 44 Truss days: unfunded mini-budget, market reaction, Central Bank intervention. A textbook case on monetary sovereignty.',
+    'banner-contact': 'Get in <em>touch</em>',
+    'contact-h3': 'Get in touch',
+  }
+};
+
+let currentLang = 'fr';
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (T[lang][k] !== undefined) el.innerHTML = T[lang][k];
+  });
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  document.documentElement.lang = lang;
+}
+
 const projects = {
   bresil: {
-    tag: 'Niobium · Géopolitique · Rapport',
+    tag: 'Niobium, Géopolitique, Rapport',
     title: 'Brésil : La 41ème dépendance',
-    kv: [['Sujet','Monopole brésilien du niobium'],['Format','Rapport de recherche · ~4 500 mots'],['Sources','Académiques, institutionnelles (UE/JRC), OTC'],['Langue','Français']],
+    kv: [['Sujet','Monopole brésilien du niobium'],['Format','Rapport de recherche, ~4 500 mots'],['Sources','Académiques, institutionnelles (UE/JRC), OTC'],['Langue','Français']],
     body: `<p>Le niobium est extrait à 90% par le Brésil, principalement via la mine à ciel ouvert d'Araxá (83% du niobium mondial), opérée par la CBMM. Classé métal critique par l'UE et les États-Unis depuis 2011, il ne fait pourtant pas les grands titres, contrairement aux terres rares chinoises.</p><p>Cette étude examine le mécanisme de la dépendance confortable : un prix administré OTC maintenu artificiellement bas par la CBMM, une perception du Brésil comme partenaire non conflictuel, et l'absence de cotation publique masquant les volumes réels.</p><p>Sont également analysées les alternatives théoriques, et pourquoi chacune reste économiquement non viable tant que la CBMM maintient ses prix sous le seuil de rentabilité des nouveaux entrants.</p><a href="https://www.notion.so/35dfe51e040d800ca9caf26568d2163c" target="_blank" class="modal-link">Lire sur Notion →</a>`,
   },
   chine: {
-    tag: 'Niobium · Stratégie chinoise',
+    tag: 'Niobium, Stratégie chinoise',
     title: 'Chine : sous le coup de la dépendance',
     kv: [['Sujet',"Stratégie d'approvisionnement chinoise"],['Format',"Note d'analyse géopolitique"],['Langue','Français']],
     body: `<p>La Chine ne possède pas de gisement de niobium significatif sur son sol, mais plutôt que de chercher à concurrencer le Brésil, elle a choisi d'y investir directement.</p><p>En 2011, un consortium chinois rachète 15% des parts de la CBMM. Par ailleurs, la mine de Catalão (2ème productrice mondiale, Goiás) passe du britannique Anglo American au groupe CMOC pour 1,5 Md$. Pékin sécurise ainsi une part directe de la production mondiale, laissant l'Europe et les États-Unis en position de simples clients.</p><a href="https://www.notion.so/35dfe51e040d80bfaae7d09d91595497" target="_blank" class="modal-link">Lire sur Notion →</a>`,
   },
   analyse: {
-    tag: 'Niobium · Modélisation · Risque',
+    tag: 'Niobium, Modélisation, Risque',
     title: 'Coûts, risques & structure de marché',
     kv: [['Sujet','Modélisation risque marché & géopolitique'],['Format','Analyse quantitative et qualitative'],['Outils','Modélisation financière, sources OTC'],['Langue','Français']],
     body: `<p>Cette analyse porte sur la structure de coûts de production du niobium et sur les implications pour la viabilité économique des alternatives.</p><p>Elle inclut une modélisation du risque marché (prix administré vs volatilité potentielle en cas de crise) et une évaluation du risque géopolitique de concentration : probabilité, délai de réponse, options de substitution.</p><a href="https://www.notion.so/35dfe51e040d80ec9301c81c5b2c0ac5" target="_blank" class="modal-link">Lire sur Notion →</a>`,
   },
   aura: {
-    tag: 'Data · SQL · Power BI',
+    tag: 'Data, SQL, Power BI',
     title: 'AURA Energy Consumption',
-    kv: [['Sujet','Consommation énergétique industrielle'],['Outils','SQL · SQLite · Power BI'],['Données','RTE éco2mix 2013–2024'],['Format','Dashboard + analyse']],
+    kv: [['Sujet','Consommation énergétique industrielle'],['Outils','SQL, SQLite, Power BI'],['Données','RTE éco2mix 2013–2024'],['Format','Dashboard + analyse']],
     body: `<p>Analyse du mix électrique de la région Auvergne-Rhône-Alpes sur 11 ans via SQLite et Power BI. Nucléaire structurellement dominant à +70%, saisonnalité hydraulique forte, thermique en corrélation inverse avec la disponibilité nucléaire.</p><a href="https://www.notion.so/35dfe51e040d80ba905cd575fb14d76a" target="_blank" class="modal-link">Voir le projet →</a>`,
   },
   palantir: {
-    tag: 'Data · Palantir · Foundry',
+    tag: 'Data, Palantir, Foundry',
     title: 'Palantir Vertex — Graphes de relations',
     kv: [['Sujet','Détection de réseaux via graphes ontologiques'],['Outils','Palantir Foundry / Vertex'],['Format','Pipeline + modélisation ontologique']],
     body: `<p>Construction d'un pipeline de nettoyage et modélisation des objets ontologiques dans Palantir Foundry. Utilisation de Vertex pour croiser transactions financières et communications entre entités à risque et détecter des réseaux suspects.</p><a href="https://www.notion.so/35dfe51e040d8033a363dbbc326a523a" target="_blank" class="modal-link">Voir le projet →</a>`,
   },
   afrique: {
-    tag: 'Géopolitique · Afrique · France',
+    tag: 'Géopolitique, Afrique, France',
     title: 'La puissance française en Afrique : un soft-power rompu ?',
     kv: [['Sujet','Influence française en Afrique subsaharienne'],['Format','Essai géopolitique'],['Langue','Français']],
     body: `<p>Diagnostic de l'influence française en Afrique subsaharienne : retrait militaire (Mali, Burkina, Niger), contestation croissante du franc CFA, et montée en puissance des alternatives : Russie (Wagner/Africa Corps), Chine, Turquie.</p><p>L'analyse interroge le moment où une présence historique se retourne en passif stratégique, et les leviers qui restent mobilisables pour Paris.</p><a href="https://www.notion.so/35dfe51e040d80668f9fdab79f2b1b97" target="_blank" class="modal-link">Lire sur Notion →</a>`,
   },
   truss: {
-    tag: 'UK · Finance · Politique économique',
+    tag: 'UK, Finance, Politique économique',
     title: '44 Days: Liz Truss and the Collapse of Confidence',
     kv: [['Sujet','Crise budgétaire UK 2022'],['Format','Analyse de marché & politique'],['Langue','Anglais'],['Période','Septembre–Octobre 2022']],
     body: `<p>Autopsie des 44 jours de gouvernement Truss (sept–oct 2022). Le mini-budget non financé déclenche une réaction immédiate des marchés : les rendements à 30 ans bondissent, la livre sterling chute, la banque centrale est contrainte d'intervenir en urgence pour éviter un effondrement des fonds de pension.</p><p>Ce cas d'école illustre les limites de la souveraineté monétaire et le poids de la crédibilité budgétaire.</p><a href="https://www.notion.so/35dfe51e040d80a28bebdb7283fba9c4" target="_blank" class="modal-link">Read on Notion →</a>`,
   },
   memoire: {
-    tag: 'Mémoire · Achats · Data · GE Vernova',
+    tag: 'Mémoire, Achats, Data, GE Vernova',
     title: 'Mémoire : Centralisation des achats dans les groupes multi-sites',
-    kv: [['Sujet','Centralisation data-driven des achats'],['Cadre','Mémoire de recherche · GE Vernova'],['Outils','Palantir Foundry · Ontologies data'],['Langue','Anglais']],
+    kv: [['Sujet','Centralisation data-driven des achats'],['Cadre','Mémoire de recherche, GE Vernova'],['Outils','Palantir Foundry, Ontologies data'],['Langue','Anglais']],
     body: `<p>Comment la centralisation data-driven des achats renforce le pouvoir de décision corporate sur les marchés fournisseurs sans détruire l'autonomie locale. Théorie des organisations, ontologies data, Palantir Foundry, terrain GE Vernova.</p><p><strong>Question centrale :</strong> dans quelle mesure la structuration ontologique des données achats permet-elle à une direction corporate de gouverner activement ses marchés fournisseurs, sans sacrifier la réactivité opérationnelle des sites ?</p>`,
   },
 };
 
+const projectsEN = {
+  bresil: { tag: 'Niobium,Geopolitics,Report', title: 'Brazil: The 41st dependency', kv: [['Subject','Brazilian niobium monopoly'],['Format','Research report,~4,500 words'],['Sources','Academic, institutional (EU/JRC), OTC'],['Language','French']], body: `<p>Niobium is 90% extracted in Brazil, primarily via the open-pit Araxá mine (83% of global niobium), operated by CBMM. Listed as a critical metal by the EU and US since 2011, it nevertheless makes no headlines, unlike Chinese rare earths.</p><p>This study examines the mechanism of comfortable dependency: an OTC-administered price kept artificially low by CBMM, a perception of Brazil as a non-conflictual partner, and the absence of public listing masking real volumes.</p><a href="https://www.notion.so/35dfe51e040d800ca9caf26568d2163c" target="_blank" class="modal-link">Read on Notion →</a>` },
+  chine: { tag: 'Niobium,Chinese strategy', title: 'China: caught in dependency', kv: [['Subject','Chinese supply strategy'],['Format','Geopolitical analysis note'],['Language','French']], body: `<p>China has no significant niobium deposits, but rather than competing with Brazil, it chose to invest directly. In 2011, a Chinese consortium acquired 15% of CBMM. The Catalão mine (2nd largest producer) was also acquired by CMOC for $1.5B, giving Beijing a direct share of global production while leaving Europe and the US as mere customers.</p><a href="https://www.notion.so/35dfe51e040d80bfaae7d09d91595497" target="_blank" class="modal-link">Read on Notion →</a>` },
+  analyse: { tag: 'Niobium,Modelling,Risk', title: 'Costs, risks & market structure', kv: [['Subject','Market & geopolitical risk modelling'],['Format','Quantitative and qualitative analysis'],['Tools','Financial modelling, OTC sources'],['Language','French']], body: `<p>This analysis covers the production cost structure of niobium and the implications for the economic viability of alternatives.</p><p>It includes market risk modelling (administered price vs potential volatility in a crisis) and a geopolitical concentration risk assessment: probability, response time, substitution options.</p><a href="https://www.notion.so/35dfe51e040d80ec9301c81c5b2c0ac5" target="_blank" class="modal-link">Read on Notion →</a>` },
+  aura: { tag: 'Data,SQL,Power BI', title: 'AURA Energy Consumption', kv: [['Subject','Industrial energy consumption'],['Tools','SQL,SQLite,Power BI'],['Data','RTE éco2mix 2013–2024'],['Format','Dashboard + analysis']], body: `<p>Analysis of the electricity mix in the Auvergne-Rhône-Alpes region over 11 years via SQLite and Power BI. Nuclear structurally dominant at +70%, strong hydraulic seasonality, thermal inversely correlated with nuclear availability.</p><a href="https://www.notion.so/35dfe51e040d80ba905cd575fb14d76a" target="_blank" class="modal-link">View project →</a>` },
+  palantir: { tag: 'Data,Palantir,Foundry', title: 'Palantir Vertex — Relationship graphs', kv: [['Subject','Network detection via ontological graphs'],['Tools','Palantir Foundry / Vertex'],['Format','Pipeline + ontological modelling']], body: `<p>Building a cleaning pipeline and modelling ontological objects in Palantir Foundry. Using Vertex to cross-reference financial transactions and communications between at-risk entities to detect suspicious networks.</p><a href="https://www.notion.so/35dfe51e040d8033a363dbbc326a523a" target="_blank" class="modal-link">View project →</a>` },
+  afrique: { tag: 'Geopolitics,Africa,France', title: 'French influence in Africa: a broken soft-power?', kv: [['Subject','French influence in sub-Saharan Africa'],['Format','Geopolitical essay'],['Language','French']], body: `<p>Diagnosis of French influence in sub-Saharan Africa: military withdrawal (Mali, Burkina, Niger), growing contestation of the CFA franc, and the rise of alternatives: Russia (Wagner/Africa Corps), China, Turkey.</p><p>The analysis questions the moment when a historical presence becomes a strategic liability, and what levers remain available to Paris.</p><a href="https://www.notion.so/35dfe51e040d80668f9fdab79f2b1b97" target="_blank" class="modal-link">Read on Notion →</a>` },
+  truss: { tag: 'UK,Finance,Economic policy', title: '44 Days: Liz Truss and the Collapse of Confidence', kv: [['Subject','UK budget crisis 2022'],['Format','Market & policy analysis'],['Language','English'],['Period','September–October 2022']], body: `<p>Post-mortem of the 44 Truss government days (Sept–Oct 2022). The unfunded mini-budget triggered an immediate market reaction: 30-year yields spiked, the pound collapsed, the central bank was forced to intervene urgently to prevent a pension fund meltdown.</p><p>A textbook case on the limits of monetary sovereignty and the weight of fiscal credibility.</p><a href="https://www.notion.so/35dfe51e040d80a28bebdb7283fba9c4" target="_blank" class="modal-link">Read on Notion →</a>` },
+  memoire: { tag: 'Research paper, Procurement, Data, GE Vernova', title: 'Data-driven procurement centralisation in multi-site groups', kv: [['Subject','Data-driven procurement centralisation'],['Context','Research paper, GE Vernova'],['Tools','Palantir Foundry, Data ontologies'],['Language','English']], body: `<p>How data-driven procurement centralisation strengthens corporate decision-making power over supplier markets without destroying local autonomy. Organisation theory, data ontologies, Palantir Foundry, GE Vernova fieldwork.</p><p><strong>Central question:</strong> to what extent does ontological structuring of procurement data enable corporate leadership to actively govern its supplier markets without sacrificing operational site responsiveness?</p>` },
+};
+
 function openModal(id) {
-  const p = projects[id]; if (!p) return;
+  const p = currentLang === 'en' && projectsEN[id] ? projectsEN[id] : projects[id];
+  if (!p) return;
   document.getElementById('modalTag').textContent = p.tag;
   document.getElementById('modalTitle').textContent = p.title;
   let kv = '<div class="modal-kv">';
-  p.kv.forEach(([k,v]) => { kv += `<div class="modal-kv-row"><span class="modal-kv-key">${k}</span><span class="modal-kv-val">${v}</span></div>`; });
+  p.kv.forEach(([k, v]) => { kv += `<div class="modal-kv-row"><span class="modal-kv-key">${k}</span><span class="modal-kv-val">${v}</span></div>`; });
   kv += '</div>';
   document.getElementById('modalBody').innerHTML = kv + p.body;
   document.getElementById('modal').classList.add('open');
