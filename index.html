@@ -497,6 +497,15 @@
         <span class="project-arrow">↗</span>
       </div>
     </div>
+    <div class="project-card fade-in" style="transition-delay:0.3s" onclick="openModal('rk')">
+      <span class="project-tag">HTML/JS, File System API, Power BI</span>
+      <h3 class="project-title" data-i18n="rk-title">Système de gestion des rébuts</h3>
+      <p class="project-desc" data-i18n="rk-desc">Deux outils HTML pour automatiser le circuit des fiches de rebut industriel entre opérateurs et acheteur. 3 lookups automatiques à l'import, registre JSON temps réel, dashboard SVG, zéro serveur.</p>
+      <div class="project-meta">
+        <span data-i18n="rk-meta">Vanilla JS, File System API, IndexedDB</span>
+        <span class="project-arrow">↗</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -745,6 +754,9 @@ const T = {
     'tier2-title': 'Tier 2 Mapping System',
     'tier2-desc': "Outil de réconciliation de données fournisseurs sans serveur ni framework. ~10 000 références composants, matching par cascade (code exact → similarité pondérée), consolidation par période semestrielle — données propres prêtes pour Power BI.",
     'tier2-meta': 'Vanilla JS, SheetJS, AlaSQL, File System API',
+    'rk-title': 'Système de gestion des rébuts',
+    'rk-desc': "Deux outils HTML pour automatiser le circuit des fiches de rebut industriel entre opérateurs et acheteur. 3 lookups automatiques à l'import, registre JSON temps réel, dashboard SVG, zéro serveur.",
+    'rk-meta': 'Vanilla JS, File System API, IndexedDB',
     'banner-marches': 'Connaître sa <em>chaîne amont</em>',
     'stat-niobium': 'Niobium mondial extrait au Brésil', 'stat-cagr': 'CAGR marché 2025–2033',
     'stat-catalao': 'Rachat Catalão par CMOC', 'stat-criticite': 'Criticité UE — ininterrompue',
@@ -804,6 +816,9 @@ const T = {
     'tier2-title': 'Tier 2 Mapping System',
     'tier2-desc': 'A zero-backend supplier data reconciliation tool. ~10,000 component references, cascade matching (exact code → weighted similarity score), semi-annual period consolidation — clean data ready for Power BI.',
     'tier2-meta': 'Vanilla JS, SheetJS, AlaSQL, File System API',
+    'rk-title': 'Industrial Scrap Management System',
+    'rk-desc': 'Two HTML tools automating the industrial scrap sheet workflow between operators and the procurement buyer. 3 automatic lookups on import, real-time JSON registry, SVG dashboard, zero backend.',
+    'rk-meta': 'Vanilla JS, File System API, IndexedDB',
     'banner-marches': 'Know your <em>upstream chain</em>',
     'stat-niobium': 'Global niobium extracted in Brazil', 'stat-cagr': 'Market CAGR 2025–2033',
     'stat-catalao': 'CMOC acquisition of Catalão', 'stat-criticite': 'EU criticality — uninterrupted',
@@ -877,6 +892,12 @@ const projects = {
     kv: [['Sujet','Détection de réseaux via graphes ontologiques'],['Outils','Palantir Foundry / Vertex'],['Format','Pipeline + modélisation ontologique']],
     body: `<p>Construction d'un pipeline de nettoyage et modélisation des objets ontologiques dans Palantir Foundry. Utilisation de Vertex pour croiser transactions financières et communications entre entités à risque et détecter des réseaux suspects.</p><a href="https://www.notion.so/35dfe51e040d8033a363dbbc326a523a" target="_blank" class="modal-link">Voir le projet →</a>`,
   },
+  rk: {
+    tag: 'Outil interne, Qualité, Supply Chain',
+    title: 'Système de gestion des rébuts',
+    kv: [['Contrainte','Zéro serveur — deux fichiers HTML autonomes'],['Stack','Vanilla JS, File System Access API, IndexedDB'],['Flux','Opérateur → email → Acheteur'],['Export','JSON, CSV → Power BI']],
+    body: `<p>Deux outils HTML pour automatiser le circuit des fiches de rebut industriel dans un groupe multi-sites. Avant : fichiers Excel manuels, lookups à la main dans trois référentiels séparés, historique non structuré. Après : flux email avec fiche HTML auto-contenue, 3 lookups automatiques à l'import, registre JSON mis à jour en temps réel sur disque.</p><p>L'outil acheteur comprend 5 onglets : import & traitement (validation, lookups, décision 1–7, calculs automatiques forfait + délais), registre avec édition inline et barre de santé (détection incohérences), dashboard SVG (KPIs, charts par fondeur, évolution mensuelle, donuts statuts), gestion des référentiels, et paramètres de liaison des fichiers.</p><p>Persistance robuste : File System Access API pour les JSON sur disque, handles stockés en IndexedDB — reconnexion en un clic après rechargement de page.</p><a href="https://app.notion.com/p/38bfe51e040d8143a59cdefa31b3827f" target="_blank" class="modal-link">Voir le projet sur Notion →</a>`,
+  },
   tier2: {
     tag: 'Outil interne, Data achats, Supply Chain',
     title: 'Tier 2 Mapping System',
@@ -909,6 +930,7 @@ const projectsEN = {
   analyse: { tag: 'Niobium,Modelling,Risk', title: 'Costs, risks & market structure', kv: [['Subject','Market & geopolitical risk modelling'],['Format','Quantitative and qualitative analysis'],['Tools','Financial modelling, OTC sources'],['Language','French']], body: `<p>This analysis covers the production cost structure of niobium and the implications for the economic viability of alternatives.</p><p>It includes market risk modelling (administered price vs potential volatility in a crisis) and a geopolitical concentration risk assessment: probability, response time, substitution options.</p><a href="https://www.notion.so/35dfe51e040d80ec9301c81c5b2c0ac5" target="_blank" class="modal-link">Read on Notion →</a>` },
   aura: { tag: 'Data,SQL,Power BI', title: 'AURA Energy Consumption', kv: [['Subject','Industrial energy consumption'],['Tools','SQL,SQLite,Power BI'],['Data','RTE éco2mix 2013–2024'],['Format','Dashboard + analysis']], body: `<p>Analysis of the electricity mix in the Auvergne-Rhône-Alpes region over 11 years via SQLite and Power BI. Nuclear structurally dominant at +70%, strong hydraulic seasonality, thermal inversely correlated with nuclear availability.</p><a href="https://www.notion.so/35dfe51e040d80ba905cd575fb14d76a" target="_blank" class="modal-link">View project →</a>` },
   palantir: { tag: 'Data,Palantir,Foundry', title: 'Palantir Vertex — Relationship graphs', kv: [['Subject','Network detection via ontological graphs'],['Tools','Palantir Foundry / Vertex'],['Format','Pipeline + ontological modelling']], body: `<p>Building a cleaning pipeline and modelling ontological objects in Palantir Foundry. Using Vertex to cross-reference financial transactions and communications between at-risk entities to detect suspicious networks.</p><a href="https://www.notion.so/35dfe51e040d8033a363dbbc326a523a" target="_blank" class="modal-link">View project →</a>` },
+  rk: { tag: 'Internal tool, Quality, Supply Chain', title: 'Industrial Scrap Management System', kv: [['Constraint','Zero backend — two standalone HTML files'],['Stack','Vanilla JS, File System Access API, IndexedDB'],['Workflow','Operator → email → Procurement buyer'],['Export','JSON, CSV → Power BI']], body: `<p>Two HTML tools automating the industrial scrap sheet workflow in a multi-site industrial group. Before: manual Excel files, manual lookups across three separate reference files. After: email transmission with a self-contained HTML scrap sheet, 3 automatic lookups on import, real-time JSON registry updated directly on disk.</p><p>The buyer tool covers 5 tabs: import & processing (validation, lookups, decision 1–7, automatic calculations for flat fee and deadlines), registry with inline editing and a health bar (inconsistency detection), SVG dashboard (KPIs, spend by foundry, monthly trend charts, status donuts), reference management, and file-linking settings.</p><p>Robust persistence: File System Access API for on-disk JSON, handles stored in IndexedDB — one-click reconnect after page reload, no re-linking needed.</p><a href="https://app.notion.com/p/38bfe51e040d8143a59cdefa31b3827f" target="_blank" class="modal-link">View project on Notion →</a>` },
   tier2: { tag: 'Internal tool, Procurement Data, Supply Chain', title: 'Tier 2 Mapping System', kv: [['Constraint','Zero backend — single HTML file'],['Stack','Vanilla JS, SheetJS, AlaSQL, File System API'],['Scope','~10,000 industrial component references'],['Export','JSON → Power BI']], body: `<p>A single-page web app to reconcile sub-supplier (Tier 2) data against an internal reference database. The core problem: every supplier delivers data in their own Excel format — renamed columns, varied codes, free-text descriptions.</p><p>The tool auto-detects columns via regex, runs a matching cascade (exact code → exact description → weighted similarity score: Jaccard + manufacturer + LCS code), then consolidates validated rows into a semi-annual JSON period file, directly consumable by Power BI.</p><p>Built in pure Vanilla JS to run on <code>file://</code> with no infrastructure, persisting file handles across sessions via IndexedDB.</p><a href="https://app.notion.com/p/38bfe51e040d81f58d76f762e1e1ddde" target="_blank" class="modal-link">View project on Notion →</a>` },
   afrique: { tag: 'Geopolitics,Africa,France', title: 'French influence in Africa: a broken soft-power?', kv: [['Subject','French influence in sub-Saharan Africa'],['Format','Geopolitical essay'],['Language','French']], body: `<p>Diagnosis of French influence in sub-Saharan Africa: military withdrawal (Mali, Burkina, Niger), growing contestation of the CFA franc, and the rise of alternatives: Russia (Wagner/Africa Corps), China, Turkey.</p><p>The analysis questions the moment when a historical presence becomes a strategic liability, and what levers remain available to Paris.</p><a href="https://www.notion.so/35dfe51e040d80668f9fdab79f2b1b97" target="_blank" class="modal-link">Read on Notion →</a>` },
   truss: { tag: 'UK,Finance,Economic policy', title: '44 Days: Liz Truss and the Collapse of Confidence', kv: [['Subject','UK budget crisis 2022'],['Format','Market & policy analysis'],['Language','English'],['Period','September–October 2022']], body: `<p>Post-mortem of the 44 Truss government days (Sept–Oct 2022). The unfunded mini-budget triggered an immediate market reaction: 30-year yields spiked, the pound collapsed, the central bank was forced to intervene urgently to prevent a pension fund meltdown.</p><p>A textbook case on the limits of monetary sovereignty and the weight of fiscal credibility.</p><a href="https://www.notion.so/35dfe51e040d80a28bebdb7283fba9c4" target="_blank" class="modal-link">Read on Notion →</a>` },
