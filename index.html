@@ -488,6 +488,15 @@
         <span class="project-arrow">↗</span>
       </div>
     </div>
+    <div class="project-card fade-in" style="transition-delay:0.2s" onclick="openModal('tier2')">
+      <span class="project-tag">HTML/JS, AlaSQL, Power BI</span>
+      <h3 class="project-title" data-i18n="tier2-title">Tier 2 Mapping System</h3>
+      <p class="project-desc" data-i18n="tier2-desc">Outil de réconciliation de données fournisseurs sans serveur ni framework. ~10 000 références, matching par cascade (code exact → similarité pondérée), consolidation par période semestrielle — données propres prêtes pour Power BI.</p>
+      <div class="project-meta">
+        <span data-i18n="tier2-meta">Vanilla JS, SheetJS, AlaSQL, File System API</span>
+        <span class="project-arrow">↗</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -733,6 +742,9 @@ const T = {
     'aura-meta': 'SQL, SQLite, Power BI, 11 ans de données',
     'palantir-title': 'Palantir Vertex — Graphes de relations',
     'palantir-desc': "Cas d'usage sur la détection de réseaux suspects via graphes ontologiques dans Palantir Foundry. Construction du pipeline de nettoyage, modélisation des objets et liens ontologiques, utilisation de Vertex pour croiser transactions financières et communications entre entités à risque.",
+    'tier2-title': 'Tier 2 Mapping System',
+    'tier2-desc': "Outil de réconciliation de données fournisseurs sans serveur ni framework. ~10 000 références composants, matching par cascade (code exact → similarité pondérée), consolidation par période semestrielle — données propres prêtes pour Power BI.",
+    'tier2-meta': 'Vanilla JS, SheetJS, AlaSQL, File System API',
     'banner-marches': 'Connaître sa <em>chaîne amont</em>',
     'stat-niobium': 'Niobium mondial extrait au Brésil', 'stat-cagr': 'CAGR marché 2025–2033',
     'stat-catalao': 'Rachat Catalão par CMOC', 'stat-criticite': 'Criticité UE — ininterrompue',
@@ -789,6 +801,9 @@ const T = {
     'aura-meta': 'SQL, SQLite, Power BI,11 years of data',
     'palantir-title': 'Palantir Vertex — Relationship graphs',
     'palantir-desc': 'Use case for detecting suspicious networks via ontological graphs in Palantir Foundry. Building the cleaning pipeline, modelling ontological objects and links, using Vertex to cross-reference financial transactions and communications between at-risk entities.',
+    'tier2-title': 'Tier 2 Mapping System',
+    'tier2-desc': 'A zero-backend supplier data reconciliation tool. ~10,000 component references, cascade matching (exact code → weighted similarity score), semi-annual period consolidation — clean data ready for Power BI.',
+    'tier2-meta': 'Vanilla JS, SheetJS, AlaSQL, File System API',
     'banner-marches': 'Know your <em>upstream chain</em>',
     'stat-niobium': 'Global niobium extracted in Brazil', 'stat-cagr': 'Market CAGR 2025–2033',
     'stat-catalao': 'CMOC acquisition of Catalão', 'stat-criticite': 'EU criticality — uninterrupted',
@@ -862,6 +877,12 @@ const projects = {
     kv: [['Sujet','Détection de réseaux via graphes ontologiques'],['Outils','Palantir Foundry / Vertex'],['Format','Pipeline + modélisation ontologique']],
     body: `<p>Construction d'un pipeline de nettoyage et modélisation des objets ontologiques dans Palantir Foundry. Utilisation de Vertex pour croiser transactions financières et communications entre entités à risque et détecter des réseaux suspects.</p><a href="https://www.notion.so/35dfe51e040d8033a363dbbc326a523a" target="_blank" class="modal-link">Voir le projet →</a>`,
   },
+  tier2: {
+    tag: 'Outil interne, Data achats, Supply Chain',
+    title: 'Tier 2 Mapping System',
+    kv: [['Contrainte','Zéro serveur — un seul fichier HTML'],['Stack','Vanilla JS, SheetJS, AlaSQL, File System API'],['Périmètre','~10 000 références composants industriels'],['Export','JSON → Power BI']],
+    body: `<p>Application web monopage pour réconcilier les données de sous-traitants fournisseurs (Tier 2) avec le référentiel interne. Le problème de base : chaque fournisseur livre ses données dans son propre format Excel — colonnes renommées, codes variés, descriptions libres.</p><p>L'outil détecte automatiquement les colonnes par regex, applique une cascade de matching (code exact → description exacte → score de similarité pondéré Jaccard + fabricant + code LCS), puis consolide les lignes validées dans un fichier JSON par période semestrielle, directement consommable par Power BI.</p><p>Développé en Vanilla JS pur pour tourner en <code>file://</code> sans infrastructure, avec persistance des handles de fichiers via IndexedDB entre les sessions.</p><a href="https://app.notion.com/p/38bfe51e040d81f58d76f762e1e1ddde" target="_blank" class="modal-link">Voir le projet sur Notion →</a>`,
+  },
   afrique: {
     tag: 'Géopolitique, Afrique, France',
     title: 'La puissance française en Afrique : un soft-power rompu ?',
@@ -888,6 +909,7 @@ const projectsEN = {
   analyse: { tag: 'Niobium,Modelling,Risk', title: 'Costs, risks & market structure', kv: [['Subject','Market & geopolitical risk modelling'],['Format','Quantitative and qualitative analysis'],['Tools','Financial modelling, OTC sources'],['Language','French']], body: `<p>This analysis covers the production cost structure of niobium and the implications for the economic viability of alternatives.</p><p>It includes market risk modelling (administered price vs potential volatility in a crisis) and a geopolitical concentration risk assessment: probability, response time, substitution options.</p><a href="https://www.notion.so/35dfe51e040d80ec9301c81c5b2c0ac5" target="_blank" class="modal-link">Read on Notion →</a>` },
   aura: { tag: 'Data,SQL,Power BI', title: 'AURA Energy Consumption', kv: [['Subject','Industrial energy consumption'],['Tools','SQL,SQLite,Power BI'],['Data','RTE éco2mix 2013–2024'],['Format','Dashboard + analysis']], body: `<p>Analysis of the electricity mix in the Auvergne-Rhône-Alpes region over 11 years via SQLite and Power BI. Nuclear structurally dominant at +70%, strong hydraulic seasonality, thermal inversely correlated with nuclear availability.</p><a href="https://www.notion.so/35dfe51e040d80ba905cd575fb14d76a" target="_blank" class="modal-link">View project →</a>` },
   palantir: { tag: 'Data,Palantir,Foundry', title: 'Palantir Vertex — Relationship graphs', kv: [['Subject','Network detection via ontological graphs'],['Tools','Palantir Foundry / Vertex'],['Format','Pipeline + ontological modelling']], body: `<p>Building a cleaning pipeline and modelling ontological objects in Palantir Foundry. Using Vertex to cross-reference financial transactions and communications between at-risk entities to detect suspicious networks.</p><a href="https://www.notion.so/35dfe51e040d8033a363dbbc326a523a" target="_blank" class="modal-link">View project →</a>` },
+  tier2: { tag: 'Internal tool, Procurement Data, Supply Chain', title: 'Tier 2 Mapping System', kv: [['Constraint','Zero backend — single HTML file'],['Stack','Vanilla JS, SheetJS, AlaSQL, File System API'],['Scope','~10,000 industrial component references'],['Export','JSON → Power BI']], body: `<p>A single-page web app to reconcile sub-supplier (Tier 2) data against an internal reference database. The core problem: every supplier delivers data in their own Excel format — renamed columns, varied codes, free-text descriptions.</p><p>The tool auto-detects columns via regex, runs a matching cascade (exact code → exact description → weighted similarity score: Jaccard + manufacturer + LCS code), then consolidates validated rows into a semi-annual JSON period file, directly consumable by Power BI.</p><p>Built in pure Vanilla JS to run on <code>file://</code> with no infrastructure, persisting file handles across sessions via IndexedDB.</p><a href="https://app.notion.com/p/38bfe51e040d81f58d76f762e1e1ddde" target="_blank" class="modal-link">View project on Notion →</a>` },
   afrique: { tag: 'Geopolitics,Africa,France', title: 'French influence in Africa: a broken soft-power?', kv: [['Subject','French influence in sub-Saharan Africa'],['Format','Geopolitical essay'],['Language','French']], body: `<p>Diagnosis of French influence in sub-Saharan Africa: military withdrawal (Mali, Burkina, Niger), growing contestation of the CFA franc, and the rise of alternatives: Russia (Wagner/Africa Corps), China, Turkey.</p><p>The analysis questions the moment when a historical presence becomes a strategic liability, and what levers remain available to Paris.</p><a href="https://www.notion.so/35dfe51e040d80668f9fdab79f2b1b97" target="_blank" class="modal-link">Read on Notion →</a>` },
   truss: { tag: 'UK,Finance,Economic policy', title: '44 Days: Liz Truss and the Collapse of Confidence', kv: [['Subject','UK budget crisis 2022'],['Format','Market & policy analysis'],['Language','English'],['Period','September–October 2022']], body: `<p>Post-mortem of the 44 Truss government days (Sept–Oct 2022). The unfunded mini-budget triggered an immediate market reaction: 30-year yields spiked, the pound collapsed, the central bank was forced to intervene urgently to prevent a pension fund meltdown.</p><p>A textbook case on the limits of monetary sovereignty and the weight of fiscal credibility.</p><a href="https://www.notion.so/35dfe51e040d80a28bebdb7283fba9c4" target="_blank" class="modal-link">Read on Notion →</a>` },
   memoire: { tag: 'Research paper, Procurement, Data, GE Vernova', title: 'Data-driven procurement centralisation in multi-site groups', kv: [['Subject','Data-driven procurement centralisation'],['Context','Research paper, GE Vernova'],['Tools','Palantir Foundry, Data ontologies'],['Language','English']], body: `<p>How data-driven procurement centralisation strengthens corporate decision-making power over supplier markets without destroying local autonomy. Organisation theory, data ontologies, Palantir Foundry, GE Vernova fieldwork.</p><p><strong>Central question:</strong> to what extent does ontological structuring of procurement data enable corporate leadership to actively govern its supplier markets without sacrificing operational site responsiveness?</p>` },
