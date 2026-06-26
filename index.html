@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arthur Gaible — Digital Procurement & Market Intelligence</title>
+<title>Arthur Gaible — Analytics Engineer & Data Systems</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Mono:wght@300;400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -325,9 +325,9 @@
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content fade-in">
-    <div class="hero-tag">Digital Procurement & Market Intelligence</div>
+    <div class="hero-tag">Analytics Engineer · Data Systems · Market Intelligence</div>
     <h1 class="hero-name">Arthur<br><em>Gaible</em></h1>
-    <p class="hero-subtitle" data-i18n="hero-subtitle">Centraliser l'information, construire des solutions end-to-end de Business Intelligence pour les équipes métier.</p>
+    <p class="hero-subtitle" data-i18n="hero-subtitle">Concevoir et déployer des systèmes de données bout-en-bout — du pipeline brut au tableau de bord décisionnel.</p>
   </div>
 </div>
 
@@ -428,8 +428,55 @@
 
 <div class="section-content collapsed" id="section-procurement">
 
+<!-- DATA PROJECTS -->
+<section id="data" style="background:var(--ink);">
+  <div class="section-rule" style="margin-bottom:3rem;"><span class="section-rule-text" style="color:rgba(245,240,232,0.3);">Data & Industrial Analytics</span></div>
+  <div class="section-header fade-in">
+    <span class="section-num" style="color:var(--gold);">02</span>
+    <h2 class="section-title" style="color:var(--paper);">Data &<br>Industrial Analytics</h2>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card fade-in" onclick="openModal('aura')">
+      <span class="project-tag">SQL, SQLite, Power BI</span>
+      <h3 class="project-title">AURA Energy Consumption</h3>
+      <p class="project-desc" data-i18n="aura-desc">Analyse du mix électrique de la région Auvergne-Rhône-Alpes sur 11 ans (2013–2024). Données RTE éco2mix traitées via SQLite, dashboard Power BI. Nucléaire structurellement dominant à +70%, saisonnalité hydraulique forte, thermique en corrélation inverse avec la disponibilité nucléaire.</p>
+      <div class="project-meta">
+        <span data-i18n="aura-meta">SQL, SQLite, Power BI, 11 ans de données</span>
+        <span class="project-arrow">↗</span>
+      </div>
+    </div>
+    <div class="project-card fade-in" style="transition-delay:0.1s" onclick="openModal('palantir')">
+      <span class="project-tag">Palantir, Foundry, Ontologie</span>
+      <h3 class="project-title" data-i18n="palantir-title">Palantir Vertex — Graphes de relations</h3>
+      <p class="project-desc" data-i18n="palantir-desc">Cas d'usage sur la détection de réseaux suspects via graphes ontologiques dans Palantir Foundry. Construction du pipeline de nettoyage, modélisation des objets et liens ontologiques, utilisation de Vertex pour croiser transactions financières et communications entre entités à risque.</p>
+      <div class="project-meta">
+        <span>Palantir Foundry, Ontologie, Graph analysis</span>
+        <span class="project-arrow">↗</span>
+      </div>
+    </div>
+    <div class="project-card fade-in" style="transition-delay:0.2s" onclick="openModal('tier2')">
+      <span class="project-tag">HTML/JS, AlaSQL, Power BI</span>
+      <h3 class="project-title" data-i18n="tier2-title">Tier 2 Mapping System</h3>
+      <p class="project-desc" data-i18n="tier2-desc">Pipeline de réconciliation de données industrielles en Vanilla JS pur. Matching par cascade (code exact → similarité pondérée Jaccard), persistance FSA + IndexedDB — zéro infrastructure, données propres pour Power BI.</p>
+      <div class="project-meta">
+        <span data-i18n="tier2-meta">Vanilla JS, SheetJS, AlaSQL, File System API</span>
+        <span class="project-arrow">↗</span>
+      </div>
+    </div>
+    <div class="project-card fade-in" style="transition-delay:0.3s" onclick="openModal('rk')">
+      <span class="project-tag">HTML/JS, File System API, Power BI</span>
+      <h3 class="project-title" data-i18n="rk-title">Système de gestion des rébuts</h3>
+      <p class="project-desc" data-i18n="rk-desc">Deux outils HTML pour automatiser le circuit des fiches de rebut industriel entre opérateurs et acheteur. 3 lookups automatiques à l'import, registre JSON temps réel, dashboard SVG, zéro serveur.</p>
+      <div class="project-meta">
+        <span data-i18n="rk-meta">Vanilla JS, File System API, IndexedDB</span>
+        <span class="project-arrow">↗</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FEATURED: MEMOIRE GE VERNOVA -->
-<div class="featured-procurement fade-in" style="padding-top:2rem;">
+<div class="featured-procurement fade-in">
   <div class="section-rule" style="margin-bottom:0;">
     <span class="section-rule-text" data-i18n="proc-rule" style="color:rgba(245,240,232,0.3);">Focus, Travail principal</span>
   </div>
@@ -461,53 +508,6 @@
     </div>
   </div>
 </div>
-
-<!-- DATA PROJECTS -->
-<section id="data" style="background:var(--ink);">
-  <div class="section-rule" style="margin-bottom:3rem;"><span class="section-rule-text" style="color:rgba(245,240,232,0.3);">Data & Industrial Analytics</span></div>
-  <div class="section-header fade-in">
-    <span class="section-num" style="color:var(--gold);">02</span>
-    <h2 class="section-title" style="color:var(--paper);">Data &<br>Industrial Analytics</h2>
-  </div>
-  <div class="projects-grid">
-    <div class="project-card fade-in" onclick="openModal('aura')">
-      <span class="project-tag">SQL, SQLite, Power BI</span>
-      <h3 class="project-title">AURA Energy Consumption</h3>
-      <p class="project-desc" data-i18n="aura-desc">Analyse du mix électrique de la région Auvergne-Rhône-Alpes sur 11 ans (2013–2024). Données RTE éco2mix traitées via SQLite, dashboard Power BI. Nucléaire structurellement dominant à +70%, saisonnalité hydraulique forte, thermique en corrélation inverse avec la disponibilité nucléaire.</p>
-      <div class="project-meta">
-        <span data-i18n="aura-meta">SQL, SQLite, Power BI, 11 ans de données</span>
-        <span class="project-arrow">↗</span>
-      </div>
-    </div>
-    <div class="project-card fade-in" style="transition-delay:0.1s" onclick="openModal('palantir')">
-      <span class="project-tag">Palantir, Foundry, Ontologie</span>
-      <h3 class="project-title" data-i18n="palantir-title">Palantir Vertex — Graphes de relations</h3>
-      <p class="project-desc" data-i18n="palantir-desc">Cas d'usage sur la détection de réseaux suspects via graphes ontologiques dans Palantir Foundry. Construction du pipeline de nettoyage, modélisation des objets et liens ontologiques, utilisation de Vertex pour croiser transactions financières et communications entre entités à risque.</p>
-      <div class="project-meta">
-        <span>Palantir Foundry, Ontologie, Graph analysis</span>
-        <span class="project-arrow">↗</span>
-      </div>
-    </div>
-    <div class="project-card fade-in" style="transition-delay:0.2s" onclick="openModal('tier2')">
-      <span class="project-tag">HTML/JS, AlaSQL, Power BI</span>
-      <h3 class="project-title" data-i18n="tier2-title">Tier 2 Mapping System</h3>
-      <p class="project-desc" data-i18n="tier2-desc">Outil de réconciliation de données fournisseurs sans serveur ni framework. ~10 000 références, matching par cascade (code exact → similarité pondérée), consolidation par période semestrielle — données propres prêtes pour Power BI.</p>
-      <div class="project-meta">
-        <span data-i18n="tier2-meta">Vanilla JS, SheetJS, AlaSQL, File System API</span>
-        <span class="project-arrow">↗</span>
-      </div>
-    </div>
-    <div class="project-card fade-in" style="transition-delay:0.3s" onclick="openModal('rk')">
-      <span class="project-tag">HTML/JS, File System API, Power BI</span>
-      <h3 class="project-title" data-i18n="rk-title">Système de gestion des rébuts</h3>
-      <p class="project-desc" data-i18n="rk-desc">Deux outils HTML pour automatiser le circuit des fiches de rebut industriel entre opérateurs et acheteur. 3 lookups automatiques à l'import, registre JSON temps réel, dashboard SVG, zéro serveur.</p>
-      <div class="project-meta">
-        <span data-i18n="rk-meta">Vanilla JS, File System API, IndexedDB</span>
-        <span class="project-arrow">↗</span>
-      </div>
-    </div>
-  </div>
-</section>
 
 </div><!-- /section-content procurement -->
 
@@ -670,7 +670,7 @@
 <!-- FOOTER -->
 <footer>
   <span>© 2026 Arthur Gaible</span>
-  <span>Digital Procurement, Market Intelligence, Data Analytics</span>
+  <span>Analytics Engineering · Data Systems · Market Intelligence</span>
 </footer>
 
 <!-- MODALS -->
@@ -725,7 +725,7 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 const T = {
   fr: {
-    'hero-subtitle': "Centraliser l'information, construire des solutions end-to-end de Business Intelligence pour les équipes métier.",
+    'hero-subtitle': "Concevoir et déployer des systèmes de données bout-en-bout — du pipeline brut au tableau de bord décisionnel.",
     'banner-profil': 'Découvrir <em>mon profil</em>',
     'profil-rule': 'Profil & Certifications',
     'profil-label': 'Profil',
@@ -752,7 +752,7 @@ const T = {
     'palantir-title': 'Palantir Vertex — Graphes de relations',
     'palantir-desc': "Cas d'usage sur la détection de réseaux suspects via graphes ontologiques dans Palantir Foundry. Construction du pipeline de nettoyage, modélisation des objets et liens ontologiques, utilisation de Vertex pour croiser transactions financières et communications entre entités à risque.",
     'tier2-title': 'Tier 2 Mapping System',
-    'tier2-desc': "Outil de réconciliation de données fournisseurs sans serveur ni framework. ~10 000 références composants, matching par cascade (code exact → similarité pondérée), consolidation par période semestrielle — données propres prêtes pour Power BI.",
+    'tier2-desc': "Pipeline de réconciliation de données industrielles en Vanilla JS pur. Matching par cascade (code exact → similarité pondérée Jaccard), persistance FSA + IndexedDB — zéro infrastructure, données propres pour Power BI.",
     'tier2-meta': 'Vanilla JS, SheetJS, AlaSQL, File System API',
     'rk-title': 'Système de gestion des rébuts',
     'rk-desc': "Deux outils HTML pour automatiser le circuit des fiches de rebut industriel entre opérateurs et acheteur. 3 lookups automatiques à l'import, registre JSON temps réel, dashboard SVG, zéro serveur.",
@@ -787,7 +787,7 @@ const T = {
     'contact-h3': 'Prendre contact',
   },
   en: {
-    'hero-subtitle': 'Centralising information, building end-to-end Business Intelligence solutions for business teams.',
+    'hero-subtitle': 'Building end-to-end data systems — from raw pipeline to decision-ready dashboard.',
     'banner-profil': 'Discover <em>my profile</em>',
     'profil-rule': 'Profile & Certifications',
     'profil-label': 'Profile',
@@ -814,7 +814,7 @@ const T = {
     'palantir-title': 'Palantir Vertex — Relationship graphs',
     'palantir-desc': 'Use case for detecting suspicious networks via ontological graphs in Palantir Foundry. Building the cleaning pipeline, modelling ontological objects and links, using Vertex to cross-reference financial transactions and communications between at-risk entities.',
     'tier2-title': 'Tier 2 Mapping System',
-    'tier2-desc': 'A zero-backend supplier data reconciliation tool. ~10,000 component references, cascade matching (exact code → weighted similarity score), semi-annual period consolidation — clean data ready for Power BI.',
+    'tier2-desc': 'Industrial data reconciliation pipeline in pure Vanilla JS. Cascade matching (exact code → weighted Jaccard similarity), FSA + IndexedDB persistence — zero infrastructure, clean data for Power BI.',
     'tier2-meta': 'Vanilla JS, SheetJS, AlaSQL, File System API',
     'rk-title': 'Industrial Scrap Management System',
     'rk-desc': 'Two HTML tools automating the industrial scrap sheet workflow between operators and the procurement buyer. 3 automatic lookups on import, real-time JSON registry, SVG dashboard, zero backend.',
@@ -902,7 +902,7 @@ const projects = {
     tag: 'Outil interne, Data achats, Supply Chain',
     title: 'Tier 2 Mapping System',
     kv: [['Contrainte','Zéro serveur — un seul fichier HTML'],['Stack','Vanilla JS, SheetJS, AlaSQL, File System API'],['Périmètre','~10 000 références composants industriels'],['Export','JSON → Power BI']],
-    body: `<p>Application web monopage pour réconcilier les données de sous-traitants fournisseurs (Tier 2) avec le référentiel interne. Le problème de base : chaque fournisseur livre ses données dans son propre format Excel — colonnes renommées, codes variés, descriptions libres.</p><p>L'outil détecte automatiquement les colonnes par regex, applique une cascade de matching (code exact → description exacte → score de similarité pondéré Jaccard + fabricant + code LCS), puis consolide les lignes validées dans un fichier JSON par période semestrielle, directement consommable par Power BI.</p><p>Développé en Vanilla JS pur pour tourner en <code>file://</code> sans infrastructure, avec persistance des handles de fichiers via IndexedDB entre les sessions.</p><a href="https://app.notion.com/p/38bfe51e040d81f58d76f762e1e1ddde" target="_blank" class="modal-link">Voir le projet sur Notion →</a>`,
+    body: `<p>Pipeline de réconciliation de données industrielles en monopage JS pur. Contrainte centrale : les sous-traitants (Tier 2) livrent leurs données dans des formats Excel hétérogènes — colonnes renommées, codes variés, descriptions libres. L'outil ingère, normalise et réconcilie sans serveur ni dépendance extérieure.</p><p>L'outil détecte automatiquement les colonnes par regex, applique une cascade de matching (code exact → description exacte → score de similarité pondéré Jaccard + fabricant + code LCS), puis consolide les lignes validées dans un fichier JSON par période semestrielle, directement consommable par Power BI.</p><p>Développé en Vanilla JS pur pour tourner en <code>file://</code> sans infrastructure, avec persistance des handles de fichiers via IndexedDB entre les sessions.</p><a href="https://app.notion.com/p/38bfe51e040d81f58d76f762e1e1ddde" target="_blank" class="modal-link">Voir le projet sur Notion →</a>`,
   },
   afrique: {
     tag: 'Géopolitique, Afrique, France',
@@ -931,7 +931,7 @@ const projectsEN = {
   aura: { tag: 'Data,SQL,Power BI', title: 'AURA Energy Consumption', kv: [['Subject','Industrial energy consumption'],['Tools','SQL,SQLite,Power BI'],['Data','RTE éco2mix 2013–2024'],['Format','Dashboard + analysis']], body: `<p>Analysis of the electricity mix in the Auvergne-Rhône-Alpes region over 11 years via SQLite and Power BI. Nuclear structurally dominant at +70%, strong hydraulic seasonality, thermal inversely correlated with nuclear availability.</p><a href="https://www.notion.so/35dfe51e040d80ba905cd575fb14d76a" target="_blank" class="modal-link">View project →</a>` },
   palantir: { tag: 'Data,Palantir,Foundry', title: 'Palantir Vertex — Relationship graphs', kv: [['Subject','Network detection via ontological graphs'],['Tools','Palantir Foundry / Vertex'],['Format','Pipeline + ontological modelling']], body: `<p>Building a cleaning pipeline and modelling ontological objects in Palantir Foundry. Using Vertex to cross-reference financial transactions and communications between at-risk entities to detect suspicious networks.</p><a href="https://www.notion.so/35dfe51e040d8033a363dbbc326a523a" target="_blank" class="modal-link">View project →</a>` },
   rk: { tag: 'Internal tool, Quality, Supply Chain', title: 'Industrial Scrap Management System', kv: [['Constraint','Zero backend — two standalone HTML files'],['Stack','Vanilla JS, File System Access API, IndexedDB'],['Workflow','Operator → email → Procurement buyer'],['Export','JSON, CSV → Power BI']], body: `<p>Two HTML tools automating the industrial scrap sheet workflow in a multi-site industrial group. Before: manual Excel files, manual lookups across three separate reference files. After: email transmission with a self-contained HTML scrap sheet, 3 automatic lookups on import, real-time JSON registry updated directly on disk.</p><p>The buyer tool covers 5 tabs: import & processing (validation, lookups, decision 1–7, automatic calculations for flat fee and deadlines), registry with inline editing and a health bar (inconsistency detection), SVG dashboard (KPIs, spend by foundry, monthly trend charts, status donuts), reference management, and file-linking settings.</p><p>Robust persistence: File System Access API for on-disk JSON, handles stored in IndexedDB — one-click reconnect after page reload, no re-linking needed.</p><a href="https://app.notion.com/p/38bfe51e040d8143a59cdefa31b3827f" target="_blank" class="modal-link">View project on Notion →</a>` },
-  tier2: { tag: 'Internal tool, Procurement Data, Supply Chain', title: 'Tier 2 Mapping System', kv: [['Constraint','Zero backend — single HTML file'],['Stack','Vanilla JS, SheetJS, AlaSQL, File System API'],['Scope','~10,000 industrial component references'],['Export','JSON → Power BI']], body: `<p>A single-page web app to reconcile sub-supplier (Tier 2) data against an internal reference database. The core problem: every supplier delivers data in their own Excel format — renamed columns, varied codes, free-text descriptions.</p><p>The tool auto-detects columns via regex, runs a matching cascade (exact code → exact description → weighted similarity score: Jaccard + manufacturer + LCS code), then consolidates validated rows into a semi-annual JSON period file, directly consumable by Power BI.</p><p>Built in pure Vanilla JS to run on <code>file://</code> with no infrastructure, persisting file handles across sessions via IndexedDB.</p><a href="https://app.notion.com/p/38bfe51e040d81f58d76f762e1e1ddde" target="_blank" class="modal-link">View project on Notion →</a>` },
+  tier2: { tag: 'Internal tool, Procurement Data, Supply Chain', title: 'Tier 2 Mapping System', kv: [['Constraint','Zero backend — single HTML file'],['Stack','Vanilla JS, SheetJS, AlaSQL, File System API'],['Scope','~10,000 industrial component references'],['Export','JSON → Power BI']], body: `<p>Pure JS single-page data pipeline for reconciling industrial sub-supplier (Tier 2) data against an internal reference. Core challenge: every supplier delivers data in their own Excel format — renamed columns, varied codes, free-text descriptions. Zero server, zero build, zero external dependency.</p><p>The tool auto-detects columns via regex, runs a matching cascade (exact code → exact description → weighted similarity score: Jaccard + manufacturer + LCS code), then consolidates validated rows into a semi-annual JSON period file, directly consumable by Power BI.</p><p>Built in pure Vanilla JS to run on <code>file://</code> with no infrastructure, persisting file handles across sessions via IndexedDB.</p><a href="https://app.notion.com/p/38bfe51e040d81f58d76f762e1e1ddde" target="_blank" class="modal-link">View project on Notion →</a>` },
   afrique: { tag: 'Geopolitics,Africa,France', title: 'French influence in Africa: a broken soft-power?', kv: [['Subject','French influence in sub-Saharan Africa'],['Format','Geopolitical essay'],['Language','French']], body: `<p>Diagnosis of French influence in sub-Saharan Africa: military withdrawal (Mali, Burkina, Niger), growing contestation of the CFA franc, and the rise of alternatives: Russia (Wagner/Africa Corps), China, Turkey.</p><p>The analysis questions the moment when a historical presence becomes a strategic liability, and what levers remain available to Paris.</p><a href="https://www.notion.so/35dfe51e040d80668f9fdab79f2b1b97" target="_blank" class="modal-link">Read on Notion →</a>` },
   truss: { tag: 'UK,Finance,Economic policy', title: '44 Days: Liz Truss and the Collapse of Confidence', kv: [['Subject','UK budget crisis 2022'],['Format','Market & policy analysis'],['Language','English'],['Period','September–October 2022']], body: `<p>Post-mortem of the 44 Truss government days (Sept–Oct 2022). The unfunded mini-budget triggered an immediate market reaction: 30-year yields spiked, the pound collapsed, the central bank was forced to intervene urgently to prevent a pension fund meltdown.</p><p>A textbook case on the limits of monetary sovereignty and the weight of fiscal credibility.</p><a href="https://www.notion.so/35dfe51e040d80a28bebdb7283fba9c4" target="_blank" class="modal-link">Read on Notion →</a>` },
   memoire: { tag: 'Research paper, Procurement, Data, GE Vernova', title: 'Data-driven procurement centralisation in multi-site groups', kv: [['Subject','Data-driven procurement centralisation'],['Context','Research paper, GE Vernova'],['Tools','Palantir Foundry, Data ontologies'],['Language','English']], body: `<p>How data-driven procurement centralisation strengthens corporate decision-making power over supplier markets without destroying local autonomy. Organisation theory, data ontologies, Palantir Foundry, GE Vernova fieldwork.</p><p><strong>Central question:</strong> to what extent does ontological structuring of procurement data enable corporate leadership to actively govern its supplier markets without sacrificing operational site responsiveness?</p>` },
