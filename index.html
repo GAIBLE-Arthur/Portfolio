@@ -435,7 +435,7 @@
     <span class="section-num" style="color:var(--gold);">02</span>
     <h2 class="section-title" style="color:var(--paper);">Data &<br>Industrial Analytics</h2>
   </div>
-  <div class="projects-grid">
+  <div class="projects-grid" style="grid-template-columns: repeat(3, 1fr);">
     <div class="project-card fade-in" onclick="openModal('aura')">
       <span class="project-tag">SQL, SQLite, Power BI</span>
       <h3 class="project-title">AURA Energy Consumption</h3>
@@ -457,7 +457,7 @@
     <div class="project-card fade-in" style="transition-delay:0.2s" onclick="openModal('tier2')">
       <span class="project-tag">HTML/JS, AlaSQL, Power BI</span>
       <h3 class="project-title" data-i18n="tier2-title">Tier 2 Mapping System</h3>
-      <p class="project-desc" data-i18n="tier2-desc">Pipeline de réconciliation de données industrielles en Vanilla JS pur. Matching par cascade (code exact → similarité pondérée Jaccard), persistance FSA + IndexedDB — zéro infrastructure, données propres pour Power BI.</p>
+      <p class="project-desc" data-i18n="tier2-desc">Pipeline de réconciliation de données industrielles en Vanilla JS pur. Matching par cascade (code exact → similarité pondérée Jaccard), persistance FSA + IndexedDB — données propres pour Power BI.</p>
       <div class="project-meta">
         <span data-i18n="tier2-meta">Vanilla JS, SheetJS, AlaSQL, File System API</span>
         <span class="project-arrow">↗</span>
@@ -474,10 +474,19 @@
     </div>
     <div class="project-card fade-in" style="transition-delay:0.4s" onclick="openModal('pharma')">
       <span class="project-tag">Microsoft Fabric, dbt Cloud, Power BI</span>
-      <h3 class="project-title" data-i18n="pharma-title">Pharma & Biotech Analytics Pipeline</h3>
+      <h3 class="project-title" data-i18n="pharma-title">Pharma — Biotech Analytics Pipeline</h3>
       <p class="project-desc" data-i18n="pharma-desc">Pipeline end-to-end sur données pharma/biotech : 5 sources CSV (6 328 lignes) ingérées dans Microsoft Fabric Warehouse via Copy job, transformées en 10 modèles dbt (staging / intermediate / marts), visualisées dans Power BI en DirectQuery.</p>
       <div class="project-meta">
         <span data-i18n="pharma-meta">Fabric, dbt Cloud, T-SQL, Power BI</span>
+        <span class="project-arrow">↗</span>
+      </div>
+    </div>
+    <div class="project-card fade-in" style="transition-delay:0.5s" onclick="openModal('energy')">
+      <span class="project-tag">Microsoft Fabric, Power BI, SQL</span>
+      <h3 class="project-title" data-i18n="energy-title">Global Electricity Analytics</h3>
+      <p class="project-desc" data-i18n="energy-desc">Pipeline Fabric sur les données électriques mondiales Ember Climate (215 pays, 2000–2024). Dataflow Gen2 → Warehouse T-SQL → 3 tables analytiques → dashboard Power BI Service publié en DirectQuery.</p>
+      <div class="project-meta">
+        <span data-i18n="energy-meta">Fabric, Dataflow Gen2, T-SQL, Power BI</span>
         <span class="project-arrow">↗</span>
       </div>
     </div>
@@ -761,14 +770,17 @@ const T = {
     'palantir-title': 'Palantir Vertex — Graphes de relations',
     'palantir-desc': "Cas d'usage sur la détection de réseaux suspects via graphes ontologiques dans Palantir Foundry. Construction du pipeline de nettoyage, modélisation des objets et liens ontologiques, utilisation de Vertex pour croiser transactions financières et communications entre entités à risque.",
     'tier2-title': 'Tier 2 Mapping System',
-    'tier2-desc': "Pipeline de réconciliation de données industrielles en Vanilla JS pur. Matching par cascade (code exact → similarité pondérée Jaccard), persistance FSA + IndexedDB — zéro infrastructure, données propres pour Power BI.",
+    'tier2-desc': "Pipeline de réconciliation de données industrielles en Vanilla JS pur. Matching par cascade (code exact → similarité pondérée Jaccard), persistance FSA + IndexedDB — données propres pour Power BI.",
     'tier2-meta': 'Vanilla JS, SheetJS, AlaSQL, File System API',
     'rk-title': 'Système de gestion des rébuts',
     'rk-desc': "Deux outils HTML pour automatiser le circuit des fiches de rebut industriel entre opérateurs et acheteur. 3 lookups automatiques à l'import, registre JSON temps réel, dashboard SVG, zéro serveur.",
     'rk-meta': 'Vanilla JS, File System API, IndexedDB',
-    'pharma-title': 'Pharma & Biotech Analytics Pipeline',
+    'pharma-title': 'Pharma — Biotech Analytics Pipeline',
     'pharma-desc': "Pipeline end-to-end sur données pharma/biotech : 5 sources CSV (6 328 lignes) ingérées dans Microsoft Fabric Warehouse via Copy job, transformées en 10 modèles dbt (staging / intermediate / marts), visualisées dans Power BI en DirectQuery.",
     'pharma-meta': 'Fabric, dbt Cloud, T-SQL, Power BI',
+    'energy-title': 'Global Electricity Analytics',
+    'energy-desc': "Pipeline Fabric sur les données électriques mondiales Ember Climate (215 pays, 2000–2024). Dataflow Gen2 → Warehouse T-SQL → 3 tables analytiques → dashboard Power BI Service publié en DirectQuery.",
+    'energy-meta': 'Fabric, Dataflow Gen2, T-SQL, Power BI',
     'banner-marches': 'Connaître sa <em>chaîne amont</em>',
     'stat-niobium': 'Niobium mondial extrait au Brésil', 'stat-cagr': 'CAGR marché 2025–2033',
     'stat-catalao': 'Rachat Catalão par CMOC', 'stat-criticite': 'Criticité UE — ininterrompue',
@@ -826,14 +838,17 @@ const T = {
     'palantir-title': 'Palantir Vertex — Relationship graphs',
     'palantir-desc': 'Use case for detecting suspicious networks via ontological graphs in Palantir Foundry. Building the cleaning pipeline, modelling ontological objects and links, using Vertex to cross-reference financial transactions and communications between at-risk entities.',
     'tier2-title': 'Tier 2 Mapping System',
-    'tier2-desc': 'Industrial data reconciliation pipeline in pure Vanilla JS. Cascade matching (exact code → weighted Jaccard similarity), FSA + IndexedDB persistence — zero infrastructure, clean data for Power BI.',
+    'tier2-desc': 'Industrial data reconciliation pipeline in pure Vanilla JS. Cascade matching (exact code → weighted Jaccard similarity), FSA + IndexedDB persistence — clean data for Power BI.',
     'tier2-meta': 'Vanilla JS, SheetJS, AlaSQL, File System API',
     'rk-title': 'Industrial Scrap Management System',
     'rk-desc': 'Two HTML tools automating the industrial scrap sheet workflow between operators and the procurement buyer. 3 automatic lookups on import, real-time JSON registry, SVG dashboard, zero backend.',
     'rk-meta': 'Vanilla JS, File System API, IndexedDB',
-    'pharma-title': 'Pharma & Biotech Analytics Pipeline',
+    'pharma-title': 'Pharma — Biotech Analytics Pipeline',
     'pharma-desc': 'End-to-end pipeline on pharma/biotech data: 5 CSV sources (6,328 rows) ingested into Microsoft Fabric Warehouse via Copy job, transformed through 10 dbt models (staging / intermediate / marts), visualised in Power BI via DirectQuery.',
     'pharma-meta': 'Fabric, dbt Cloud, T-SQL, Power BI',
+    'energy-title': 'Global Electricity Analytics',
+    'energy-desc': 'Fabric pipeline on global electricity data from Ember Climate (215 countries, 2000–2024). Dataflow Gen2 → Warehouse T-SQL → 3 analytical tables → Power BI Service dashboard published in DirectQuery.',
+    'energy-meta': 'Fabric, Dataflow Gen2, T-SQL, Power BI',
     'banner-marches': 'Know your <em>upstream chain</em>',
     'stat-niobium': 'Global niobium extracted in Brazil', 'stat-cagr': 'Market CAGR 2025–2033',
     'stat-catalao': 'CMOC acquisition of Catalão', 'stat-criticite': 'EU criticality — uninterrupted',
@@ -933,9 +948,15 @@ const projects = {
   },
   pharma: {
     tag: 'Data, Microsoft Fabric, dbt Cloud',
-    title: 'Pharma & Biotech Analytics Pipeline',
+    title: 'Pharma — Biotech Analytics Pipeline',
     kv: [['Sources','5 CSV — 6 328 lignes'],['Stack','Microsoft Fabric, dbt Cloud, T-SQL, Power BI'],['Modèles dbt','10 (5 staging, 2 intermediate, 3 marts)'],['Ingestion','Copy job Warehouse (T-SQL, zéro Spark)'],['Visualisation','DirectQuery → Power BI Service']],
     body: `<p>Pipeline data complet sur l'industrie pharma et biotech. Cinq sources hétérogènes (approbations FDA, essais cliniques, financement biotech, charge de morbidité, données financières des laboratoires) sont chargées dans un Warehouse Microsoft Fabric via Copy job en T-SQL pur.</p><p>Dix modèles dbt structurés en trois couches transforment les données brutes jusqu'aux tables analytiques : efficacité R&D par entreprise (RANK() window functions), panorama thérapeutique par indication, tendances deals VC/M&A. Tests data quality automatisés (not_null, accepted_values). Dashboard Power BI publié en DirectQuery sur Power BI Service.</p><a href="https://app.notion.com/p/38cfe51e040d817da7cec1d8326724c0" target="_blank" class="modal-link">Voir le projet sur Notion →</a>`,
+  },
+  energy: {
+    tag: 'Data, Microsoft Fabric, Power BI',
+    title: 'Global Electricity Analytics',
+    kv: [['Source','Ember Climate — 215 pays, 2000–2024'],['Stack','Fabric, Dataflow Gen2, T-SQL, Power BI'],['Tables','mix_mondial_2024, renouvelables_vs_fossiles, top_nucleaire'],['Mode','DirectQuery → Power BI Service']],
+    body: `<p>Pipeline data sur les données électriques mondiales Ember Climate (215 pays, 2000–2024, ~500k lignes). Ingestion via Dataflow Gen2 dans un Fabric Warehouse, puis modélisation en trois tables analytiques via SQL natif T-SQL.</p><p>Dashboard Power BI Service publié en DirectQuery : top producteurs nucléaires 2024, mix énergétique mondial par source, évolution Clean/Fossil/Renewables sur 25 ans, KPI cartes solaire/éolien/nucléaire.</p><a href="https://app.notion.com/p/38cfe51e040d8113a3f3c4296d689bff" target="_blank" class="modal-link">Voir le projet sur Notion →</a>`,
   },
   memoire: {
     tag: 'Mémoire, Achats, Data, GE Vernova',
@@ -955,7 +976,8 @@ const projectsEN = {
   tier2: { tag: 'Internal tool, Procurement Data, Supply Chain', title: 'Tier 2 Mapping System', kv: [['Constraint','Zero backend — single HTML file'],['Stack','Vanilla JS, SheetJS, AlaSQL, File System API'],['Scope','~10,000 industrial component references'],['Export','JSON → Power BI']], body: `<p>Pure JS single-page data pipeline for reconciling industrial sub-supplier (Tier 2) data against an internal reference. Core challenge: every supplier delivers data in their own Excel format — renamed columns, varied codes, free-text descriptions. Zero server, zero build, zero external dependency.</p><p>The tool auto-detects columns via regex, runs a matching cascade (exact code → exact description → weighted similarity score: Jaccard + manufacturer + LCS code), then consolidates validated rows into a semi-annual JSON period file, directly consumable by Power BI.</p><p>Built in pure Vanilla JS to run on <code>file://</code> with no infrastructure, persisting file handles across sessions via IndexedDB.</p><a href="https://app.notion.com/p/38bfe51e040d81f58d76f762e1e1ddde" target="_blank" class="modal-link">View project on Notion →</a>` },
   afrique: { tag: 'Geopolitics,Africa,France', title: 'French influence in Africa: a broken soft-power?', kv: [['Subject','French influence in sub-Saharan Africa'],['Format','Geopolitical essay'],['Language','French']], body: `<p>Diagnosis of French influence in sub-Saharan Africa: military withdrawal (Mali, Burkina, Niger), growing contestation of the CFA franc, and the rise of alternatives: Russia (Wagner/Africa Corps), China, Turkey.</p><p>The analysis questions the moment when a historical presence becomes a strategic liability, and what levers remain available to Paris.</p><a href="https://www.notion.so/35dfe51e040d80668f9fdab79f2b1b97" target="_blank" class="modal-link">Read on Notion →</a>` },
   truss: { tag: 'UK,Finance,Economic policy', title: '44 Days: Liz Truss and the Collapse of Confidence', kv: [['Subject','UK budget crisis 2022'],['Format','Market & policy analysis'],['Language','English'],['Period','September–October 2022']], body: `<p>Post-mortem of the 44 Truss government days (Sept–Oct 2022). The unfunded mini-budget triggered an immediate market reaction: 30-year yields spiked, the pound collapsed, the central bank was forced to intervene urgently to prevent a pension fund meltdown.</p><p>A textbook case on the limits of monetary sovereignty and the weight of fiscal credibility.</p><a href="https://www.notion.so/35dfe51e040d80a28bebdb7283fba9c4" target="_blank" class="modal-link">Read on Notion →</a>` },
-  pharma: { tag: 'Data, Microsoft Fabric, dbt Cloud', title: 'Pharma & Biotech Analytics Pipeline', kv: [['Sources','5 CSV — 6,328 rows'],['Stack','Microsoft Fabric, dbt Cloud, T-SQL, Power BI'],['dbt models','10 (5 staging, 2 intermediate, 3 marts)'],['Ingestion','Warehouse Copy job (T-SQL, zero Spark)'],['Visualisation','DirectQuery → Power BI Service']], body: `<p>End-to-end data pipeline on the pharma and biotech industry. Five heterogeneous sources (FDA approvals, clinical trials, biotech funding, disease burden, pharma financials) are loaded into a Microsoft Fabric Warehouse via a T-SQL Copy job.</p><p>Ten dbt models structured in three layers transform raw data into analytical tables: R&D efficiency by company (RANK() window functions), therapy area landscape, VC/M&A deal trends. Automated data quality tests (not_null, accepted_values). Power BI dashboard published via DirectQuery to Power BI Service.</p><a href="https://app.notion.com/p/38cfe51e040d817da7cec1d8326724c0" target="_blank" class="modal-link">View project on Notion →</a>` },
+  pharma: { tag: 'Data, Microsoft Fabric, dbt Cloud', title: 'Pharma — Biotech Analytics Pipeline', kv: [['Sources','5 CSV — 6,328 rows'],['Stack','Microsoft Fabric, dbt Cloud, T-SQL, Power BI'],['dbt models','10 (5 staging, 2 intermediate, 3 marts)'],['Ingestion','Warehouse Copy job (T-SQL, zero Spark)'],['Visualisation','DirectQuery → Power BI Service']], body: `<p>End-to-end data pipeline on the pharma and biotech industry. Five heterogeneous sources (FDA approvals, clinical trials, biotech funding, disease burden, pharma financials) are loaded into a Microsoft Fabric Warehouse via a T-SQL Copy job.</p><p>Ten dbt models structured in three layers transform raw data into analytical tables: R&D efficiency by company (RANK() window functions), therapy area landscape, VC/M&A deal trends. Automated data quality tests (not_null, accepted_values). Power BI dashboard published via DirectQuery to Power BI Service.</p><a href="https://app.notion.com/p/38cfe51e040d817da7cec1d8326724c0" target="_blank" class="modal-link">View project on Notion →</a>` },
+  energy: { tag: 'Data, Microsoft Fabric, Power BI', title: 'Global Electricity Analytics', kv: [['Source','Ember Climate — 215 countries, 2000–2024'],['Stack','Fabric, Dataflow Gen2, T-SQL, Power BI'],['Tables','mix_mondial_2024, renouvelables_vs_fossiles, top_nucleaire'],['Mode','DirectQuery → Power BI Service']], body: `<p>Data pipeline on global electricity data from Ember Climate (215 countries, 2000–2024, ~500k rows). Ingested via Dataflow Gen2 into a Fabric Warehouse, then modelled into three analytical tables using native T-SQL.</p><p>Power BI Service dashboard published in DirectQuery: top nuclear producers 2024, global energy mix by source, Clean/Fossil/Renewables trend over 25 years, KPI cards for solar/wind/nuclear.</p><a href="https://app.notion.com/p/38cfe51e040d8113a3f3c4296d689bff" target="_blank" class="modal-link">View project on Notion →</a>` },
   memoire: { tag: 'Research paper, Procurement, Data, GE Vernova', title: 'Data-driven procurement centralisation in multi-site groups', kv: [['Subject','Data-driven procurement centralisation'],['Context','Research paper, GE Vernova'],['Tools','Palantir Foundry, Data ontologies'],['Language','English']], body: `<p>How data-driven procurement centralisation strengthens corporate decision-making power over supplier markets without destroying local autonomy. Organisation theory, data ontologies, Palantir Foundry, GE Vernova fieldwork.</p><p><strong>Central question:</strong> to what extent does ontological structuring of procurement data enable corporate leadership to actively govern its supplier markets without sacrificing operational site responsiveness?</p>` },
 };
 
