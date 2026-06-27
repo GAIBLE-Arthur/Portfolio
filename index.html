@@ -472,6 +472,15 @@
         <span class="project-arrow">↗</span>
       </div>
     </div>
+    <div class="project-card fade-in" style="transition-delay:0.4s" onclick="openModal('pharma')">
+      <span class="project-tag">Microsoft Fabric, dbt Cloud, Power BI</span>
+      <h3 class="project-title" data-i18n="pharma-title">Pharma & Biotech Analytics Pipeline</h3>
+      <p class="project-desc" data-i18n="pharma-desc">Pipeline end-to-end sur données pharma/biotech : 5 sources CSV (6 328 lignes) ingérées dans Microsoft Fabric Warehouse via Copy job, transformées en 10 modèles dbt (staging / intermediate / marts), visualisées dans Power BI en DirectQuery.</p>
+      <div class="project-meta">
+        <span data-i18n="pharma-meta">Fabric, dbt Cloud, T-SQL, Power BI</span>
+        <span class="project-arrow">↗</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -757,6 +766,9 @@ const T = {
     'rk-title': 'Système de gestion des rébuts',
     'rk-desc': "Deux outils HTML pour automatiser le circuit des fiches de rebut industriel entre opérateurs et acheteur. 3 lookups automatiques à l'import, registre JSON temps réel, dashboard SVG, zéro serveur.",
     'rk-meta': 'Vanilla JS, File System API, IndexedDB',
+    'pharma-title': 'Pharma & Biotech Analytics Pipeline',
+    'pharma-desc': "Pipeline end-to-end sur données pharma/biotech : 5 sources CSV (6 328 lignes) ingérées dans Microsoft Fabric Warehouse via Copy job, transformées en 10 modèles dbt (staging / intermediate / marts), visualisées dans Power BI en DirectQuery.",
+    'pharma-meta': 'Fabric, dbt Cloud, T-SQL, Power BI',
     'banner-marches': 'Connaître sa <em>chaîne amont</em>',
     'stat-niobium': 'Niobium mondial extrait au Brésil', 'stat-cagr': 'CAGR marché 2025–2033',
     'stat-catalao': 'Rachat Catalão par CMOC', 'stat-criticite': 'Criticité UE — ininterrompue',
@@ -819,6 +831,9 @@ const T = {
     'rk-title': 'Industrial Scrap Management System',
     'rk-desc': 'Two HTML tools automating the industrial scrap sheet workflow between operators and the procurement buyer. 3 automatic lookups on import, real-time JSON registry, SVG dashboard, zero backend.',
     'rk-meta': 'Vanilla JS, File System API, IndexedDB',
+    'pharma-title': 'Pharma & Biotech Analytics Pipeline',
+    'pharma-desc': 'End-to-end pipeline on pharma/biotech data: 5 CSV sources (6,328 rows) ingested into Microsoft Fabric Warehouse via Copy job, transformed through 10 dbt models (staging / intermediate / marts), visualised in Power BI via DirectQuery.',
+    'pharma-meta': 'Fabric, dbt Cloud, T-SQL, Power BI',
     'banner-marches': 'Know your <em>upstream chain</em>',
     'stat-niobium': 'Global niobium extracted in Brazil', 'stat-cagr': 'Market CAGR 2025–2033',
     'stat-catalao': 'CMOC acquisition of Catalão', 'stat-criticite': 'EU criticality — uninterrupted',
@@ -916,6 +931,12 @@ const projects = {
     kv: [['Sujet','Crise budgétaire UK 2022'],['Format','Analyse de marché & politique'],['Langue','Anglais'],['Période','Septembre–Octobre 2022']],
     body: `<p>Autopsie des 44 jours de gouvernement Truss (sept–oct 2022). Le mini-budget non financé déclenche une réaction immédiate des marchés : les rendements à 30 ans bondissent, la livre sterling chute, la banque centrale est contrainte d'intervenir en urgence pour éviter un effondrement des fonds de pension.</p><p>Ce cas d'école illustre les limites de la souveraineté monétaire et le poids de la crédibilité budgétaire.</p><a href="https://www.notion.so/35dfe51e040d80a28bebdb7283fba9c4" target="_blank" class="modal-link">Read on Notion →</a>`,
   },
+  pharma: {
+    tag: 'Data, Microsoft Fabric, dbt Cloud',
+    title: 'Pharma & Biotech Analytics Pipeline',
+    kv: [['Sources','5 CSV — 6 328 lignes'],['Stack','Microsoft Fabric, dbt Cloud, T-SQL, Power BI'],['Modèles dbt','10 (5 staging, 2 intermediate, 3 marts)'],['Ingestion','Copy job Warehouse (T-SQL, zéro Spark)'],['Visualisation','DirectQuery → Power BI Service']],
+    body: `<p>Pipeline data complet sur l'industrie pharma et biotech. Cinq sources hétérogènes (approbations FDA, essais cliniques, financement biotech, charge de morbidité, données financières des laboratoires) sont chargées dans un Warehouse Microsoft Fabric via Copy job en T-SQL pur.</p><p>Dix modèles dbt structurés en trois couches transforment les données brutes jusqu'aux tables analytiques : efficacité R&D par entreprise (RANK() window functions), panorama thérapeutique par indication, tendances deals VC/M&A. Tests data quality automatisés (not_null, accepted_values). Dashboard Power BI publié en DirectQuery sur Power BI Service.</p><a href="https://app.notion.com/p/38cfe51e040d817da7cec1d8326724c0" target="_blank" class="modal-link">Voir le projet sur Notion →</a>`,
+  },
   memoire: {
     tag: 'Mémoire, Achats, Data, GE Vernova',
     title: 'Mémoire : Centralisation des achats dans les groupes multi-sites',
@@ -934,6 +955,7 @@ const projectsEN = {
   tier2: { tag: 'Internal tool, Procurement Data, Supply Chain', title: 'Tier 2 Mapping System', kv: [['Constraint','Zero backend — single HTML file'],['Stack','Vanilla JS, SheetJS, AlaSQL, File System API'],['Scope','~10,000 industrial component references'],['Export','JSON → Power BI']], body: `<p>Pure JS single-page data pipeline for reconciling industrial sub-supplier (Tier 2) data against an internal reference. Core challenge: every supplier delivers data in their own Excel format — renamed columns, varied codes, free-text descriptions. Zero server, zero build, zero external dependency.</p><p>The tool auto-detects columns via regex, runs a matching cascade (exact code → exact description → weighted similarity score: Jaccard + manufacturer + LCS code), then consolidates validated rows into a semi-annual JSON period file, directly consumable by Power BI.</p><p>Built in pure Vanilla JS to run on <code>file://</code> with no infrastructure, persisting file handles across sessions via IndexedDB.</p><a href="https://app.notion.com/p/38bfe51e040d81f58d76f762e1e1ddde" target="_blank" class="modal-link">View project on Notion →</a>` },
   afrique: { tag: 'Geopolitics,Africa,France', title: 'French influence in Africa: a broken soft-power?', kv: [['Subject','French influence in sub-Saharan Africa'],['Format','Geopolitical essay'],['Language','French']], body: `<p>Diagnosis of French influence in sub-Saharan Africa: military withdrawal (Mali, Burkina, Niger), growing contestation of the CFA franc, and the rise of alternatives: Russia (Wagner/Africa Corps), China, Turkey.</p><p>The analysis questions the moment when a historical presence becomes a strategic liability, and what levers remain available to Paris.</p><a href="https://www.notion.so/35dfe51e040d80668f9fdab79f2b1b97" target="_blank" class="modal-link">Read on Notion →</a>` },
   truss: { tag: 'UK,Finance,Economic policy', title: '44 Days: Liz Truss and the Collapse of Confidence', kv: [['Subject','UK budget crisis 2022'],['Format','Market & policy analysis'],['Language','English'],['Period','September–October 2022']], body: `<p>Post-mortem of the 44 Truss government days (Sept–Oct 2022). The unfunded mini-budget triggered an immediate market reaction: 30-year yields spiked, the pound collapsed, the central bank was forced to intervene urgently to prevent a pension fund meltdown.</p><p>A textbook case on the limits of monetary sovereignty and the weight of fiscal credibility.</p><a href="https://www.notion.so/35dfe51e040d80a28bebdb7283fba9c4" target="_blank" class="modal-link">Read on Notion →</a>` },
+  pharma: { tag: 'Data, Microsoft Fabric, dbt Cloud', title: 'Pharma & Biotech Analytics Pipeline', kv: [['Sources','5 CSV — 6,328 rows'],['Stack','Microsoft Fabric, dbt Cloud, T-SQL, Power BI'],['dbt models','10 (5 staging, 2 intermediate, 3 marts)'],['Ingestion','Warehouse Copy job (T-SQL, zero Spark)'],['Visualisation','DirectQuery → Power BI Service']], body: `<p>End-to-end data pipeline on the pharma and biotech industry. Five heterogeneous sources (FDA approvals, clinical trials, biotech funding, disease burden, pharma financials) are loaded into a Microsoft Fabric Warehouse via a T-SQL Copy job.</p><p>Ten dbt models structured in three layers transform raw data into analytical tables: R&D efficiency by company (RANK() window functions), therapy area landscape, VC/M&A deal trends. Automated data quality tests (not_null, accepted_values). Power BI dashboard published via DirectQuery to Power BI Service.</p><a href="https://app.notion.com/p/38cfe51e040d817da7cec1d8326724c0" target="_blank" class="modal-link">View project on Notion →</a>` },
   memoire: { tag: 'Research paper, Procurement, Data, GE Vernova', title: 'Data-driven procurement centralisation in multi-site groups', kv: [['Subject','Data-driven procurement centralisation'],['Context','Research paper, GE Vernova'],['Tools','Palantir Foundry, Data ontologies'],['Language','English']], body: `<p>How data-driven procurement centralisation strengthens corporate decision-making power over supplier markets without destroying local autonomy. Organisation theory, data ontologies, Palantir Foundry, GE Vernova fieldwork.</p><p><strong>Central question:</strong> to what extent does ontological structuring of procurement data enable corporate leadership to actively govern its supplier markets without sacrificing operational site responsiveness?</p>` },
 };
 
