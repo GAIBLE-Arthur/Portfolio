@@ -16,7 +16,6 @@ interface EducationEntry {
 }
 
 interface ExperienceText {
-  eyebrow: string;
   title: string;
   educationLabel: string;
   entries: ExperienceEntry[];
@@ -25,7 +24,6 @@ interface ExperienceText {
 
 const experienceText: Record<Locale, ExperienceText> = {
   en: {
-    eyebrow: "Experience",
     title: "Where this was built in the field",
     educationLabel: "Education",
     entries: [
@@ -69,7 +67,6 @@ const experienceText: Record<Locale, ExperienceText> = {
     ],
   },
   fr: {
-    eyebrow: "Expérience",
     title: "Expériences",
     educationLabel: "Formation",
     entries: [

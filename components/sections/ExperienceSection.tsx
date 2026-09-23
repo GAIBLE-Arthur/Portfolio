@@ -9,7 +9,7 @@ export function ExperienceSection({ locale }: { locale: Locale }) {
   return (
     <section id="experience" className="bg-paper py-24 sm:py-28">
       <div className="container-nera">
-        <SectionHeader eyebrow={t.eyebrow} title={t.title} />
+        <SectionHeader title={t.title} />
 
         <div className="mt-14 flex flex-col gap-px border border-border bg-border">
           {t.entries.map((entry, i) => (
