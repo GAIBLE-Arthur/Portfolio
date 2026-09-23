@@ -19,15 +19,7 @@ export function Navbar({ locale }: { locale: Locale }) {
 
   return (
     <header className="sticky inset-x-0 top-0 z-50 border-b border-border bg-paper/95 backdrop-blur">
-      <nav aria-label="Primary" className="container-nera flex h-16 items-center justify-between">
-        <Link
-          href={withLocale(locale, "/")}
-          aria-label="Arthur Gaible"
-          className="flex h-8 w-8 items-center justify-center border border-border font-mono text-xs font-medium tracking-widest2 text-ink transition-colors hover:border-ink"
-        >
-          AG
-        </Link>
-
+      <nav aria-label="Primary" className="container-nera flex h-16 items-center justify-end">
         <div className="hidden items-center gap-8 lg:flex">
           {t.navLinks.map((link) => (
             <a key={link.href} href={link.href} className="text-sm font-medium text-ink transition-colors hover:text-accent">
