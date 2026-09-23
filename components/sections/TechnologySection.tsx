@@ -11,7 +11,7 @@ export function TechnologySection({ locale }: { locale: Locale }) {
   return (
     <section className="bg-surface py-24 text-on-dark sm:py-28">
       <div className="container-nera">
-        <SectionHeader eyebrow={t.eyebrow} title={t.title} theme="dark" />
+        <SectionHeader title={t.title} theme="dark" />
         <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3">
           {technologies.map((tech) => (
             <TechnologyItem key={tech.name} {...tech} />

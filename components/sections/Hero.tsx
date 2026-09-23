@@ -8,9 +8,6 @@ export function Hero({ locale }: { locale: Locale }) {
   return (
     <section className="bg-surface py-28 text-on-dark sm:py-32">
       <div className="container-nera">
-        <Reveal>
-          <p className="mb-6 font-mono text-xs uppercase tracking-widest2 text-on-dark-muted">{t.heroTag}</p>
-        </Reveal>
         <Reveal delay={80}>
           <h1 className="max-w-3xl text-4xl font-semibold leading-[1.05] tracking-tightest sm:text-6xl">
             {t.heroName}

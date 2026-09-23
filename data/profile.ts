@@ -7,7 +7,6 @@ interface Certification {
 }
 
 interface ProfileText {
-  eyebrow: string;
   title: string;
   paragraphs: string[];
   photoAlt: string;
@@ -18,7 +17,6 @@ interface ProfileText {
 
 const profileText: Record<Locale, ProfileText> = {
   en: {
-    eyebrow: "Profile",
     title: "An analytical, data-driven profile",
     paragraphs: [
       "A profile built around data tool expertise (Palantir Foundry, SQL, Power BI, Microsoft Fabric) and analytical modelling.",
@@ -30,7 +28,6 @@ const profileText: Record<Locale, ProfileText> = {
     certificationsLabel: "Certifications",
   },
   fr: {
-    eyebrow: "Profil",
     title: "Un profil analytique, orienté data",
     paragraphs: [
       "Un profil construit autour de la maîtrise des outils data (Palantir Foundry, SQL, Power BI, Microsoft Fabric) et de la modélisation analytique.",

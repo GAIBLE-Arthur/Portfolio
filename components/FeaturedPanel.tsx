@@ -1,7 +1,7 @@
 import { Reveal } from "@/components/ui/Reveal";
 
 interface FeaturedPanelProps {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   quote: string;
   tags?: string[];
@@ -16,7 +16,7 @@ export function FeaturedPanel({ eyebrow, title, quote, tags, paragraphs, facts, 
     <div className="bg-ink py-20 text-on-dark sm:py-24">
       <div className="container-nera">
         <Reveal>
-          <p className="mb-3 font-mono text-xs uppercase tracking-widest2 text-accent">{eyebrow}</p>
+          {eyebrow && <p className="mb-3 font-mono text-xs uppercase tracking-widest2 text-accent">{eyebrow}</p>}
           <h2 className="max-w-2xl text-2xl font-semibold tracking-tightest sm:text-3xl">{title}</h2>
         </Reveal>
 

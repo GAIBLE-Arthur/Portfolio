@@ -15,7 +15,6 @@ export interface ProjectCard {
 }
 
 interface FeaturedCaseStudy {
-  eyebrow: string;
   title: string;
   quote: string;
   tags: string[];
@@ -24,7 +23,6 @@ interface FeaturedCaseStudy {
 }
 
 interface ProjectsText {
-  eyebrow: string;
   title: string;
   cards: ProjectCard[];
   featured: FeaturedCaseStudy;
@@ -32,7 +30,6 @@ interface ProjectsText {
 
 const projectsText: Record<Locale, ProjectsText> = {
   en: {
-    eyebrow: "Data & Industrial Analytics",
     title: "Projects",
     cards: [
       {
@@ -123,7 +120,6 @@ const projectsText: Record<Locale, ProjectsText> = {
       },
     ],
     featured: {
-      eyebrow: "Research paper",
       title: "Data-driven governance in multi-site organisations",
       quote: "How data ontologies redefine corporate decision power",
       tags: ["Palantir Foundry", "Data ontologies", "GE Vernova", "Multi-site"],
@@ -142,7 +138,6 @@ const projectsText: Record<Locale, ProjectsText> = {
     },
   },
   fr: {
-    eyebrow: "Data & Industrial Analytics",
     title: "Projets",
     cards: [
       {
@@ -233,7 +228,6 @@ const projectsText: Record<Locale, ProjectsText> = {
       },
     ],
     featured: {
-      eyebrow: "Mémoire de recherche",
       title: "Gouvernance data-driven en environnement multi-sites",
       quote: "Comment les ontologies data redéfinissent le pouvoir de décision corporate",
       tags: ["Palantir Foundry", "Ontologies data", "GE Vernova", "Multi-site"],

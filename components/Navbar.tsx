@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { site } from "@/data/site";
 import { getUiText } from "@/data/ui";
 import { locales, withLocale, type Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
@@ -21,8 +20,12 @@ export function Navbar({ locale }: { locale: Locale }) {
   return (
     <header className="sticky inset-x-0 top-0 z-50 border-b border-border bg-paper/95 backdrop-blur">
       <nav aria-label="Primary" className="container-nera flex h-16 items-center justify-between">
-        <Link href={withLocale(locale, "/")} className="font-mono text-sm font-medium tracking-widest2 text-ink">
-          {site.name}
+        <Link
+          href={withLocale(locale, "/")}
+          aria-label="Arthur Gaible"
+          className="flex h-8 w-8 items-center justify-center border border-border font-mono text-xs font-medium tracking-widest2 text-ink transition-colors hover:border-ink"
+        >
+          AG
         </Link>
 
         <div className="hidden items-center gap-8 lg:flex">

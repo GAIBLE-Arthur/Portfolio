@@ -7,13 +7,12 @@ interface NavLink {
 
 interface UiText {
   navLinks: NavLink[];
-  heroTag: string;
   heroName: string;
   heroSubtitle: string;
   footerTagline: string;
   detailsLabel: string;
   closeLabel: string;
-  technology: { eyebrow: string; title: string };
+  technology: { title: string };
 }
 
 const uiText: Record<Locale, UiText> = {
@@ -24,13 +23,12 @@ const uiText: Record<Locale, UiText> = {
       { label: "Projects", href: "#projects" },
       { label: "Contact", href: "#contact" },
     ],
-    heroTag: "Data & Analytics",
     heroName: "Arthur Gaible",
     heroSubtitle: "Building end-to-end data systems, from raw data to the decisions they inform.",
     footerTagline: "Data & Analytics",
     detailsLabel: "Details",
     closeLabel: "Close",
-    technology: { eyebrow: "Technology", title: "Tools used day to day" },
+    technology: { title: "Tools used day to day" },
   },
   fr: {
     navLinks: [
@@ -39,13 +37,12 @@ const uiText: Record<Locale, UiText> = {
       { label: "Projets", href: "#projects" },
       { label: "Contact", href: "#contact" },
     ],
-    heroTag: "Data & Analytics",
     heroName: "Arthur Gaible",
     heroSubtitle: "Concevoir des systèmes data bout-en-bout, de la donnée brute à la décision.",
     footerTagline: "Data & Analytics",
     detailsLabel: "Détails",
     closeLabel: "Fermer",
-    technology: { eyebrow: "Technologie", title: "Outils utilisés au quotidien" },
+    technology: { title: "Outils utilisés au quotidien" },
   },
 };
 

@@ -23,7 +23,7 @@ export function ProfileSection({ locale }: { locale: Locale }) {
         </Reveal>
 
         <div className="order-1 lg:order-2">
-          <SectionHeader eyebrow={t.eyebrow} title={t.title} />
+          <SectionHeader title={t.title} />
           <div className="mt-6 space-y-4 text-sm leading-relaxed text-muted sm:text-base">
             {t.paragraphs.map((p) => (
               <p key={p}>{p}</p>

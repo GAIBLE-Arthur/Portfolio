@@ -7,7 +7,6 @@ export function CaseStudySection({ locale }: { locale: Locale }) {
 
   return (
     <FeaturedPanel
-      eyebrow={t.eyebrow}
       title={t.title}
       quote={t.quote}
       tags={t.tags}

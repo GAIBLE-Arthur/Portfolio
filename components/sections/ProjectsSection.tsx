@@ -11,7 +11,7 @@ export function ProjectsSection({ locale }: { locale: Locale }) {
   return (
     <section id="projects" className="bg-surface py-24 sm:py-28">
       <div className="container-nera">
-        <SectionHeader eyebrow={t.eyebrow} title={t.title} theme="dark" />
+        <SectionHeader title={t.title} theme="dark" />
         <div className="mt-14">
           <ProjectCardGrid cards={t.cards} closeLabel={ui.closeLabel} />
         </div>
