@@ -70,7 +70,7 @@ const experienceText: Record<Locale, ExperienceText> = {
   },
   fr: {
     eyebrow: "Expérience",
-    title: "D'où vient tout ça, sur le terrain",
+    title: "Expériences",
     educationLabel: "Formation",
     entries: [
       {
