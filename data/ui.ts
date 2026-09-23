@@ -13,6 +13,7 @@ interface UiText {
   footerTagline: string;
   detailsLabel: string;
   closeLabel: string;
+  technology: { eyebrow: string; title: string };
 }
 
 const uiText: Record<Locale, UiText> = {
@@ -20,29 +21,29 @@ const uiText: Record<Locale, UiText> = {
     navLinks: [
       { label: "Profile", href: "#profile" },
       { label: "Projects", href: "#projects" },
-      { label: "Raw materials", href: "#raw-materials" },
       { label: "Contact", href: "#contact" },
     ],
-    heroTag: "Procurement · Data Systems",
+    heroTag: "Data & Analytics",
     heroName: "Arthur Gaible",
-    heroSubtitle: "Building end-to-end data systems to give procurement real visibility over its markets.",
-    footerTagline: "Procurement · Data Systems",
+    heroSubtitle: "Building end-to-end data systems, from raw data to the decisions they inform.",
+    footerTagline: "Data & Analytics",
     detailsLabel: "Details",
     closeLabel: "Close",
+    technology: { eyebrow: "Technology", title: "Tools used day to day" },
   },
   fr: {
     navLinks: [
       { label: "Profil", href: "#profile" },
       { label: "Projets", href: "#projects" },
-      { label: "Matières premières", href: "#raw-materials" },
       { label: "Contact", href: "#contact" },
     ],
-    heroTag: "Achats · Systèmes data",
+    heroTag: "Data & Analytics",
     heroName: "Arthur Gaible",
-    heroSubtitle: "Concevoir des systèmes data bout-en-bout pour donner aux achats une vraie visibilité sur leurs marchés.",
-    footerTagline: "Achats · Systèmes data",
+    heroSubtitle: "Concevoir des systèmes data bout-en-bout, de la donnée brute à la décision.",
+    footerTagline: "Data & Analytics",
     detailsLabel: "Détails",
     closeLabel: "Fermer",
+    technology: { eyebrow: "Technologie", title: "Outils utilisés au quotidien" },
   },
 };
 

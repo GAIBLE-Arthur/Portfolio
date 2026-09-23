@@ -124,12 +124,12 @@ const projectsText: Record<Locale, ProjectsText> = {
     ],
     featured: {
       eyebrow: "Research paper",
-      title: "Data-driven procurement centralisation",
-      quote: "How data redefines corporate purchasing power",
-      tags: ["Palantir Foundry", "Data ontologies", "GE Vernova", "Digital procurement", "Multi-site"],
+      title: "Data-driven governance in multi-site organisations",
+      quote: "How data ontologies redefine corporate decision power",
+      tags: ["Palantir Foundry", "Data ontologies", "GE Vernova", "Multi-site"],
       paragraphs: [
-        "This research paper, conducted in the field at GE Vernova, examines how data-driven procurement centralisation strengthens corporate decision-making power over supplier markets — without destroying local site autonomy.",
-        "Ontological modelling in Palantir Foundry forms the backbone of the approach: by structuring procurement objects (contracts, suppliers, orders) into a coherent graph, it enables corporate leadership to move from consolidation to active governance.",
+        "This research paper, conducted in the field at GE Vernova, examines how centralising data strengthens corporate decision-making power over distributed operations — without destroying local site autonomy.",
+        "Ontological modelling in Palantir Foundry forms the backbone of the approach: by structuring the organisation's core objects into a coherent graph, it enables leadership to move from consolidation to active governance.",
       ],
       facts: [
         ["Context", "GE Vernova — fieldwork"],
@@ -234,12 +234,12 @@ const projectsText: Record<Locale, ProjectsText> = {
     ],
     featured: {
       eyebrow: "Mémoire de recherche",
-      title: "Centralisation data-driven des achats",
-      quote: "Comment la donnée redéfinit le pouvoir d'achat corporatif",
-      tags: ["Palantir Foundry", "Ontologies data", "GE Vernova", "Digital Procurement", "Multi-site"],
+      title: "Gouvernance data-driven en environnement multi-sites",
+      quote: "Comment les ontologies data redéfinissent le pouvoir de décision corporate",
+      tags: ["Palantir Foundry", "Ontologies data", "GE Vernova", "Multi-site"],
       paragraphs: [
-        "Ce mémoire de recherche, conduit sur le terrain de GE Vernova, examine comment la centralisation data-driven des achats renforce le pouvoir de décision corporate sur les marchés fournisseurs — sans détruire l'autonomie locale des sites.",
-        "La modélisation ontologique dans Palantir Foundry constitue l'épine dorsale de la démarche : en structurant les objets achats (contrats, fournisseurs, commandes) en un graphe cohérent, elle permet à la direction corporate de passer de la consolidation à la gouvernance active.",
+        "Ce mémoire de recherche, conduit sur le terrain de GE Vernova, examine comment la centralisation de la donnée renforce le pouvoir de décision corporate sur des opérations distribuées — sans détruire l'autonomie locale des sites.",
+        "La modélisation ontologique dans Palantir Foundry constitue l'épine dorsale de la démarche : en structurant les objets clés de l'organisation en un graphe cohérent, elle permet à la direction de passer de la consolidation à la gouvernance active.",
       ],
       facts: [
         ["Cadre", "GE Vernova — terrain"],

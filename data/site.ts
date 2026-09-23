@@ -16,12 +16,12 @@ interface SiteText {
 
 const siteText: Record<Locale, SiteText> = {
   en: {
-    title: "Arthur Gaible | Procurement & Data Systems",
-    description: "Portfolio — data systems, analytics and strategic procurement.",
+    title: "Arthur Gaible | Data & Analytics",
+    description: "Portfolio — data systems, analytics and modelling.",
   },
   fr: {
-    title: "Arthur Gaible | Achats & systèmes data",
-    description: "Portfolio — systèmes data, analytics et achats stratégiques.",
+    title: "Arthur Gaible | Data & Analytics",
+    description: "Portfolio — systèmes data, analytics et modélisation.",
   },
 };
 

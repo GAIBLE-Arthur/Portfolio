@@ -31,15 +31,8 @@ export function ProfileSection({ locale }: { locale: Locale }) {
           </div>
 
           <div className="mt-10">
-            <p className="mb-4 font-mono text-xs uppercase tracking-widest2 text-accent-strong">{t.skillsLabel}</p>
-            <div className="grid grid-cols-1 gap-px border border-border bg-border sm:grid-cols-2">
-              {t.skills.map((skill) => (
-                <div key={skill.name} className="bg-paper p-4">
-                  <p className="mb-1 font-mono text-xs uppercase tracking-widest2 text-muted">{skill.name}</p>
-                  <p className="text-sm text-ink">{skill.items}</p>
-                </div>
-              ))}
-            </div>
+            <p className="mb-2 font-mono text-xs uppercase tracking-widest2 text-accent-strong">{t.languagesLabel}</p>
+            <p className="text-sm text-ink">{t.languages}</p>
           </div>
 
           <div className="mt-10">
