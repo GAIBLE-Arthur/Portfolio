@@ -8,24 +8,14 @@ interface ExperienceEntry {
   bullets: string[];
 }
 
-interface EducationEntry {
-  degree: string;
-  school: string;
-  period: string;
-  note?: string;
-}
-
 interface ExperienceText {
   title: string;
-  educationLabel: string;
   entries: ExperienceEntry[];
-  education: EducationEntry[];
 }
 
 const experienceText: Record<Locale, ExperienceText> = {
   en: {
     title: "Where this was built in the field",
-    educationLabel: "Education",
     entries: [
       {
         role: "Commodity Analyst",
@@ -52,23 +42,9 @@ const experienceText: Record<Locale, ExperienceText> = {
         ],
       },
     ],
-    education: [
-      {
-        degree: "Master — International Business (MEA)",
-        school: "University of Lille (M1), iaelyon (M2)",
-        period: "2024 – 2026",
-        note: "Thesis: strategic procurement centralisation, multi-site ontology modelling in Palantir Foundry.",
-      },
-      {
-        degree: "Master — Procurement Management",
-        school: "INSEEC, Lyon",
-        period: "2022 – 2024",
-      },
-    ],
   },
   fr: {
     title: "Expériences",
-    educationLabel: "Formation",
     entries: [
       {
         role: "Commodity Analyst",
@@ -93,19 +69,6 @@ const experienceText: Record<Locale, ExperienceText> = {
           "Co-construction d'un cadre d'achats laboratoire via des audits multi-sites, estimé à 300k€ d'économies sur 10 ans.",
           "Mission Export Assistant sur le site belge (été 2023).",
         ],
-      },
-    ],
-    education: [
-      {
-        degree: "Master — International Business (MEA)",
-        school: "Université de Lille (M1), iaelyon (M2)",
-        period: "2024 – 2026",
-        note: "Mémoire : centralisation stratégique des achats, modélisation ontologique multi-sites dans Palantir Foundry.",
-      },
-      {
-        degree: "Master — Procurement Management",
-        school: "INSEEC, Lyon",
-        period: "2022 – 2024",
       },
     ],
   },

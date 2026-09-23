@@ -9,7 +9,7 @@ export function ContactSection({ locale }: { locale: Locale }) {
   return (
     <section id="contact" className="bg-paper py-24 sm:py-28">
       <div className="container-nera">
-        <SectionHeader eyebrow={t.eyebrow} title={t.title} />
+        <SectionHeader title={t.title} />
         <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
           <a
             href={`mailto:${site.email}`}

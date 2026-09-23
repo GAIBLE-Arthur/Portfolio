@@ -33,22 +33,6 @@ export function ExperienceSection({ locale }: { locale: Locale }) {
             </Reveal>
           ))}
         </div>
-
-        <div className="mt-14">
-          <p className="mb-4 font-mono text-xs uppercase tracking-widest2 text-accent-strong">{t.educationLabel}</p>
-          <div className="flex flex-col gap-px border border-border bg-border">
-            {t.education.map((edu) => (
-              <div key={edu.degree} className="bg-paper p-5">
-                <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-baseline">
-                  <p className="text-sm font-medium text-ink">{edu.degree}</p>
-                  <p className="font-mono text-xs uppercase tracking-widest2 text-muted">{edu.period}</p>
-                </div>
-                <p className="mt-1 text-sm text-muted">{edu.school}</p>
-                {edu.note && <p className="mt-2 text-sm italic leading-relaxed text-muted">{edu.note}</p>}
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
