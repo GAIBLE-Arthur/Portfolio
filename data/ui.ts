@@ -20,6 +20,7 @@ const uiText: Record<Locale, UiText> = {
   en: {
     navLinks: [
       { label: "Profile", href: "#profile" },
+      { label: "Experience", href: "#experience" },
       { label: "Projects", href: "#projects" },
       { label: "Contact", href: "#contact" },
     ],
@@ -34,6 +35,7 @@ const uiText: Record<Locale, UiText> = {
   fr: {
     navLinks: [
       { label: "Profil", href: "#profile" },
+      { label: "Expérience", href: "#experience" },
       { label: "Projets", href: "#projects" },
       { label: "Contact", href: "#contact" },
     ],
