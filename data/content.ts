@@ -73,6 +73,7 @@ const content: Record<Locale, Content> = {
         title: "Gouvernance data-driven multi-sites",
         org: "Mémoire, Palantir Foundry",
         cover: "thesis",
+        url: "https://app.notion.com/p/416fe51e040d8110ae9ed30f50aea33b",
         text: "Comment les ontologies data renforcent la décision corporate sans supprimer l'autonomie des sites. Terrain : GE Vernova.",
       },
       {
@@ -137,6 +138,7 @@ const content: Record<Locale, Content> = {
         title: "Data-driven governance in multi-site groups",
         org: "Thesis, Palantir Foundry",
         cover: "thesis",
+        url: "https://app.notion.com/p/416fe51e040d8110ae9ed30f50aea33b",
         text: "How data ontologies strengthen corporate decision-making without removing site autonomy. Fieldwork: GE Vernova.",
       },
       {
@@ -177,6 +179,20 @@ export function getContent(locale: Locale): Content {
 
 export const certifications: Certification[] = [
   {
+    title: "SAP S/4HANA Cloud Private Edition — Sourcing and Procurement",
+    issuer: "SAP",
+    date: "11/2026",
+    url: "https://www.credly.com/users/gaible-arthur",
+    logo: "www.sap.com",
+  },
+  {
+    title: "Joule Studio Developer",
+    issuer: "SAP",
+    date: "11/2026",
+    url: "https://www.credly.com/users/gaible-arthur",
+    logo: "www.sap.com",
+  },
+  {
     title: "Power BI Data Analyst Associate (PL-300)",
     issuer: "Microsoft",
     logo: "microsoft.com",
@@ -205,8 +221,9 @@ export const certifications: Certification[] = [
     url: "https://verify.skilljar.com/c/o735s266d4gg",
   },
   {
-    title: "Python Fundamentals",
+    title: "Data Science Essentials with Python",
     issuer: "Cisco",
+    date: "02/2026",
     logo: "cisco.com",
     url: "https://www.credly.com/badges/92f5f5f5-500e-42d6-abd5-1af7b452266c",
   },

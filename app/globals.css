@@ -2,16 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Design tokens: the whole look funnels through these variables. */
 :root {
-  --color-ink: #14161f;
-  --color-muted: #5f6474;
-  --color-line: #e4e6ee;
-  --color-paper: #f7f8fb;
-  --color-accent: #2f5bd3;
-  --color-accent-strong: #2348ad;
-  --color-accent-soft: #e8eefc;
-  --color-warm: #e0782f;
-  --color-warm-soft: #fdf0e6;
+  --color-ink: #111113;
+  --color-muted: #63636a;
+  --color-surface: #0b0b0c;
+  --color-surface-alt: #17171a;
+  --color-paper: #f5f4f1;
+  --color-border: rgba(17, 17, 19, 0.12);
+  --color-border-dark: rgba(245, 244, 241, 0.14);
+  --color-on-dark: #f5f4f1;
+  --color-on-dark-muted: rgba(245, 244, 241, 0.64);
+  --color-accent: #c1602a;
+  --color-accent-strong: #9c4a1e;
+}
+
+* {
+  border-color: var(--color-border);
 }
 
 body {
@@ -19,6 +26,7 @@ body {
   color: var(--color-ink);
   font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 :focus-visible {

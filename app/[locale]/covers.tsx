@@ -2,8 +2,8 @@ import type { Entry } from "@/data/content";
 
 // Small illustrated covers, one per project, drawn in SVG so they stay
 // sharp, light and on-palette. Colors come from the CSS tokens.
-const A = "var(--color-accent)";
-const W = "var(--color-warm)";
+const A = "var(--color-on-dark-muted)";
+const W = "var(--color-accent)";
 
 function Thesis() {
   const nodes: [number, number][] = [
@@ -99,7 +99,7 @@ const covers = { thesis: Thesis, pharma: Pharma, electricity: Electricity, verte
 export function Cover({ name }: { name: NonNullable<Entry["cover"]> }) {
   const Draw = covers[name];
   return (
-    <svg viewBox="0 0 320 160" className="block h-auto w-full bg-accent-soft" aria-hidden="true">
+    <svg viewBox="0 0 320 160" className="block h-auto w-full border-b border-border-dark bg-surface-alt" aria-hidden="true">
       <Draw />
     </svg>
   );
