@@ -47,18 +47,9 @@ export default function HomePage({ params }: { params: { locale: string } }) {
       </header>
 
       <main>
-        <section className="bg-surface pb-20 pt-20 text-on-dark sm:pb-24 sm:pt-28">
+        <section className="bg-paper py-16 sm:py-20">
           <div className="mx-auto max-w-5xl px-6 lg:px-10">
-            <p className="mb-3 font-mono text-xs uppercase tracking-widest2 text-accent">
-              {certifications.length} · {site.name}
-            </p>
-            <h1 className="text-5xl font-semibold leading-[1.02] tracking-tightest sm:text-7xl">{t.title}</h1>
-            <p className="mt-8 max-w-xl text-base leading-relaxed text-on-dark-muted sm:text-lg">{t.intro}</p>
-          </div>
-        </section>
-
-        <section className="bg-paper py-20 sm:py-24">
-          <div className="mx-auto max-w-5xl px-6 lg:px-10">
+            <h1 className="sr-only">{t.title}</h1>
             <ul className="flex flex-col gap-px border border-border bg-border">
               {certifications.map((cert) => (
                 <li key={cert.title}>
