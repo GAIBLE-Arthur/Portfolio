@@ -73,7 +73,7 @@ const content: Record<Locale, Content> = {
         title: "Gouvernance data-driven multi-sites",
         org: "Mémoire, Palantir Foundry",
         cover: "thesis",
-        url: "https://app.notion.com/p/416fe51e040d8110ae9ed30f50aea33b",
+        url: "https://mini-jaguar-a7a.notion.site/Centralization-of-Procurement-in-Multi-Site-Industrial-Groups-Master-s-Thesis-416fe51e040d8110ae9ed30f50aea33b",
         text: "Comment les ontologies data renforcent la décision corporate sans supprimer l'autonomie des sites. Terrain : GE Vernova.",
       },
       {
@@ -138,7 +138,7 @@ const content: Record<Locale, Content> = {
         title: "Data-driven governance in multi-site groups",
         org: "Thesis, Palantir Foundry",
         cover: "thesis",
-        url: "https://app.notion.com/p/416fe51e040d8110ae9ed30f50aea33b",
+        url: "https://mini-jaguar-a7a.notion.site/Centralization-of-Procurement-in-Multi-Site-Industrial-Groups-Master-s-Thesis-416fe51e040d8110ae9ed30f50aea33b",
         text: "How data ontologies strengthen corporate decision-making without removing site autonomy. Fieldwork: GE Vernova.",
       },
       {
