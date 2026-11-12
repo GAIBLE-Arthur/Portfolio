@@ -82,25 +82,6 @@ export default function HomePage({ params }: { params: { locale: string } }) {
         </section>
       </main>
 
-      <footer className="bg-ink py-10 text-on-dark">
-        <div className="mx-auto flex max-w-5xl flex-col justify-between gap-4 px-6 sm:flex-row sm:items-center lg:px-10">
-          <a
-            href={`mailto:${site.email}`}
-            className="group inline-flex items-center gap-2 self-start bg-on-dark px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:bg-accent hover:text-on-dark"
-          >
-            {site.email}
-            <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">
-              →
-            </span>
-          </a>
-          <div className="flex items-center gap-6 font-mono text-xs uppercase tracking-widest2 text-on-dark-muted">
-            <a href={site.github} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-on-dark">
-              GitHub ↗
-            </a>
-            <span>© {new Date().getFullYear()} {site.name}</span>
-          </div>
-        </div>
-      </footer>
     </>
   );
 }
