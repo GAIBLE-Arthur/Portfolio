@@ -20,8 +20,8 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
   if (!isLocale(params.locale)) return {};
   return {
-    title: `${site.name} | Data & Analytics`,
-    description: getContent(params.locale).about,
+    title: `${site.name} | Certifications`,
+    description: getContent(params.locale).intro,
   };
 }
 
